@@ -1,0 +1,13 @@
+.navbar a:hover{
+    text-shadow: 0 0 3px #ddc3c3e1;
+    text-decoration: underline;
+
+}
+.navbar a i.bi-heart-fill{
+    color: red;
+}
+.navbar a{
+   color: rgba(255, 255, 255, 0.979);
+   text-decoration: none;
+   font-weight: bolder;
+}
