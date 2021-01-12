@@ -13,6 +13,7 @@
         <p><a href=""><i class="bi bi-facebook"></i>facebook</a></p>
         <p><a href=""><i class="bi bi-linkedin"></i>linkedin</a></p>
 
+
     </div>
     <div class="col-4 p-2">
         <h3>des Infos</h3>
@@ -22,4 +23,5 @@
     </div>
 
 </div>
+
 
