@@ -83,7 +83,7 @@
                                 <div class="col text-right"><b>$ 2200</b></div>
                             </div>
                             <div class="row lower">
-                                <div class="col text-left"><a href="#"><u>ajouter un promo-code</u></a></div>
+                                <div class="col text-left "><a href="#" class="link"><u>ajouter un promo-code</u></a></div>
                             </div> <button class="btn">confirmer la commande</button>
                             <p class="text-muted text-center">Complimentary Shipping & Returns</p>
                         </div>
