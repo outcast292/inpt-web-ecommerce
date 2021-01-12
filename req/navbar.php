@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg  navbar-dark bg-dark ">
+<nav class="navbar navbar-expand-lg  fixed-top navbar-dark bg-dark ">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
       <img src="img/logo.svg" alt="" width="40" height="30" class="d-inline-block align-top">
