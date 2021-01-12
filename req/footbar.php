@@ -9,8 +9,8 @@
         <h3>reseau socs</h3>
         <hr>
         <p><a href=""><i class="bi bi-instagram"></i>Instagram</a></p>
-        <p><a href=""><i class="bi bi-facebook"></i>Instagram</a></p>
-        <p><a href=""><i class="bi bi-linkedin"></i>Instagram</a></p>
+        <p><a href=""><i class="bi bi-facebook"></i>facebook</a></p>
+        <p><a href=""><i class="bi bi-linkedin"></i>linkedin</a></p>
 
     </div>
     <div class="col-4 p-2">
