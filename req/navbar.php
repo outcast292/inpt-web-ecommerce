@@ -1,5 +1,5 @@
 <nav class="navbar navbar-light bg-light">
-  <div class="container">
+  <div class="container-fluid">
     <a class="navbar-brand" href="#">
       <img src="img/logo.svg" alt="" width="40" height="30" class="d-inline-block align-top">
       AMOIL
