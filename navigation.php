@@ -68,41 +68,41 @@
 
           </div>
           <br>
-          
-        
-        <div class="Marques">
-          <div class="h5" style="color: gold;">Marques</div>
-          <br>
-          <div>
-            <input type="checkbox" style="margin-right:12px">acer
+
+
+          <div class="Marques">
+            <div class="h5" style="color: gold;">Marques</div>
             <br>
-            <input type="checkbox" style="margin-right:12px">samsung
-            <br>
-            <input type="checkbox" style="margin-right:12px">hp
-            <br>
-            <input type="checkbox" style="margin-right:12px">dell
-            <br>
-            <input type="checkbox" style="margin-right:12px">asus
+            <div>
+              <input type="checkbox" style="margin-right:12px">acer
+              <br>
+              <input type="checkbox" style="margin-right:12px">samsung
+              <br>
+              <input type="checkbox" style="margin-right:12px">hp
+              <br>
+              <input type="checkbox" style="margin-right:12px">dell
+              <br>
+              <input type="checkbox" style="margin-right:12px">asus
+            </div>
           </div>
+          <hr>
         </div>
-        <hr>
-      </div>
       </div>
 
 
 
-      <div class="col" >
+      <div class="col">
         <div class="jumbotron">
-          <div class="row justify-content-around" >
+          <div class="row justify-content-around">
             <div class="card  card_item col-lg-3 col-md-4 col-sm-5  m-2 p-1">
               <a href="#">
-                <img src="img/products/pc.jpg" class="card-img-top w-100 " alt="..." >
+                <img src="img/products/pc.jpg" class="card-img-top w-100 " alt="...">
               </a>
               <div class="card-body">
                 <a href="#" style="color: black;">
                   <span class="card-title h4">product</span>
                 </a>
-                <img src="img/stars.jpg" alt="rating"  class=" d-inline-flex align-self-r w-lg-50 w-sm-50 w-md-75">
+                <img src="img/stars.jpg" alt="rating" class=" d-inline-flex align-self-r w-lg-50 w-sm-50 w-md-75">
                 <p style="color:gray">exemple of a discription about the product</p>
                 <a href="#" class="btn btn-primary">BUY</a>
                 <span class="h6" style="margin-left: 30%;">12.213$</span>
@@ -110,13 +110,13 @@
             </div>
             <div class="card  card_item col-lg-3 col-md-4 col-sm-5 m-2 p-1">
               <a href="#">
-                <img src="img/products/pc.jpg" class="card-img-top w-100 " alt="..." >
+                <img src="img/products/pc.jpg" class="card-img-top w-100 " alt="...">
               </a>
               <div class="card-body">
                 <a href="#" style="color: black;">
                   <span class="card-title h4">product</span>
                 </a>
-                <img src="img/stars.jpg" alt="rating"  class="  w-lg-50 w-sm-50 w-md-75">
+                <img src="img/stars.jpg" alt="rating" class="  w-lg-50 w-sm-50 w-md-75">
                 <p style="color:gray">exemple of a discription about the product</p>
                 <a href="#" class="btn btn-primary">BUY</a>
                 <span class="h6" style="margin-left: 30%;">12.213$</span>
@@ -124,13 +124,13 @@
             </div>
             <div class="card  card_item col-lg-3 col-md-4 col-sm-5 m-2 p-1">
               <a href="#">
-                <img src="img/products/pc.jpg" class="card-img-top  w-100 " alt="..." >
+                <img src="img/products/pc.jpg" class="card-img-top  w-100 " alt="...">
               </a>
               <div class="card-body">
                 <a href="#" style="color: black;">
                   <span class="card-title h4">product</span>
                 </a>
-                <img src="img/stars.jpg" alt="rating"  class="  w-lg-50 w-sm-50 w-md-75">
+                <img src="img/stars.jpg" alt="rating" class="  w-lg-50 w-sm-50 w-md-75">
                 <p style="color:gray">exemple of a discription about the product</p>
                 <a href="#" class="btn btn-primary">BUY</a>
                 <span class="h6" style="margin-left: 30%;">12.213$</span>
@@ -138,13 +138,13 @@
             </div>
             <div class="card  card_item col-lg-3 col-md-4 col-sm-5 m-2 p-1">
               <a href="#">
-                <img src="img/products/pc.jpg" class="card-img-top w-100 " alt="..." >
+                <img src="img/products/pc.jpg" class="card-img-top w-100 " alt="...">
               </a>
               <div class="card-body">
                 <a href="#" style="color: black;">
                   <span class="card-title h4">product</span>
                 </a>
-                <img src="img/stars.jpg" alt="rating"  class="  w-lg-50 w-sm-50 w-md-75">
+                <img src="img/stars.jpg" alt="rating" class="  w-lg-50 w-sm-50 w-md-75">
                 <p style="color:gray">exemple of a discription about the product</p>
                 <a href="#" class="btn btn-primary">BUY</a>
                 <span class="h6" style="margin-left: 30%;">12.213$</span>
@@ -152,13 +152,13 @@
             </div>
             <div class="card card_item col-lg-3 col-md-4 col-sm-5 m-2 p-1">
               <a href="#">
-                <img src="img/products/pc.jpg" class="card-img-top w-100 " alt="..." >
+                <img src="img/products/pc.jpg" class="card-img-top w-100 " alt="...">
               </a>
               <div class="card-body">
                 <a href="#" style="color: black;">
                   <span class="card-title h4">product</span>
                 </a>
-                <img src="img/stars.jpg" alt="rating"  class="  w-lg-50 w-sm-50 w-md-75">
+                <img src="img/stars.jpg" alt="rating" class="  w-lg-50 w-sm-50 w-md-75">
                 <p style="color:gray">exemple of a discription about the product</p>
                 <a href="#" class="btn btn-primary">BUY</a>
                 <span class="h6" style="margin-left: 30%;">12.213$</span>
@@ -166,13 +166,13 @@
             </div>
             <div class="card  card_item col-lg-3 col-md-4 col-sm-5 m-2 p-1">
               <a href="#">
-                <img src="img/products/pc.jpg" class="card-img-top w-100 " alt="..." >
+                <img src="img/products/pc.jpg" class="card-img-top w-100 " alt="...">
               </a>
               <div class="card-body">
                 <a href="#" style="color: black;">
                   <span class="card-title h4">product</span>
                 </a>
-                <img src="img/stars.jpg" alt="rating"  class="  w-lg-50 w-sm-50 w-md-75">
+                <img src="img/stars.jpg" alt="rating" class="  w-lg-50 w-sm-50 w-md-75">
                 <p style="color:gray">exemple of a discription about the product</p>
                 <a href="#" class="btn btn-primary">BUY</a>
                 <span class="h6" style="margin-left: 30%;">12.213$</span>
@@ -180,13 +180,13 @@
             </div>
             <div class="card  card_item col-lg-3 col-md-4 col-sm-5 m-2 p-1">
               <a href="#">
-                <img src="img/products/pc.jpg" class="card-img-top w-100 " alt="..." >
+                <img src="img/products/pc.jpg" class="card-img-top w-100 " alt="...">
               </a>
               <div class="card-body">
                 <a href="#" style="color: black;">
                   <span class="card-title h4">product</span>
                 </a>
-                <img src="img/stars.jpg" alt="rating"  class="  w-lg-50 w-sm-50 w-md-75">
+                <img src="img/stars.jpg" alt="rating" class="  w-lg-50 w-sm-50 w-md-75">
                 <p style="color:gray">exemple of a discription about the product</p>
                 <a href="#" class="btn btn-primary">BUY</a>
                 <span class="h6" style="margin-left: 30%;">12.213$</span>
@@ -194,13 +194,13 @@
             </div>
             <div class="card  card_item col-lg-3 col-md-4 col-sm-5 m-2 p-1">
               <a href="#">
-                <img src="img/products/pc.jpg" class="card-img-top w-100 " alt="..." >
+                <img src="img/products/pc.jpg" class="card-img-top w-100 " alt="...">
               </a>
               <div class="card-body">
                 <a href="#" style="color: black;">
                   <span class="card-title h4">product</span>
                 </a>
-                <img src="img/stars.jpg" alt="rating"  class="  w-lg-50 w-sm-50 w-md-75">
+                <img src="img/stars.jpg" alt="rating" class="  w-lg-50 w-sm-50 w-md-75">
                 <p style="color:gray">exemple of a discription about the product</p>
                 <a href="#" class="btn btn-primary">BUY</a>
                 <span class="h6" style="margin-left: 30%;">12.213$</span>
@@ -208,13 +208,13 @@
             </div>
             <div class="card  card_item col-lg-3 col-md-4 col-sm-5 m-2 p-1">
               <a href="#">
-                <img src="img/products/pc.jpg" class="card-img-top w-100 " alt="..." >
+                <img src="img/products/pc.jpg" class="card-img-top w-100 " alt="...">
               </a>
               <div class="card-body">
                 <a href="#" style="color: black;">
                   <span class="card-title h4">product</span>
                 </a>
-                <img src="img/stars.jpg" alt="rating"  class="  w-lg-50 w-sm-50 w-md-75">
+                <img src="img/stars.jpg" alt="rating" class="  w-lg-50 w-sm-50 w-md-75">
                 <p style="color:gray">exemple of a discription about the product</p>
                 <a href="#" class="btn btn-primary">BUY</a>
                 <span class="h6" style="margin-left: 30%;">12.213$</span>
@@ -222,13 +222,13 @@
             </div>
             <div class="card  card_item col-lg-3 col-md-4 col-sm-5 m-2 p-1">
               <a href="#">
-                <img src="img/products/pc.jpg" class="card-img-top w-100 " alt="..." >
+                <img src="img/products/pc.jpg" class="card-img-top w-100 " alt="...">
               </a>
               <div class="card-body">
                 <a href="#" style="color: black;">
                   <span class="card-title h4">product</span>
                 </a>
-                <img src="img/stars.jpg" alt="rating"  class="  w-lg-50 w-sm-50 w-md-75">
+                <img src="img/stars.jpg" alt="rating" class="  w-lg-50 w-sm-50 w-md-75">
                 <p style="color:gray">exemple of a discription about the product</p>
                 <a href="#" class="btn btn-primary">BUY</a>
                 <span class="h6" style="margin-left: 30%;">12.213$</span>
@@ -236,13 +236,13 @@
             </div>
             <div class="card  card_item col-lg-3 col-md-4 col-sm-5 m-2 p-1">
               <a href="#">
-                <img src="img/products/pc.jpg" class="card-img-top w-100 " alt="..." >
+                <img src="img/products/pc.jpg" class="card-img-top w-100 " alt="...">
               </a>
               <div class="card-body">
                 <a href="#" style="color: black;">
                   <span class="card-title h4">product</span>
                 </a>
-                <img src="img/stars.jpg" alt="rating"  class="  w-lg-50 w-sm-50 w-md-75">
+                <img src="img/stars.jpg" alt="rating" class="  w-lg-50 w-sm-50 w-md-75">
                 <p style="color:gray">exemple of a discription about the product</p>
                 <a href="#" class="btn btn-primary">BUY</a>
                 <span class="h6" style="margin-left: 30%;">12.213$</span>
@@ -250,13 +250,13 @@
             </div>
             <div class="card  card_item col-lg-3 col-md-4 col-sm-5 m-2 p-1">
               <a href="#">
-                <img src="img/products/pc.jpg" class="card-img-top w-100 " alt="..." >
+                <img src="img/products/pc.jpg" class="card-img-top w-100 " alt="...">
               </a>
               <div class="card-body">
                 <a href="#" style="color: black;">
                   <span class="card-title h4">product</span>
                 </a>
-                <img src="img/stars.jpg" alt="rating"  class="  w-lg-50 w-sm-50 w-md-75">
+                <img src="img/stars.jpg" alt="rating" class="  w-lg-50 w-sm-50 w-md-75">
                 <p style="color:gray">exemple of a discription about the product</p>
                 <a href="#" class="btn btn-primary">BUY</a>
                 <span class="h6" style="margin-left: 30%;">12.213$</span>
@@ -264,13 +264,13 @@
             </div>
             <div class="card  card_item col-lg-3 col-md-4 col-sm-5 m-2 p-1">
               <a href="#">
-                <img src="img/products/pc.jpg" class="card-img-top w-100 " alt="..." >
+                <img src="img/products/pc.jpg" class="card-img-top w-100 " alt="...">
               </a>
               <div class="card-body">
                 <a href="#" style="color: black;">
                   <span class="card-title h4">product</span>
                 </a>
-                <img src="img/stars.jpg" alt="rating"  class="  w-lg-50 w-sm-50 w-md-75">
+                <img src="img/stars.jpg" alt="rating" class="  w-lg-50 w-sm-50 w-md-75">
                 <p style="color:gray">exemple of a discription about the product</p>
                 <a href="#" class="btn btn-primary">BUY</a>
                 <span class="h6" style="margin-left: 30%;">12.213$</span>
@@ -278,13 +278,13 @@
             </div>
             <div class="card  card_item col-lg-3 col-md-4 col-sm-5 m-2 p-1">
               <a href="#">
-                <img src="img/products/pc.jpg" class="card-img-top w-100 " alt="..." >
+                <img src="img/products/pc.jpg" class="card-img-top w-100 " alt="...">
               </a>
               <div class="card-body">
                 <a href="#" style="color: black;">
                   <span class="card-title h4">product</span>
                 </a>
-                <img src="img/stars.jpg" alt="rating"  class="  w-lg-50 w-sm-50 w-md-75">
+                <img src="img/stars.jpg" alt="rating" class="  w-lg-50 w-sm-50 w-md-75">
                 <p style="color:gray">exemple of a discription about the product</p>
                 <a href="#" class="btn btn-primary">BUY</a>
                 <span class="h6" style="margin-left: 30%;">12.213$</span>
@@ -292,19 +292,18 @@
             </div>
             <div class="card  card_item col-lg-3 col-md-4 col-sm-5 m-2 p-1">
               <a href="#">
-                <img src="img/products/pc.jpg" class="card-img-top w-100 " alt="..." >
+                <img src="img/products/pc.jpg" class="card-img-top w-100 " alt="...">
               </a>
               <div class="card-body">
                 <a href="#" style="color: black;">
                   <span class="card-title h4">product</span>
                 </a>
-                <img src="img/stars.jpg" alt="rating"  class="  w-lg-50 w-sm-50 w-md-75">
+                <img src="img/stars.jpg" alt="rating" class="  w-lg-50 w-sm-50 w-md-75">
                 <p style="color:gray">exemple of a discription about the product</p>
                 <a href="#" class="btn btn-primary">BUY</a>
                 <span class="h6" style="margin-left: 30%;">12.213$</span>
               </div>
             </div>
-            
 
 
           </div>
@@ -349,9 +348,6 @@
     ?>
   </div>
 
-
 </body>
-
-
 
 </html>
