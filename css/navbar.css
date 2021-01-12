@@ -1,5 +1,5 @@
 .navbar a:hover{
-    text-shadow: 0 0 1px #000000e1;
+    text-shadow: 0 0 3px #ddc3c3e1;
     text-decoration: underline;
 
 }
@@ -7,7 +7,17 @@
     color: red;
 }
 .navbar a{
-   color: rgba(0, 0, 0, 0.979);
+   color: rgba(255, 255, 255, 0.979);
    text-decoration: none;
    font-weight: bolder;
+}
+.carousel .carousel-item {
+    height: 300px;
+}
+
+.carousel-item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-height: 300px;
 }
