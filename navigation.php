@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Page de navigation</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
@@ -130,7 +130,7 @@
                 <a href="#" style="color: black;">
                   <span class="card-title h4">product</span>
                 </a>
-                <img src="img/stars.png" alt="rating" width="70px" style="margin-left: 30px;">
+                <img src="img/stars.png" alt="rating" width="65px" style="margin-left: 25px;">
                 <p class="lead">exemple of a discription about the product</p>
                 <a href="#" class="btn btn-primary">BUY</a>
                 <span class="h6" style="margin-left: 40%;">12.213$</span>
@@ -144,7 +144,7 @@
                 <a href="#" style="color: black;">
                   <span class="card-title h4">product</span>
                 </a>
-                <img src="img/stars.png" alt="rating" width="70px" style="margin-left: 30px;">
+                <img src="img/stars.png" alt="rating" width="65px" style="margin-left: 25px;">
                 <p class="lead">exemple of a discription about the product</p>
                 <a href="#" class="btn btn-primary">BUY</a>
                 <span class="h6" style="margin-left: 40%;">12.213$</span>
@@ -158,7 +158,7 @@
                 <a href="#" style="color: black;">
                   <span class="card-title h4">product</span>
                 </a>
-                <img src="img/stars.png" alt="rating" width="70px" style="margin-left: 30px;">
+                <img src="img/stars.png" alt="rating" width="65px" style="margin-left: 25px;">
                 <p class="lead">exemple of a discription about the product</p>
                 <a href="#" class="btn btn-primary">BUY</a>
                 <span class="h6" style="margin-left: 40%;">12.213$</span>
@@ -172,7 +172,7 @@
                 <a href="#" style="color: black;">
                   <span class="card-title h4">product</span>
                 </a>
-                <img src="img/stars.png" alt="rating" width="70px" style="margin-left: 30px;">
+                <img src="img/stars.png" alt="rating" width="65px" style="margin-left: 25px;">
                 <p class="lead">exemple of a discription about the product</p>
                 <a href="#" class="btn btn-primary">BUY</a>
                 <span class="h6" style="margin-left: 40%;">12.213$</span>
@@ -186,7 +186,7 @@
                 <a href="#" style="color: black;">
                   <span class="card-title h4">product</span>
                 </a>
-                <img src="img/stars.png" alt="rating" width="70px" style="margin-left: 30px;">
+                <img src="img/stars.png" alt="rating" width="65px" style="margin-left: 25px;">
                 <p class="lead">exemple of a discription about the product</p>
                 <a href="#" class="btn btn-primary">BUY</a>
                 <span class="h6" style="margin-left: 40%;">12.213$</span>
@@ -200,7 +200,7 @@
                 <a href="#" style="color: black;">
                   <span class="card-title h4">product</span>
                 </a>
-                <img src="img/stars.png" alt="rating" width="70px" style="margin-left: 30px;">
+                <img src="img/stars.png" alt="rating" width="65px" style="margin-left: 25px;">
                 <p class="lead">exemple of a discription about the product</p>
                 <a href="#" class="btn btn-primary">BUY</a>
                 <span class="h6" style="margin-left: 40%;">12.213$</span>
@@ -214,7 +214,7 @@
                 <a href="#" style="color: black;">
                   <span class="card-title h4">product</span>
                 </a>
-                <img src="img/stars.png" alt="rating" width="70px" style="margin-left: 30px;">
+                <img src="img/stars.png" alt="rating" width="65px" style="margin-left: 25px;">
                 <p class="lead">exemple of a discription about the product</p>
                 <a href="#" class="btn btn-primary">BUY</a>
                 <span class="h6" style="margin-left: 40%;">12.213$</span>
@@ -228,7 +228,7 @@
                 <a href="#" style="color: black;">
                   <span class="card-title h4">product</span>
                 </a>
-                <img src="img/stars.png" alt="rating" width="70px" style="margin-left: 30px;">
+                <img src="img/stars.png" alt="rating" width="65px" style="margin-left: 25px;">
                 <p class="lead">exemple of a discription about the product</p>
                 <a href="#" class="btn btn-primary">BUY</a>
                 <span class="h6" style="margin-left: 40%;">12.213$</span>
@@ -242,7 +242,7 @@
                 <a href="#" style="color: black;">
                   <span class="card-title h4">product</span>
                 </a>
-                <img src="img/stars.png" alt="rating" width="70px" style="margin-left: 30px;">
+                <img src="img/stars.png" alt="rating" width="65px" style="margin-left: 25px;">
                 <p class="lead">exemple of a discription about the product</p>
                 <a href="#" class="btn btn-primary">BUY</a>
                 <span class="h6" style="margin-left: 40%;">12.213$</span>
@@ -256,7 +256,7 @@
                 <a href="#" style="color: black;">
                   <span class="card-title h4">product</span>
                 </a>
-                <img src="img/stars.png" alt="rating" width="70px" style="margin-left: 30px;">
+                <img src="img/stars.png" alt="rating" width="65px" style="margin-left: 25px;">
                 <p class="lead">exemple of a discription about the product</p>
                 <a href="#" class="btn btn-primary">BUY</a>
                 <span class="h6" style="margin-left: 40%;">12.213$</span>
@@ -270,7 +270,7 @@
                 <a href="#" style="color: black;">
                   <span class="card-title h4">product</span>
                 </a>
-                <img src="img/stars.png" alt="rating" width="70px" style="margin-left: 30px;">
+                <img src="img/stars.png" alt="rating" width="65px" style="margin-left: 25px;">
                 <p class="lead">exemple of a discription about the product</p>
                 <a href="#" class="btn btn-primary">BUY</a>
                 <span class="h6" style="margin-left: 40%;">12.213$</span>
@@ -284,7 +284,7 @@
                 <a href="#" style="color: black;">
                   <span class="card-title h4">product</span>
                 </a>
-                <img src="img/stars.png" alt="rating" width="70px" style="margin-left: 30px;">
+                <img src="img/stars.png" alt="rating" width="65px" style="margin-left: 25px;">
                 <p class="lead">exemple of a discription about the product</p>
                 <a href="#" class="btn btn-primary">BUY</a>
                 <span class="h6" style="margin-left: 40%;">12.213$</span>
@@ -298,7 +298,7 @@
                 <a href="#" style="color: black;">
                   <span class="card-title h4">product</span>
                 </a>
-                <img src="img/stars.png" alt="rating" width="70px" style="margin-left: 30px;">
+                <img src="img/stars.png" alt="rating" width="65px" style="margin-left: 25px;">
                 <p class="lead">exemple of a discription about the product</p>
                 <a href="#" class="btn btn-primary">BUY</a>
                 <span class="h6" style="margin-left: 40%;">12.213$</span>
@@ -312,7 +312,7 @@
                 <a href="#" style="color: black;">
                   <span class="card-title h4">product</span>
                 </a>
-                <img src="img/stars.png" alt="rating" width="70px" style="margin-left: 30px;">
+                <img src="img/stars.png" alt="rating" width="65px" style="margin-left: 25px;">
                 <p class="lead">exemple of a discription about the product</p>
                 <a href="#" class="btn btn-primary">BUY</a>
                 <span class="h6" style="margin-left: 40%;">12.213$</span>
@@ -326,7 +326,7 @@
                 <a href="#" style="color: black;">
                   <span class="card-title h4">product</span>
                 </a>
-                <img src="img/stars.png" alt="rating" width="70px" style="margin-left: 30px;">
+                <img src="img/stars.png" alt="rating" width="65px" style="margin-left: 25px;">
                 <p class="lead">exemple of a discription about the product</p>
                 <a href="#" class="btn btn-primary">BUY</a>
                 <span class="h6" style="margin-left: 40%;">12.213$</span>
@@ -340,7 +340,7 @@
                 <a href="#" style="color: black;">
                   <span class="card-title h4">product</span>
                 </a>
-                <img src="img/stars.png" alt="rating" width="70px" style="margin-left: 30px;">
+                <img src="img/stars.png" alt="rating" width="65px" style="margin-left: 25px;">
                 <p class="lead">exemple of a discription about the product</p>
                 <a href="#" class="btn btn-primary">BUY</a>
                 <span class="h6" style="margin-left: 40%;">12.213$</span>
