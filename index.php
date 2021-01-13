@@ -173,11 +173,11 @@
                     </ul>
                 </div>
                 <div class="col-9">
-                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                    <div id="caroussel_banners" class="carousel slide" data-bs-ride="carousel">
                         <ol class="carousel-indicators">
-                            <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
-                            <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>
-                            <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li>
+                            <li data-bs-target="#caroussel_banners" data-bs-slide-to="0" class="active"></li>
+                            <li data-bs-target="#caroussel_banners" data-bs-slide-to="1"></li>
+                            <li data-bs-target="#caroussel_banners" data-bs-slide-to="2"></li>
                         </ol>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
@@ -190,11 +190,11 @@
                                 <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg" class="d-block w-100" alt="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg">
                             </div>
                         </div>
-                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
+                        <a class="carousel-control-prev" href="#caroussel_banners" role="button" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Previous</span>
                         </a>
-                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
+                        <a class="carousel-control-next" href="#caroussel_banners" role="button" data-bs-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Next</span>
                         </a>
@@ -205,7 +205,7 @@
             <div class="row p-4 my-3">
                 <h4>Mieux Notés</h4>
                 <hr>
-                <div id="caroussel_bestof" class="carousel slide mt-2 w-100" data-ride="carousel">
+                <div id="caroussel_bestof1" class="carousel slide mt-2 w-100" data-ride="carousel">
                     <div class="carousel-inner w-100" role="listbox">
                         <div class="carousel-item active">
                             <div class="col-md-4">
@@ -250,11 +250,11 @@
                             </div>
                         </div>
                     </div>
-                    <a class="carousel-control-prev w-auto" href="#caroussel_bestof" role="button" data-slide="prev">
+                    <a class="carousel-control-prev w-auto" href="#caroussel_bestof1" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon bg-dark border border-dark rounded-circle" aria-hidden="true"></span>
                         <span class="sr-only">Previous</span>
                     </a>
-                    <a class="carousel-control-next w-auto" href="#caroussel_bestof" role="button" data-slide="next">
+                    <a class="carousel-control-next w-auto" href="#caroussel_bestof1" role="button" data-slide="next">
                         <span class="carousel-control-next-icon bg-dark border border-dark rounded-circle" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
                     </a>
@@ -263,7 +263,7 @@
             <div class="row p-4 my-3">
                 <h4>Nouvautés</h4>
                 <hr>
-                <div id="caroussel_bestof" class="carousel slide mt-2 w-100" data-ride="carousel">
+                <div id="caroussel_newitems" class="carousel slide mt-2 w-100" data-ride="carousel">
                     <div class="carousel-inner w-100" role="listbox">
                         <div class="carousel-item active">
                             <div class="col-md-4">
@@ -308,11 +308,11 @@
                             </div>
                         </div>
                     </div>
-                    <a class="carousel-control-prev w-auto" href="#caroussel_bestof" role="button" data-slide="prev">
+                    <a class="carousel-control-prev w-auto" href="#caroussel_newitems" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon bg-dark border border-dark rounded-circle" aria-hidden="true"></span>
                         <span class="sr-only">Previous</span>
                     </a>
-                    <a class="carousel-control-next w-auto" href="#caroussel_bestof" role="button" data-slide="next">
+                    <a class="carousel-control-next w-auto" href="#caroussel_newitems" role="button" data-slide="next">
                         <span class="carousel-control-next-icon bg-dark border border-dark rounded-circle" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
                     </a>

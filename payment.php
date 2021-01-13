@@ -34,7 +34,11 @@
         <div class="card">
             <div class="card-top border-bottom text-center"> <a href="#" class="link"> Retour a la boutique</a> <span id="logo">Amoil.com</span> </div>
             <div class="card-body">
+<<<<<<< HEAD
                 <div class="row upper"> <span><i class="fa fa-check-circle-o"></i> panier</span> <span class="payment">Payment</span> </div>
+=======
+                <div class="row upper"> <span><i class="fa fa-check-circle-o"></i> panier</span> <span><i class="fa fa-check-circle-o"></i> Order details</span> <span id="payment"><span id="three">3</span>Payment</span> </div>
+>>>>>>> othmane
                 <div class="row">
                     <div class="col-md-7">
                         <div class="left border">
