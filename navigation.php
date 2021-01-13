@@ -20,7 +20,7 @@
 
 <body>
   <?php
-  require_once "req/navbar2.php";
+  require_once "req/navbar.php";
 
   ?>
   <div class="container-fluid mt-5 pt-5">

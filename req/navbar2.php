@@ -13,8 +13,8 @@
             <div class="navbar-collapse collapse" id="navigation">
                 <ul class="navbar-nav ml-auto"  >
                     <li class="nav-item">
-                        <a href="#" class="nav-link d-flex flex-column ">
-                        <i class="bi bi-cart4 mr-4" style="font-size: 2rem;"></i>
+                        <a href="#" class="nav-link d-flex flex-column " >
+                        <i class="bi bi-cart4 mr-4" style="font-size: 2rem;    "></i>
                         </a>
                    </li>
                    <li class="nav-item ">
