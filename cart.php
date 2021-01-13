@@ -39,7 +39,7 @@
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="left border">
-                            <div class="row"><span><i  class="bi bi-basket3-fill w-100" aria-hidden="true"></i></i></span> <span class="header">Panier</span>
+                            <div class="row"><span><i  class="bi bi-basket3-fill " style="font-size: 2rem ;" aria-hidden="true"></i></i></span> <span class="header" style="font-size: 2rem;">Panier</span>
                                
                             </div>
                             <form>

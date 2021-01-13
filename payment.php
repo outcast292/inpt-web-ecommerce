@@ -88,7 +88,7 @@
                             </div> 
                             
                         </div>
-                        <button class="btn" style="border-radius:5px ;">Terminer la commande</button>
+                        <a href="dilevery.php"><button class="btn" style="border-radius:5px ;">Terminer la commande</button></a>
                         <a href="cart.php"><button class="btn btn-secondary mt-2 " style="border-radius: 5px;background-color: lightgray;color:black ;">retourner au panier</button></a>
                     </div>
                 </div>
