@@ -95,7 +95,7 @@ form {
 input {
     border: 1px solid rgba(0, 0, 0, 0.137);
     padding: 1vh;
-    margin-bottom: 4vh;
+   
     outline: none;
     width: 100%;
     background-color: rgb(247, 247, 247)

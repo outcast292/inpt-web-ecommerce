@@ -53,15 +53,6 @@ body {
     justify-content: space-evenly
 }
 
-#three {
-    border-radius: 1rem;
-    width: 22px;
-    height: 23px;
-    margin-right: 3px;
-    border: 1px solid blue;
-    text-align: center;
-    display: inline-block
-}
 
 .payment {
     margin: 0;
@@ -83,7 +74,7 @@ form {
 input {
     border: 1px solid rgba(0, 0, 0, 0.137);
     padding: 1vh;
-    margin-bottom: 4vh;
+
     outline: none;
     width: 100%;
     background-color: rgb(247, 247, 247)

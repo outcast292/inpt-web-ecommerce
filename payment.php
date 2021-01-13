@@ -22,7 +22,7 @@
 <body>
     <div>
   <?php
-  require_once "req/navbar.php";
+  require_once "req/navbar2.php";
 
   ?>
 </div>
@@ -41,10 +41,10 @@
                             <div class="row"> <span class="header">Payment</span>
                                 <div class="icons"> <img src="https://img.icons8.com/color/48/000000/visa.png" /> <img src="https://img.icons8.com/color/48/000000/mastercard-logo.png" /> <img src="https://img.icons8.com/color/48/000000/maestro.png" /> </div>
                             </div>
-                            <form> <span>nom du proprietaire:</span> <input placeholder="Linda Williams"> <span>Numero de la carte:</span> <input placeholder="0125 6780 4567 9909">
+                            <form> <span>nom du proprietaire:</span> <input class="mb-4" placeholder="Linda Williams"> <span >Numero de la carte:</span> <input class="mb-4" placeholder="0125 6780 4567 9909">
                                 <div class="row">
-                                    <div class="col-4"><span>date d'expiration:</span> <input placeholder="YY/MM"> </div>
-                                    <div class="col-4"><span>CVV:</span> <input id="cvv"> </div>
+                                    <div class=" col-4 mb-4"><span>date d'expiration:</span> <input placeholder="YY/MM"> </div>
+                                    <div class="col-4 mb-2"><span>CVV:</span> <input id="cvv"> </div>
                                 </div> <input type="checkbox" id="save_card" class="align-left"> <label for="save_card">Enregistrer les details de la carte banquaire</label>
                             </form>
                         </div>

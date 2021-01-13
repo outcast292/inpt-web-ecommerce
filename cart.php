@@ -23,7 +23,7 @@
 <body>
     <div>
   <?php
-  require_once "req/navbar.php";
+  require_once "req/navbar2.php";
 
   ?>
 </div>
