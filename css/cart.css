@@ -56,12 +56,33 @@ body {
 
 .payment {
     margin: 0;
+    color: black
+}
+.panier {
+    margin: 0;
     color: blue
 }
+.plus-minus {
+    position: relative
+}
 
+.plus {
+    position: absolute;
+    top: -4px;
+    left: 2px;
+    cursor: pointer
+}
+
+.minus {
+    position: absolute;
+    top: 8px;
+    left: 5px;
+    cursor: pointer
+}
 .icons {
     margin-left: auto
 }
+
 
 form span {
     color: rgb(179, 179, 179)
@@ -74,6 +95,7 @@ form {
 input {
     border: 1px solid rgba(0, 0, 0, 0.137);
     padding: 1vh;
+   
     outline: none;
     width: 100%;
     background-color: rgb(247, 247, 247)
@@ -125,7 +147,7 @@ input:focus::-webkit-input-placeholder {
     font-size: 0.7rem;
     margin: 4vh 0 1.5vh 0;
     padding: 1.5vh;
-    
+    border-radius: 0
 }
 
 .btn:focus {
@@ -158,10 +180,4 @@ input[type=checkbox] {
     margin-bottom: unset
 }
 
-#cvv {
-    background-image: linear-gradient(to left, rgba(255, 255, 255, 0.575), rgba(255, 255, 255, 0.541)), url("https://img.icons8.com/material-outlined/24/000000/help.png");
-    background-repeat: no-repeat;
-    background-position-x: 95%;
-    background-position-y: center
-}
 
