@@ -62,23 +62,7 @@ body {
     margin: 0;
     color: blue
 }
-.plus-minus {
-    position: relative
-}
 
-.plus {
-    position: absolute;
-    top: -4px;
-    left: 2px;
-    cursor: pointer
-}
-
-.minus {
-    position: absolute;
-    top: 8px;
-    left: 5px;
-    cursor: pointer
-}
 .icons {
     margin-left: auto
 }
