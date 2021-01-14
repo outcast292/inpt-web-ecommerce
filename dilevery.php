@@ -60,7 +60,7 @@
     
 </div>
 <div class="d-flex justify-content-end  ">
-<button type="print" class="btn btn-primary"> imprimer</button>
+<button type="print" class="btn btn-primary" onclick="window.print()"> imprimer</button>
 </div>
 
     </div>
