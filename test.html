@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AMOIL</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/navbar.css" rel="stylesheet">
+  <script src="js/jquery-3.5.1.slim.min.js"></script>
+
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="css/bootstrap-icons.css">
+  <link rel="stylesheet" href="css/index.css">
+
+</head>
+
+<body>
+  <!--nav class="nav nav-tabs">
+    <a class="nav-item nav-link active" href="#p1" data-toggle="tab">Onglet 1</a>
+    <a class="nav-item nav-link" href="#p2" data-toggle="tab">Onglet 2</a>
+  </nav>
+  
+  <div class="tab-content">
+    <div class="tab-pane active" id="p1">Panneau 1</div>
+    <div class="tab-pane" id="p2">Panneau 2</div>
+  </div>
+  
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.0/umd/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script-->
+  <!--button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+    data-bs-whatever="your e-mail">Ajouter un commantaire</button>
+
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Votre commantaire</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="Username" class="col-form-label">Username</label>
+              <input type="text" class="form-control" id="Username">
+            </div>
+            <div class="mb-3">
+              <label for="message-text" class="col-form-label">Commentaire:</label>
+              <textarea class="form-control" id="message-text"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Send message</button>
+        </div>
+      </div>
+    </div>
+  </div-->
+  <div class="container">
+
+    <div id="html">
+      <button data-toggle="modal" data-target="#formulaire" class="btn btn-primary">Ajouter un commantaire</button>
+    </div>
+    <div class="modal fade" id="formulaire">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Votre Commentaire:</h4>
+            <button type="button" class="close" data-dismiss="modal">
+              <span>&times;</span>
+            </button>
+          </div>
+          <div class="modal-body row">
+            <form class="col" action="test.php">
+              <div class="form-group">
+                <label for="nom" class="form-control-label">Nom d'utilisateur</label>
+                <input type="text" class="form-control" name="nom" id="nom" placeholder="Votre nom" required> 
+              </div>
+              <div class="form-group">
+                <label for="Commentaire" class="form-control-label">Commentaire</label>
+                <textarea id="note" rows="5" class="form-control" required></textarea>
+              </div>
+              
+              <button type="submit" class="btn btn-primary pull-right">Envoyer</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.0/umd/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script>
+    $(function () {
+      $('form').submit(function (e) {
+        e.preventDefault()
+        var $form = $(this)
+        $.post($form.attr('action'), $form.serialize())
+          .done(function (data) {
+            $('#html').html(data)
+            $('#formulaire').modal('hide')
+          })
+          .fail(function () {
+            alert('ça ne marche pas...')
+          })
+      })
+      $('.modal').on('shown.bs.modal', function () {
+        $('input:first').focus()
+      })
+    })
+  </script>
+
+</body>
+
+</html>
