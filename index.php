@@ -322,12 +322,15 @@
         </div>
 
     </div>
-    <div class="container-fluid">
-        <?php
-        require_once "req/footbar.php";
+    <footer>
+        <div class="container-fluid">
+            <?php
+            require_once "req/footbar.php";
 
-        ?>
-    </div>
+            ?>
+        </div>
+    </footer>
+
 
 </body>
 <script>
