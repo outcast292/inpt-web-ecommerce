@@ -20,7 +20,9 @@
 
 <body>
   <?php
+
   require_once "req/navbar.php";
+
 
   ?>
   <div class="container-fluid mt-5 pt-5">
@@ -304,9 +306,6 @@
                 <span class="h6" style="margin-left: 30%;">12.213$</span>
               </div>
             </div>
-
-
-
           </div>
           <br>
           <br><br>

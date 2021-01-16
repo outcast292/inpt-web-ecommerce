@@ -24,6 +24,7 @@
   <?php
   require_once "req/navbar.php";
 
+
   ?>
 </div>
 <div class="container-fluid  ">
@@ -34,13 +35,17 @@
         <div class="card">
             <div class="card-top border-bottom text-center"> <a href="#" class="link"> Retour a la boutique</a> <span id="logo">Amoil.com</span> </div>
             <div class="card-body">
-                <div class="row upper"> <span><i class="fa fa-check-circle-o"></i> panier</span> <span><i class="fa fa-check-circle-o"></i> Order details</span> <span id="payment"><span id="three">3</span>Payment</span> </div>
+
+                <div class="row upper"> <span><i class="fa fa-check-circle-o"></i> panier</span> <span class="payment">Payment</span> </div>
+
+
                 <div class="row">
                     <div class="col-md-7">
                         <div class="left border">
                             <div class="row"> <span class="header">Payment</span>
                                 <div class="icons"> <img src="https://img.icons8.com/color/48/000000/visa.png" /> <img src="https://img.icons8.com/color/48/000000/mastercard-logo.png" /> <img src="https://img.icons8.com/color/48/000000/maestro.png" /> </div>
                             </div>
+
                             <form> <span>nom du proprietaire:</span> <input placeholder="Linda Williams"> <span>Numero de la carte:</span> <input placeholder="0125 6780 4567 9909">
                                 <div class="row">
                                     <div class="col-4"><span>date d'expiration:</span> <input placeholder="YY/MM"> </div>
@@ -48,6 +53,7 @@
                                 </div> <input type="checkbox" id="save_card" class="align-left"> <label for="save_card">Enregistrer les details de la carte banquaire</label>
                             </form>
                         </div>
+
                     </div>
                     <div class="col-md-5">
                         <div class="right border">
@@ -84,9 +90,12 @@
                             </div>
                             <div class="row lower">
                                 <div class="col text-left "><a href="#" class="link"><u>ajouter un promo-code</u></a></div>
-                            </div> <button class="btn">confirmer la commande</button>
-                            <p class="text-muted text-center">Complimentary Shipping & Returns</p>
+
+                            </div> 
+                            
                         </div>
+                        <button class="btn" style="border-radius:5px ;">Terminer la commande</button>
+                        <a href="cart.php"><button class="btn btn-secondary mt-2 " style="border-radius: 5px;background-color: lightgray;color:black ;">retourner au panier</button></a>
                     </div>
                 </div>
             </div>
