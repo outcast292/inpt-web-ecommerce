@@ -54,7 +54,18 @@ body {
 }
 
 
-.payment {
+#three {
+    border-radius: 1rem;
+    width: 22px;
+    height: 23px;
+    margin-right: 3px;
+    border: 1px solid blue;
+    text-align: center;
+    display: inline-block
+}
+
+#payment {
+
     margin: 0;
     color: blue
 }
@@ -74,6 +85,7 @@ form {
 input {
     border: 1px solid rgba(0, 0, 0, 0.137);
     padding: 1vh;
+    margin-bottom: 4vh;
     outline: none;
     width: 100%;
     background-color: rgb(247, 247, 247)
@@ -125,7 +137,7 @@ input:focus::-webkit-input-placeholder {
     font-size: 0.7rem;
     margin: 4vh 0 1.5vh 0;
     padding: 1.5vh;
-    
+    border-radius: 0
 }
 
 .btn:focus {
