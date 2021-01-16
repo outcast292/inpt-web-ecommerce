@@ -24,6 +24,7 @@
   <?php
   require_once "req/navbar.php";
 
+
   ?>
 </div>
 <div class="container-fluid  ">
@@ -34,7 +35,10 @@
         <div class="card">
             <div class="card-top border-bottom text-center"> <a href="#" class="link"> Retour a la boutique</a> <span id="logo">Amoil.com</span> </div>
             <div class="card-body">
+
                 <div class="row upper"> <span><i class="fa fa-check-circle-o"></i> panier</span> <span class="payment">Payment</span> </div>
+
+
                 <div class="row">
                     <div class="col-md-7">
                         <div class="left border">
@@ -85,10 +89,11 @@
                             </div>
                             <div class="row lower">
                                 <div class="col text-left "><a href="#" class="link"><u>ajouter un promo-code</u></a></div>
+
                             </div> 
                             
                         </div>
-                        <a href="dilevery.php"><button class="btn" style="border-radius:5px ;">Terminer la commande</button></a>
+                        <button class="btn" style="border-radius:5px ;">Terminer la commande</button>
                         <a href="cart.php"><button class="btn btn-secondary mt-2 " style="border-radius: 5px;background-color: lightgray;color:black ;">retourner au panier</button></a>
                     </div>
                 </div>

@@ -19,7 +19,7 @@
 
 <body>
     <?php
-    require_once "req/navbar.php";
+    require_once "req/navbar3.php";
     ?>
     <div class="container ">
         <div class="jumbotron ">
@@ -322,12 +322,15 @@
         </div>
 
     </div>
-    <div class="container-fluid">
-        <?php
-        require_once "req/footbar.php";
+    <footer>
+        <div class="container-fluid">
+            <?php
+            require_once "req/footbar.php";
 
-        ?>
-    </div>
+            ?>
+        </div>
+    </footer>
+
 
 </body>
 <script>

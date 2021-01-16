@@ -54,7 +54,18 @@ body {
 }
 
 
-.payment {
+#three {
+    border-radius: 1rem;
+    width: 22px;
+    height: 23px;
+    margin-right: 3px;
+    border: 1px solid blue;
+    text-align: center;
+    display: inline-block
+}
+
+#payment {
+
     margin: 0;
     color: blue
 }
