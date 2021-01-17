@@ -485,13 +485,14 @@
 
 
         </div>
+        <footer>
         <div class="container-fluid">
             <?php
             require_once "req/footbar.php";
 
             ?>
         </div>
-
+    </footer>
         <script>
             $(function() {
                 $('form').submit(function(e) {
