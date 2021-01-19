@@ -47,6 +47,9 @@
                                     <label for="submit_search">.</label>
 
                                     <input type="submit" id="submit_search" class="btn btn-success btn-block  form-control">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                        Launch demo modal
+                                    </button>
 
                                 </div>
                             </div>
@@ -81,8 +84,114 @@
             </div>
         </div>
     </div>
+    <!-- Modal -->
+    <div class="modal  fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModal" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModal">Commande N° 5</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="mt-2 col-12 row">
+                        <div class="col-auto">
+
+                            <h6>
+                                informations Clients
+                            </h6>
+                        </div>
+                        <div class="col">
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <label>Nom Client</label>
+                            <input type="text" class="form-control" readonly value="5000">
+
+                        </div>
+                        <div class="col-6">
+                            <label>telephone</label>
+                            <input type="text" class="form-control" readonly value="0666666">
+                        </div>
+                    </div>
+                    <div class="mt-2 col-12 row">
+                        <div class="col-auto">
+                            <h6>
+                                informations Commande
+                            </h6>
+                        </div>
+                        <div class="col">
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <label>valeur de la commande</label>
+                            <input type="text" class="form-control" readonly value="rezr zerez rez r">
+
+                        </div>
+                        <div class="col-6">
+                            <label>date heure</label>
+                            <input type="date" class="form-control" readonly value="0666666">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <label>statut de la commande</label>
+                            <input type="text" class="form-control" readonly value="client1">
+
+                        </div>
+                        <div class="col-6">
+                            <label>date de statut</label>
+                            <input type="text" class="form-control" readonly value="0666666">
+                        </div>
+                    </div>
+                    <div class="mt-2 col-12 row">
+                        <div class="col-auto">
+                            <h6>
+                                contenu commandes
+                            </h6>
+                        </div>
+                        <div class="col">
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 mt-1">
+                            <table class="table table-hover" id="table_search">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Produit</th>
+                                        <th scope="col">qtt</th>
+                                        <th scope="col">prix unit</th>
+                                        <th scope="col">total</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="table_body">
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script>
+        function show_details(id_commande) {
+
+        };
         $("#submit_search").click(function(event) {
             event.preventDefault();
             var dataform = $("#form_search").serialize();
@@ -92,13 +201,20 @@
                     $("#table_body").text('');
                     data.forEach((element, index) => {
                         $('#table_body').append(`
-                        <tr>
+                        <tr class=" ${element.valide==1? "table-success":element.valide==-1?"table-danger":"" }">
                             <td>${index+1}</td>
                             <td>${element.nom_client}</td>
                             <td>${element.date_commande}</td>
                             <td>${element.etat_actuell}</td>
                             <td>${element.prix_commande}</td>
-                            <td>test</td>
+                            <td>
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Options</button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#" onclick="show_details(${element.id_commande},${element.nom_client},${element.nom_client},)">Voir Details</a>
+                                <a class="dropdown-item" href="mailto:${element.email}">emailer client</a>
+                                <a class="dropdown-item" href="tel:${element.tel_client}">telephoner client</a>
+                            </div>
+                            </td>
                         </tr>
                         `);
                     });
@@ -108,6 +224,7 @@
             }
         });
     </script>
+
 
 </body>
 
