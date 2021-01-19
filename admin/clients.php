@@ -15,14 +15,24 @@
     <link rel="stylesheet" href="../css/admin/sidebar.css">
 
     <?php require "req/verify.php";  ?>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.filtres').hide();
+            $(".btn2").click(function() {
+                $(".filtres").hide();
+            });
+            $(".btn1").click(function() {
+                $(".filtres").show();
+            });
+        });
+    </script>
 </head>
 
 <body>
     <div class="container-fluid">
         <div class="row">
             <?php require "req/sidebar.php" ?>
-<<<<<<< HEAD
             <div class="col pt-4 ">
                 <div class="container.fluid">
                     <h1><a href="" data-target="#sidebar" data-toggle="collapse" class="d-md-none"><i class="fa fa-bars"></i></a>Clients</h1>
@@ -42,138 +52,134 @@
                         <hr width="55%" align='left'>
 
                         <div class='m-2 row'>
-                            <h3>Filtres</h3>
+                            <div class='col-1 mt-2'>
+                                <h3>Filtres</h3>
+                            </div>
+                            <div class='col-2 mt-2'><button class="btn btn-light btn1">+</button>
+                                <button class="btn btn-light btn2">-</button>
+                            </div>
+
+
                         </div>
                         <hr width="10%" align='left'>
-
-                        <div class="mt-2 row">
-                            <div class="form-row p-2 col-12">
-                                <div class="mt-4 pt-3 col-3">
-                                    <h6>Periode de commandes: </h6>
-                                </div>
-                                <div class="col-2">
-                                    <label for="from_date">Date debut:</label>
-                                    <input type="date" name="from_date" class="form-control" value="<?php echo  date("Y-m-d") ?>" id="from_date">
-                                </div>
-                                <div class="ml-3 col-2">
-                                    <label for="to_date">Date fin:</label>
-                                    <input type="date" name="to_date" class="form-control" value="<?php echo  date("Y-m-d") ?>" id="to_date">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mt-2 row">
-                            <div class="form-row p-2 col-12">
-                                <div class="mt-4 pt-3 col-3">
-                                    <h6>Sexe: </h6>
-                                </div>
-                                <div class="mt-4 pt-3 col-2">
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="RadioH" value="option1">
-                                        <label class="form-check-label" for="inlineRadio1">Hommes</label>
+                        <div class='filtres'>
+                            <div class="mt-2 row ">
+                                <div class="form-row p-2 col-12">
+                                    <div class="mt-4 pt-3 col-3">
+                                        <h6>Periode de commandes: </h6>
                                     </div>
-                                </div>
-                                <div class="mt-4 pt-3 col-2">
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="RadioF" value="option2">
-                                        <label class="form-check-label" for="inlineRadio2">Femmes</label>
+                                    <div class="col-2">
+                                        <label for="from_date">Date debut:</label>
+                                        <input type="date" name="from_date" class="form-control" value="<?php echo  date("Y-m-d") ?>" id="from_date">
                                     </div>
-                                </div>
-                                <div class="mt-4 pt-3 col-2">
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="RadioN" value="option3">
-                                        <label class="form-check-label" for="inlineRadio3">Non precis</label>
+                                    <div class="ml-3 col-2">
+                                        <label for="to_date">Date fin:</label>
+                                        <input type="date" name="to_date" class="form-control" value="<?php echo  date("Y-m-d") ?>" id="to_date">
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="mt-2 row">
-                            <div class="form-row p-2 col-12">
-                                <div class="mt-4 col-3">
-                                    <h6>Localisation: </h6>
-                                </div>
-                                <div class="mcol-3 mt-2">
-                                    <div class="input-group">
-                                        <input type="text" aria-label="ville" class="form-control" placeholder="Quartier" id="input_quartier">
-                                        <input type="text" aria-label="ZIP" class="form-control" placeholder="Code Postal" id="input_zip">
-                                        <input type="text" aria-label="ville" class="form-control" placeholder="Ville" id="input_ville">
-                                        <input type="text" aria-label="Region" class="form-control" placeholder="Region" id="input_region">
+                            <div class="mt-2 row">
+                                <div class="form-row p-2 col-12">
+                                    <div class="mt-4 pt-3 col-3">
+                                        <h6>Sexe: </h6>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mt-2 row">
-                            <div class="form-row p-2 col-12">
-                                <div class="mt-4 col-3">
-                                    <h6>Nombres de commandes: </h6>
-                                </div>
-                                <div class="col-3">
-                                    <div class="mcol-3 mt-3">
-                                        <div class="input-group">
-                                            <input type="number" aria-label="min" class="form-control" placeholder="Minimum" min="0">
-                                            <input type="number" aria-label="max" class="form-control" placeholder="Maximum" min="0">
+                                    <div class="mt-4 pt-3 col-2">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="RadioH" value="option1">
+                                            <label class="form-check-label" for="inlineRadio1">Hommes</label>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4 pt-3 col-2">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="RadioF" value="option2">
+                                            <label class="form-check-label" for="inlineRadio2">Femmes</label>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4 pt-3 col-2">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="RadioN" value="option3">
+                                            <label class="form-check-label" for="inlineRadio3">Non precis</label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="mt-2 row">
-                            <div class='col-10'></div>
-                            <form class="col-2" id="form_search">
-                                <div class="ml-3 pt-2 ">
-                                    <input type="submit" id="fitlre_btn" class="btn btn-success btn-block  form-control">
-
+                            <div class="mt-2 row">
+                                <div class="form-row p-2 col-12">
+                                    <div class="mt-4 col-3">
+                                        <h6>Localisation: </h6>
+                                    </div>
+                                    <div class="mcol-3 mt-2">
+                                        <div class="input-group">
+                                            <input type="text" aria-label="ville" class="form-control" placeholder="Quartier" id="input_quartier">
+                                            <input type="text" aria-label="ZIP" class="form-control" placeholder="Code Postal" id="input_zip">
+                                            <input type="text" aria-label="ville" class="form-control" placeholder="Ville" id="input_ville">
+                                            <input type="text" aria-label="Region" class="form-control" placeholder="Region" id="input_region">
+                                        </div>
+                                    </div>
                                 </div>
-                        </div>
+                            </div>
+
+                            <div class="mt-2 row">
+                                <div class="form-row p-2 col-12">
+                                    <div class="mt-4 col-3">
+                                        <h6>Nombres de commandes: </h6>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="mcol-3 mt-3">
+                                            <div class="input-group">
+                                                <input type="number" aria-label="min" class="form-control" placeholder="Minimum" min="0">
+                                                <input type="number" aria-label="max" class="form-control" placeholder="Maximum" min="0">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-2 row">
+                                <div class='col-10'></div>
+                                <form class="col-2" id="form_search">
+                                    <div class="ml-3 pt-2 ">
+                                        <input type="submit" id="fitlre_btn" class="btn btn-success btn-block  form-control">
+
+                                    </div>
+                            </div>
 
                     </form>
-
-
-                    <div class="mt-4">
-                        <div class="alert alert-info" hidden>
-                            Nombre de clients trouvées : <span id="nbr_clt"></span>
-                        </div>
-
-                        <table class="table table-hover" id="table_search">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">nom et prenom</th>
-                                    <th scope="col">nombre de commandes</th>
-                                    <th scope="col">derniere activite</th>
-                                    <th scope="col">Options</th>
-                                    <!-- details ou email-->
-                                </tr>
-                            </thead>
-                            <tbody id="table_body">
-
-                            </tbody>
-                        </table>
-
-
-                    </div>
                 </div>
-=======
-            <div class="col pt-4">
-                <h2>
-                    <a href="" data-target="#sidebar" data-toggle="collapse" class="d-md-none"><i class="fa fa-bars"></i></a> Content
-                </h2>
-                <hr>
-                <h6 class="hidden-sm-down">Shrink page width to see sidebar collapse</h6>
-                <p>Codeply editor wolf moon retro jean shorts chambray sustainable roof party. Shoreditch vegan artisan Helvetica. Tattooed Codeply Echo Park Godard kogi, next level irony ennui twee squid fap selvage. Meggings flannel Brooklyn literally small batch, mumblecore PBR try-hard kale chips. Brooklyn vinyl lumbersexual bicycle rights, viral fap cronut leggings squid chillwave pickled gentrify mustache. 3 wolf moon hashtag church-key Odd Future. Austin messenger bag normcore, Helvetica Williamsburg sartorial tote bag distillery Portland before they sold out gastropub taxidermy Vice.</p>
->>>>>>> othmane
+
+
+
+                <div class="mt-4">
+                    <div class="alert alert-info" hidden>
+                        Nombre de clients trouvées : <span id="nbr_clt"></span>
+                    </div>
+
+                    <table class="table table-hover" id="table_search">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">nom et prenom</th>
+                                <th scope="col">nombre de commandes</th>
+                                <th scope="col">derniere activite</th>
+                                <th scope="col">Options</th>
+                                <!-- details ou email-->
+                            </tr>
+                        </thead>
+                        <tbody id="table_body">
+
+                        </tbody>
+                    </table>
+
+
+                </div>
             </div>
+
         </div>
     </div>
+    </div>
 
-
-<<<<<<< HEAD
-
-=======
->>>>>>> othmane
 </body>
 
 </html>
