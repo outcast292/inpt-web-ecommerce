@@ -81,8 +81,136 @@
             </div>
         </div>
     </div>
+<<<<<<< HEAD
 
     <script>
+=======
+    <!-- Modal -->
+    <div class="modal  fade" id="modal_details" tabindex="-1" aria-labelledby="modal_details" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content" id="modal_content">
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function show_details(id_commande, nom_client, tel_client) {
+            fetch("../php/commandes/commande_read?id_commande=" + id_commande).then(resp => resp.json()).then(json => {
+                const data = json.data;
+                const commande_details = data.commande_details;
+                const commande_info = data.commande_info;
+                $('#modal_content').html(`
+                     <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModal">Commande N° ${id_commande}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="mt-2 col-12 row">
+                        <div class="col-auto">
+
+                            <h6>
+                                informations Clients
+                            </h6>
+                        </div>
+                        <div class="col">
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <label>Nom Client</label>
+                            <input type="text" class="form-control" readonly value="${nom_client}">
+
+                        </div>
+                        <div class="col-6">
+                            <label>telephone</label>
+                            <input type="text" class="form-control" readonly value="${tel_client}">
+                        </div>
+                    </div>
+                    <div class="mt-2 col-12 row">
+                        <div class="col-auto">
+                            <h6>
+                                informations Commande
+                            </h6>
+                        </div>
+                        <div class="col">
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <label>valeur de la commande</label>
+                            <input type="text" class="form-control" readonly value="${parseFloat(commande_info.prix_commande).toFixed(2)}">
+                        </div>
+                        <div class="col-6">
+                            <label>date heure</label>
+                            <input type="text" class="form-control" readonly value="${commande_info.date_commande}">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <label>statut de la commande</label>
+                            <input type="text" class="form-control" readonly value="${commande_info.etat_actuell}">
+
+                        </div>
+                        <div class="col-6">
+                            <label>date de statut</label>
+                            <input type="text" class="form-control" readonly value="${commande_info.date_etat_actuel}">
+                        </div>
+                    </div>
+                    <div class="mt-2 col-12 row">
+                        <div class="col-auto">
+                            <h6>
+                                contenu commandes
+                            </h6>
+                        </div>
+                        <div class="col">
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 mt-1">
+                            <table class="table table-hover" id="table_search">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Produit</th>
+                                        <th scope="col">Marque</th>
+                                        <th scope="col">p. Unit</th>
+                                        <th scope="col">Qtt</th>
+                                        <th scope="col">Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="table_body">
+                                    ${commande_details.map((el,index) => `
+                                        <tr>
+                                            <td>${index+1}</td>
+                                            <td>${el.label}</td>
+                                            <td>${el.nom_marque}</td>
+                                            <td>${el.prix_produit_commande}</td>
+                                            <td>${el.qtt_commande}</td>
+                                            <td>${(el.prix_produit_commande*el.qtt_commande).toFixed(2)}</td>
+                                        </tr>`)}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                </div>
+                     `);
+
+                $('#modal_details').modal('show')
+            }).catch(err => {
+                console.log(err);
+            });
+        };
+>>>>>>> othmane
         $("#submit_search").click(function(event) {
             event.preventDefault();
             var dataform = $("#form_search").serialize();
@@ -92,13 +220,29 @@
                     $("#table_body").text('');
                     data.forEach((element, index) => {
                         $('#table_body').append(`
+<<<<<<< HEAD
                         <tr>
+=======
+                        <tr class=" ${element.valide==1? "table-success":element.valide==-1?"table-danger":"" }">
+>>>>>>> othmane
                             <td>${index+1}</td>
                             <td>${element.nom_client}</td>
                             <td>${element.date_commande}</td>
                             <td>${element.etat_actuell}</td>
+<<<<<<< HEAD
                             <td>${element.prix_commande}</td>
                             <td>test</td>
+=======
+                            <td>${element.prix_commande.toFixed(2)}</td>
+                            <td>
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Options</button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#" onclick='show_details(${element.id_commande},"${element.nom_client}","0${element.tel_client}");'>Voir Details</a>
+                                <a class="dropdown-item" href="mailto:${element.email}">emailer client</a>
+                                <a class="dropdown-item" href="tel:${element.tel_client}">telephoner client</a>
+                            </div>
+                            </td>
+>>>>>>> othmane
                         </tr>
                         `);
                     });
@@ -109,6 +253,10 @@
         });
     </script>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> othmane
 </body>
 
 </html>

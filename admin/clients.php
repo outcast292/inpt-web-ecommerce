@@ -22,6 +22,7 @@
     <div class="container-fluid">
         <div class="row">
             <?php require "req/sidebar.php" ?>
+<<<<<<< HEAD
             <div class="col pt-4 ">
                 <div class="container.fluid">
                     <h1><a href="" data-target="#sidebar" data-toggle="collapse" class="d-md-none"><i class="fa fa-bars"></i></a>Clients</h1>
@@ -155,12 +156,24 @@
 
                     </div>
                 </div>
+=======
+            <div class="col pt-4">
+                <h2>
+                    <a href="" data-target="#sidebar" data-toggle="collapse" class="d-md-none"><i class="fa fa-bars"></i></a> Content
+                </h2>
+                <hr>
+                <h6 class="hidden-sm-down">Shrink page width to see sidebar collapse</h6>
+                <p>Codeply editor wolf moon retro jean shorts chambray sustainable roof party. Shoreditch vegan artisan Helvetica. Tattooed Codeply Echo Park Godard kogi, next level irony ennui twee squid fap selvage. Meggings flannel Brooklyn literally small batch, mumblecore PBR try-hard kale chips. Brooklyn vinyl lumbersexual bicycle rights, viral fap cronut leggings squid chillwave pickled gentrify mustache. 3 wolf moon hashtag church-key Odd Future. Austin messenger bag normcore, Helvetica Williamsburg sartorial tote bag distillery Portland before they sold out gastropub taxidermy Vice.</p>
+>>>>>>> othmane
             </div>
         </div>
     </div>
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> othmane
 </body>
 
 </html>
