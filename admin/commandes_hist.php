@@ -54,7 +54,7 @@
                     </div>
 
                     <div class="mt-4">
-                        <div class="alert alert-info" hidden>
+                        <div class="alert alert-info" id="div_nbr" hidden>
                             Nombre des commandes trouvées : <span id="nbr_cmnd"></span>
                         </div>
 
@@ -83,7 +83,7 @@
     </div>
     <!-- Modal -->
     <div class="modal  fade" id="modal_details" tabindex="-1" aria-labelledby="modal_details" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content" id="modal_content">
 
             </div>
@@ -155,6 +155,12 @@
                         <div class="col-6">
                             <label>date de statut</label>
                             <input type="text" class="form-control" readonly value="${commande_info.date_etat_actuel}">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <label>Adresse de livraison</label>
+                            <textarea  rows="4" type="text" class="form-control" >${commande_info.adresse}</textarea>
                         </div>
                     </div>
                     <div class="mt-2 col-12 row">
@@ -232,6 +238,9 @@
                         </tr>
                         `);
                     });
+                    $("#nbr_cmnd").text(data.length);
+                    $("#div_nbr").removeAttr("hidden");
+
                 }).catch(err => {
                     console.log(err);
                 });

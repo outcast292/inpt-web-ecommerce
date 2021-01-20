@@ -32,8 +32,17 @@
 
 
         <div class="col-12 text-center">
+            <form method="post">
+                <button class="btn btn-danger" name="disconnect"> se decconecter</button>
 
-        <button class="btn btn-danger"> se decconecter</button>
+                <?php
+                if (isset($_POST["disconnect"])) {
+                    session_destroy();
+                    session_unset();
+                    header("location: login.php");
+                }
+                ?>
+            </form>
 
         </div>
 
