@@ -156,6 +156,22 @@
                             </div>
 
                             <div class="mt-2 row">
+                                <div class="form-row p-2 col-12">
+                                    <div class="mt-4 col-3">
+                                        <h6>Montant total depense: </h6>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="mcol-3 mt-3">
+                                            <div class="input-group">
+                                                <input type="number" aria-label="min" name='minimum_spent' class="form-control" placeholder="Minimum" min="0">
+                                                <input type="number" aria-label="max" name='maximum_spent' class="form-control" placeholder="Maximum" min="0">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-2 row">
                                 <div class='col-10'></div>
                                 <form class="col-2" id="form_search">
                                     <div class="ml-3 pt-2 ">
