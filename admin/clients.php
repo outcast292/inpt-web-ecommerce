@@ -104,6 +104,22 @@
 
                             <div class="mt-2 row">
                                 <div class="form-row p-2 col-12">
+                                    <div class="mt-4 col-3">
+                                        <h6>Age: </h6>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="mcol-3 mt-3">
+                                            <div class="input-group">
+                                                <input type="number" aria-label="min" name='minimum_age' class="form-control" placeholder="Minimum" min="18">
+                                                <input type="number" aria-label="max" name='maximum_age' class="form-control" placeholder="Maximum" min="18">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-2 row">
+                                <div class="form-row p-2 col-12">
                                     <div class="mt-4 col-2">
                                         <h6>Localisation: </h6>
                                     </div>
@@ -131,8 +147,8 @@
                                     <div class="col-3">
                                         <div class="mcol-3 mt-3">
                                             <div class="input-group">
-                                                <input type="number" aria-label="min" name='minimum' class="form-control" placeholder="Minimum" min="0">
-                                                <input type="number" aria-label="max" name='maximum' class="form-control" placeholder="Maximum" min="0">
+                                                <input type="number" aria-label="min" name='minimum_commande' class="form-control" placeholder="Minimum" min="0">
+                                                <input type="number" aria-label="max" name='maximum_commande' class="form-control" placeholder="Maximum" min="0">
                                             </div>
                                         </div>
                                     </div>
