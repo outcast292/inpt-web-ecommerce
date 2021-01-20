@@ -19,10 +19,10 @@
     <script>
         $(document).ready(function() {
             $('.filtres').hide();
-            $(".btn2").click(function() {
+            $("#btn2").click(function() {
                 $(".filtres").hide();
             });
-            $(".btn1").click(function() {
+            $("#btn1").click(function() {
                 $(".filtres").show();
             });
         });
@@ -41,28 +41,25 @@
 
                     <form class="col-12" id='search_form'>
 
-                        <div class='mt-2 row'>
-                            <div class="ml-1 col-5">
-                                <input class="form-control mr-sm-2" type="search" placeholder="identificateur du client" aria-label="Search" name="search_id">
-                            </div>
-                            <div class="ml-1 col-1">
-                                <button class="btn btn-success my-2 my-sm-0" type="submit" id='search_btn'>Rechercher</button>
-                            </div>
-                        </div>
-                        <hr width="55%" align='left'>
-
                         <div class='m-2 row'>
                             <div class='col-1 mt-2'>
                                 <h3>Filtres</h3>
                             </div>
-                            <div class='col-2 mt-2'><button class="btn btn-light btn1">+</button>
-                                <button class="btn btn-light btn2">-</button>
+                            <div class='col-2 mt-2'><button class="btn btn-light" type="button" id='btn1'>+</button>
+                                <button class="btn btn-light" type="button" id="btn2">-</button>
                             </div>
 
 
                         </div>
                         <hr width="10%" align='left'>
+
                         <div class='filtres'>
+                            <div class='mt-2 row'>
+                                <div class="ml-1 col-5">
+                                    <input class="form-control mr-sm-2" type="search" placeholder="identificateur du client" aria-label="Search" name="search">
+                                </div>
+                            </div>
+                            <hr width="45%" align='left'>
                             <div class="mt-2 row ">
                                 <div class="form-row p-2 col-12">
                                     <div class="mt-4 pt-3 col-3">
@@ -86,19 +83,19 @@
                                     </div>
                                     <div class="mt-4 pt-3 col-2">
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="RadioH" value="option1">
+                                            <input class="form-check-input" type="radio" name="sexe" id="RadioH" value="hommes">
                                             <label class="form-check-label" for="inlineRadio1">Hommes</label>
                                         </div>
                                     </div>
                                     <div class="mt-4 pt-3 col-2">
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="RadioF" value="option2">
+                                            <input class="form-check-input" type="radio" name="sexe" id="RadioF" value="femmes">
                                             <label class="form-check-label" for="inlineRadio2">Femmes</label>
                                         </div>
                                     </div>
                                     <div class="mt-4 pt-3 col-2">
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="RadioN" value="option3">
+                                            <input class="form-check-input" type="radio" name="sexe" id="RadioN" value="aucun">
                                             <label class="form-check-label" for="inlineRadio3">Non precis</label>
                                         </div>
                                     </div>
@@ -107,15 +104,20 @@
 
                             <div class="mt-2 row">
                                 <div class="form-row p-2 col-12">
-                                    <div class="mt-4 col-3">
+                                    <div class="mt-4 col-2">
                                         <h6>Localisation: </h6>
                                     </div>
-                                    <div class="mcol-3 mt-2">
+                                    <div class="col-10 mt-2">
                                         <div class="input-group">
-                                            <input type="text" aria-label="ville" class="form-control" placeholder="Quartier" id="input_quartier">
-                                            <input type="text" aria-label="ZIP" class="form-control" placeholder="Code Postal" id="input_zip">
-                                            <input type="text" aria-label="ville" class="form-control" placeholder="Ville" id="input_ville">
-                                            <input type="text" aria-label="Region" class="form-control" placeholder="Region" id="input_region">
+                                            <div class="col-8 mt-2">
+                                                <input type="text" aria-label="adresse" name="adresse" class="form-control" placeholder="Adresse" id="input_adresse">
+                                            </div>
+                                            <div class="col-2 mt-2">
+                                                <input type="text" aria-label="ville" name="ville" class="form-control" placeholder="Ville" id="input_ville">
+                                            </div>
+                                            <div class="col-2 mt-2">
+                                                <input type="text" aria-label="ZIP" name="code_postal" class="form-control" placeholder="Code Postal" id="input_zip">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -129,8 +131,8 @@
                                     <div class="col-3">
                                         <div class="mcol-3 mt-3">
                                             <div class="input-group">
-                                                <input type="number" aria-label="min" class="form-control" placeholder="Minimum" min="0">
-                                                <input type="number" aria-label="max" class="form-control" placeholder="Maximum" min="0">
+                                                <input type="number" aria-label="min" name='minimum' class="form-control" placeholder="Minimum" min="0">
+                                                <input type="number" aria-label="max" name='maximum' class="form-control" placeholder="Maximum" min="0">
                                             </div>
                                         </div>
                                     </div>

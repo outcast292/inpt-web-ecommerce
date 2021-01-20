@@ -81,10 +81,6 @@
             </div>
         </div>
     </div>
-<<<<<<< HEAD
-
-    <script>
-=======
     <!-- Modal -->
     <div class="modal  fade" id="modal_details" tabindex="-1" aria-labelledby="modal_details" aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -210,7 +206,6 @@
                 console.log(err);
             });
         };
->>>>>>> othmane
         $("#submit_search").click(function(event) {
             event.preventDefault();
             var dataform = $("#form_search").serialize();
@@ -220,19 +215,11 @@
                     $("#table_body").text('');
                     data.forEach((element, index) => {
                         $('#table_body').append(`
-<<<<<<< HEAD
-                        <tr>
-=======
                         <tr class=" ${element.valide==1? "table-success":element.valide==-1?"table-danger":"" }">
->>>>>>> othmane
                             <td>${index+1}</td>
                             <td>${element.nom_client}</td>
                             <td>${element.date_commande}</td>
                             <td>${element.etat_actuell}</td>
-<<<<<<< HEAD
-                            <td>${element.prix_commande}</td>
-                            <td>test</td>
-=======
                             <td>${element.prix_commande.toFixed(2)}</td>
                             <td>
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Options</button>
@@ -242,7 +229,6 @@
                                 <a class="dropdown-item" href="tel:${element.tel_client}">telephoner client</a>
                             </div>
                             </td>
->>>>>>> othmane
                         </tr>
                         `);
                     });
@@ -253,10 +239,6 @@
         });
     </script>
 
-<<<<<<< HEAD
-=======
-
->>>>>>> othmane
 </body>
 
 </html>
