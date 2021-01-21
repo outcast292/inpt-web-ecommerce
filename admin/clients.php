@@ -9,13 +9,12 @@
 
     <link href="../css/navbar.css" rel="stylesheet">
     <script src="../js/jquery-3.5.1.slim.min.js"></script>
-
     <script src="../js/bootstrap.bundle.min.js"></script>
+
     <link rel="stylesheet" href="../css/bootstrap-icons.css">
     <link rel="stylesheet" href="../css/admin/sidebar.css">
 
     <?php require "req/verify.php";  ?>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
 
@@ -51,33 +50,15 @@
                                 <div class="mt-2 row ">
                                     <div class="form-row p-2 col-12">
                                         <div class="mt-4 pt-3 col-3">
-                                            <h6>Periode de commandes: </h6>
+                                            <h6>Periode d'activite du client: </h6>
                                         </div>
                                         <div class="col-2">
                                             <label for="from_date">Date debut:</label>
-                                            <input type="date" name="from_date" class="form-control" value="<?php echo  date("Y-m-d") ?>" id="from_date">
+                                            <input type="date" name="from_date" class="form-control" id="from_date">
                                         </div>
                                         <div class="ml-3 col-2">
                                             <label for="to_date">Date fin:</label>
-                                            <input type="date" name="to_date" class="form-control" value="<?php echo  date("Y-m-d") ?>" id="to_date">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="mt-2 row">
-                                    <div class="form-row p-2 col-12">
-                                        <div class="mt-4 col-2">
-                                            <h6>Localisation: </h6>
-                                        </div>
-                                        <div class="col-10 mt-2">
-                                            <div class="input-group">
-                                                <div class="col-10 mt-2">
-                                                    <input type="text" aria-label="adresse" name="adresse" class="form-control" placeholder="Adresse" id="input_adresse">
-                                                </div>
-                                                <div class="col-2 mt-2">
-                                                    <input type="text" aria-label="ZIP" name="code_postal" class="form-control" placeholder="Code Postal" id="input_zip">
-                                                </div>
-                                            </div>
+                                            <input type="date" name="to_date" class="form-control"  id="to_date" value="<?php echo  date("Y-m-d") ?>">
                                         </div>
                                     </div>
                                 </div>
@@ -166,9 +147,9 @@
     </div>
 
     <script>
-    function show_details(id_client, nom_client, nbr_commande,email,tel_client,date_naissance,sexe) {
-            
-                $('#modal_content').html(`
+        function show_details(id_client, nom_client, nbr_commande, email, tel_client, date_naissance, sexe,first_commande, last_commande, minimum_spent, maximum_spent, avg_spent) {
+
+            $('#modal_content').html(`
                      <div class="modal-header">
                     <h5 class="modal-title" id="exampleModal">Client N° ${id_client}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -202,53 +183,24 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
                 </div>
-                     `);
+                </div>     `);
 
-                $('#modal_details').modal('show')
-            
+            $('#modal_details').modal('show');
+
         };
-    /*
-        $("#submit_search").click(function(event) {
-            event.preventDefault();
-            var dataform = $("#form_search").serialize();
-            if (dataform.length > 0) {
-                fetch("../php/commandes/client_read_filtre?" + dataform).then(resp => resp.json()).then(json => {
-                    var data = json.data;
-                    $("#table_body").text('');
-                    data.forEach((element, index) => {
-                        $('#table_body').append(`
-                        <tr class=" ${element.valide==1? "table-success":element.valide==-1?"table-danger":"" }">
-                        <td>${index+1}</td>
-                            <td>${element.nom_client}</td>
-                            <td>${element.nbr_commande}</td>
-                            <td>${element.last_commande}</td>
-                            <td>
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">OPTIONS</button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                           
-                                <a class="dropdown-item" href="#" onclick='show_details(${element.id_client},"${element.nom_client}","0${element.tel_client}");'>Details</a>
-                            
-                                <a class="dropdown-item" href="mailto:${element.email}">Envoyer email</a>
-                                <a class="dropdown-item" href="tel:${element.tel_client}">Appeler</a>
-                            </div>
-                            </td>
-                        </tr>
-                        `);
-                    });
-                    $("#nbr_cmnd").text(data.length);
-                    $("#div_nbr").removeAttr("hidden");
 
-                }).catch(err => {
-                    console.log(err);
-                });
-            }
+        $("#submit_search").click(function(event){
+            event.preventDefault();
+            search();
         });
-*/
-        fetch("../php/client/client_read").then(resp => resp.json()).then(json => {
-            var data = json.data;
-            $("#table_body").text('');
-            data.forEach((element, index) => {
-                $('#table_body').append(`
+
+        function search() {
+            var dataform = $("#form_search :input[value!='']").serialize();
+            fetch("../php/client/client_read?"+dataform).then(resp => resp.json()).then(json => {
+                var data = json.data;
+                $("#table_body").text('');
+                data.forEach((element, index) => {
+                    $('#table_body').append(`
                         <tr class=" ${element.valide==1? "table-success":element.valide==-1?"table-danger":"" }">
                             <td>${index+1}</td>
                             <td>${element.nom_client}</td>
@@ -258,7 +210,7 @@
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">OPTIONS</button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                            
-                                <a class="dropdown-item" href="#" onclick='show_details(${element.id_client},${element.nom_client},${element.nbr_commande},${element.email},${element.tel_client},${element.date_naissance},${element.sexe});'>Details</a>
+                                <a class="dropdown-item" href="#" onclick='show_details(${element.id_client},"${element.nom_client}",${element.nbr_commande},"${element.email}","0${element.tel_client}","${element.date_naissance}","${element.sexe}","${element.first_commande}","${element.last_commande}",${element.minimum_spent},${element.maximum_spent},${element.avg_spent});'>Details</a>
                             
                                 <a class="dropdown-item" href="mailto:${element.email}">Envoyer email</a>
                                 <a class="dropdown-item" href="tel:${element.tel_client}">Appeler</a>
@@ -266,13 +218,15 @@
                             </td>
                         </tr>
                         `);
-            });
-            $("#nbr_clt").text(data.length);
-            $("#div_nbr").removeAttr("hidden");
+                });
+                $("#nbr_clt").text(data.length);
+                $("#div_nbr").removeAttr("hidden");
 
-        }).catch(err => {
-            console.log(err);
-        });
+            }).catch(err => {
+                console.log(err);
+            });
+        }
+        search();
     </script>
 </body>
 
