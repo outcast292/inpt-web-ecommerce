@@ -1,15 +1,13 @@
 <?php
                 $connect=new PDO('mysql:host=localhost;dbname=ecommerce', 'root' , '');
 
-                $sql="select label , prix_produit from produit";
+                $sql="select id_produit, id_marque , id_categorie, label, prix_produit from produit";
                 $stml=$connect->query($sql);
                 $rows=$stml->fetchAll(PDO::FETCH_ASSOC);
                 
                 
                 
                 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,6 +24,7 @@
     <script src="../js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="../css/bootstrap-icons.css">
     <link rel="stylesheet" href="../css/admin/sidebar.css">
+  
 
     
 </head>
@@ -77,14 +76,125 @@
 
 
 
-</div>            <div class="col pt-4">
-                <h2>
-                    <a href="" data-target="#sidebar" data-toggle="collapse" class="d-md-none"><i class="fa fa-bars"></i></a> Produit
-                </h2>
-                <hr>
-      
+</div>            <div class="col pt-4 ">
+                <div class="container.fluid">
+
+                    <h2>
+                        <a href="" data-target="#sidebar" data-toggle="collapse" class="d-md-none"><i class="fa fa-bars"></i></a>Page Produit
+                    </h2>
+                    <h6 class="hidden-sm-down">page pour ajouter , modifier ou supprimer un produit</h6>
+                    <hr>
+                    <!--Modal d'ajout du produit -->
+                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">
+                            Ajouter un produit
+                                </button>
+                            <div class="modal" id="myModal">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">AjoutProduit</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+
+                                <div class="modal-body">
+                                <form action="addProduit.php" method="post">
+                            <div class="form-group">
+                                <label">id_marque</label>
+                                <input type="number" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>id_categorie</label>
+                                <input type="number" class="form-control" >
+                            </div>
+                            <div class="form-group">
+                                <label>label</label>
+                                <input type="text" class="form-control" >
+                            </div>
+                            <div class="form-group">
+                                <label>prix_produit</label>
+                                <input type="text" class="form-control" >
+                            </div>
+                            <button type="submit" class="btn btn-warning">Ajouter</button>
+                            </form></div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                </div>
+
+                                </div>
+                            </div>
+                            </div>
+                            <!--Modal de la modification du produit-->
+                                            
+                                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">
+                            Modifier un produit
+                            </button>
+
+                            <div class="modal" id="myModal">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+
+                                <div class="modal-header">
+                                    <h4 class="modal-title">AjoutProduit</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+
+                                <div class="modal-body">
+                                <form action="ModifProduit.php">
+                            
+                            <div class="form-group">
+                                <label>label</label>
+                                <input type="text" class="form-control" >
+                            </div>
+                            <div class="form-group">
+                                <label>prix_produit</label>
+                                <input type="text" class="form-control" >
+                            </div>
+                            <button type="submit" class="btn btn-warning">Modifier</button>
+                            </form></div>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                </div>
+
+                                </div>
+                            </div>
+                            </div>
+
+
+                        <table class="table table-hover" id="table_search">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">id</th>
+                                    <th scope="col">marque</th>
+                                    <th scope="col">id_categorie</th>
+                                    <th scope="col">label</th>
+                                    <th scope="col">prixproduit</th>
+                                    <th scope="col">Options</th>
+                                    <!-- #TODO  view or mail client -->
+                                </tr>
+                            </thead>
+                            <tbody id="table_body">
+
+                            </tbody>
+                            
+
+                        <tr>
+                        <?php foreach($rows as $row): ?>
+                        <td><?php  echo $row['id_produit'] ?></td>
+                        <td><?php  echo $row['id_marque'] ;?></td>
+                        <td><?php  echo $row['id_categorie']; ?></td>
+                        <td><?php  echo $row['label']; ?></td>
+                        <td><?php  echo $row['prix_produit']; ?></td>
+                        <td><a href="DeleteProd.php?id=<?php echo $row['id_produit'] ?>">  <button type="submit" class="btn btn-danger">SUPPRIMER</button></a>    </td>
+                        </tr>
+                        <?php endforeach; ?>
+                        </table>
+                        
+                    
+
+
+
+
               
-              <form action="addProduit.php">
+               <!--   <form action="addProduit.php">
               
               <input type="text" name="prix" >
               <input type="text" name="label" > 
@@ -98,15 +208,24 @@
               <tr>
               <td><?php echo $row['prix_produit']; ?></td>
               <td><?php echo $row['label']; ?></td>
+              <td><a href="DeleteProd.php?id=.."><button>SUPPRIMER</button></a>    </td>
 
               <td></td>
               </tr>
               <?php endforeach; ?>
               
+              
             
               </table>
            
-
+              <form action="ModifProduit.php">
+              
+              <input type="text" name="prix" >
+              <input type="text" name="label" > 
+              <button>Ajouter </button>
+              
+              </form>
+-->
                 </div>
         </div>
     </div>
