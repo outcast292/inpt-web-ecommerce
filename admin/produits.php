@@ -5,7 +5,8 @@
                 $stml=$connect->query($sql);
                 $rows=$stml->fetchAll(PDO::FETCH_ASSOC);
                 
-                
+                require_once "Recpura.php";
+
                 
                 ?>
 
@@ -97,22 +98,23 @@
                                 </div>
 
                                 <div class="modal-body">
-                                <form action="addProduit.php" method="post">
+                                <form action="#" method="get">
+                                    <input type="hidden" name="action" value="Ajouter">
                             <div class="form-group">
-                                <label">id_marque</label>
-                                <input type="number" class="form-control">
+                                <label>id_marque</label>
+                                <input type="number" name="id_marque" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>id_categorie</label>
-                                <input type="number" class="form-control" >
+                                <input type="number" name="id_categorie" class="form-control" >
                             </div>
                             <div class="form-group">
                                 <label>label</label>
-                                <input type="text" class="form-control" >
+                                <input type="text"name="label" class="form-control" >
                             </div>
                             <div class="form-group">
                                 <label>prix_produit</label>
-                                <input type="text" class="form-control" >
+                                <input type="text" name="prix_produit" class="form-control" >
                             </div>
                             <button type="submit" class="btn btn-warning">Ajouter</button>
                             </form></div>
@@ -123,10 +125,9 @@
                                 </div>
                             </div>
                             </div>
-                            <!--Modal de la modification du produit-->
-                                            
-                                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">
-                            Modifier un produit
+                        <br/> <br/>
+                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">
+                            Modifier un
                             </button>
 
                             <div class="modal" id="myModal">
@@ -134,20 +135,26 @@
                                 <div class="modal-content">
 
                                 <div class="modal-header">
-                                    <h4 class="modal-title">AjoutProduit</h4>
+                                    <h4 class="modal-title">ModifierProduit</h4>
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                                 </div>
 
                                 <div class="modal-body">
-                                <form action="ModifProduit.php">
+                                <form action="#" method="get"> 
+                                    <input type="hidden" name="action" value="Modifier">
+                                     
+                            <div class="form-group">
+                                <label>id_produit</label>
+                                <input type="text" class="form-control" name="id_produit" >
+                            </div>
                             
                             <div class="form-group">
                                 <label>label</label>
-                                <input type="text" class="form-control" >
+                                <input type="text" class="form-control" name="label" >
                             </div>
                             <div class="form-group">
                                 <label>prix_produit</label>
-                                <input type="text" class="form-control" >
+                                <input type="text" class="form-control" name="prix_produit" >
                             </div>
                             <button type="submit" class="btn btn-warning">Modifier</button>
                             </form></div>
@@ -157,6 +164,9 @@
                                 </div>
                             </div>
                             </div>
+                        
+                                            
+                        
 
 
                         <table class="table table-hover" id="table_search">
@@ -177,13 +187,15 @@
                             
 
                         <tr>
-                        <?php foreach($rows as $row): ?>
-                        <td><?php  echo $row['id_produit'] ?></td>
-                        <td><?php  echo $row['id_marque'] ;?></td>
-                        <td><?php  echo $row['id_categorie']; ?></td>
-                        <td><?php  echo $row['label']; ?></td>
-                        <td><?php  echo $row['prix_produit']; ?></td>
-                        <td><a href="DeleteProd.php?id=<?php echo $row['id_produit'] ?>">  <button type="submit" class="btn btn-danger">SUPPRIMER</button></a>    </td>
+                        <?php foreach($produit as $produits): ?>
+                        <td><?php  echo $produits['id_produit'] ?></td>
+                        <td><?php  echo $produits['id_marque'] ;?></td>
+                        <td><?php  echo $produits['id_categorie']; ?></td>
+                        <td><?php  echo $produits['label']; ?></td>
+                        <td><?php  echo $produits['prix_produit']; ?></td>
+                        <td><a href="?action=Supprimer&id=<?php echo $produits['id_produit']?>">
+                             <button type="submit" class="btn btn-danger">SUPPRIMER</button>
+                    </a>    </td>
                         </tr>
                         <?php endforeach; ?>
                         </table>
