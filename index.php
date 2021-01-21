@@ -30,149 +30,22 @@
                 </form>
             </div>
 
-            <div class="row">
+            <div class="row bg-secondary">
 
-                <div class="col-3 bg-secondary p-1">
-                    <ul class="nav nav-tabs flex-column">
-                        <li class="nav-item">
-                            <div class="d-grid gap-2">
-                                <div class="btn-group dropend">
-                                    <button type="button" class="btn   dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Dropright
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <h6 class="dropdown-header">Dropdown header</h6>
-                                        </li>
-                                        <li><a class="dropdown-item" href="#">Action</a></li>
-                                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="nav-item ">
-                            <div class="d-grid gap-2">
-                                <div class="btn-group dropend">
-                                    <button type="button" class="btn   dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Dropright
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <h6 class="dropdown-header">Dropdown header</h6>
-                                        </li>
-                                        <li><a class="dropdown-item" href="#">Action</a></li>
-                                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <div class="d-grid gap-2">
-                                <div class="btn-group dropend">
-                                    <button type="button" class="btn   dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Dropright
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <h6 class="dropdown-header">Dropdown header</h6>
-                                        </li>
-                                        <li><a class="dropdown-item" href="#">Action</a></li>
-                                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <div class="d-grid gap-2">
-                                <div class="btn-group dropend">
-                                    <button type="button" class="btn   dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Dropright
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <h6 class="dropdown-header">Dropdown header</h6>
-                                        </li>
-                                        <li><a class="dropdown-item" href="#">Action</a></li>
-                                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <div class="d-grid gap-2">
-                                <div class="btn-group dropend">
-                                    <button type="button" class="btn   dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Dropright
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <h6 class="dropdown-header">Dropdown header</h6>
-                                        </li>
-                                        <li><a class="dropdown-item" href="#">Action</a></li>
-                                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <div class="d-grid gap-2">
-                                <div class="btn-group dropend">
-                                    <button type="button" class="btn   dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Dropright
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <h6 class="dropdown-header">Dropdown header</h6>
-                                        </li>
-                                        <li><a class="dropdown-item" href="#">Action</a></li>
-                                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <div class="d-grid gap-2">
-                                <div class="btn-group dropend">
-                                    <button type="button" class="btn   dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Dropright
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <h6 class="dropdown-header">Dropdown header</h6>
-                                        </li>
-                                        <li><a class="dropdown-item" href="#">Action</a></li>
-                                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <div class="d-grid gap-2">
-                                <div class="btn-group dropend">
-                                    <button type="button" class="btn   dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Dropright
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <h6 class="dropdown-header">Dropdown header</h6>
-                                        </li>
-                                        <li><a class="dropdown-item" href="#">Action</a></li>
-                                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
+                <div class="col-3  border border-warning bg-light  ml-3 ">
+                    <div>
+                        <h3 class="text-center  p-2 ">categories</h3>
+                        <hr>
+                        <ul id="categories_aside">
+
+
+                        </ul>
+
+
+                    </div>
+
                 </div>
-                <div class="col-9">
+                <div class="col">
                     <div id="caroussel_banners" class="carousel slide" data-ride="carousel">
 
                         <ol class="carousel-indicators">
@@ -180,7 +53,7 @@
                             $files = array_diff(scandir("./img/banners"), array('..', '.'));
                             foreach ($files as $key => $value) {
                             ?>
-                                <li data-target="#caroussel_banners" data-slide-to="<?php echo $key-2 ?>" <?php if ($key == 2) echo 'class="active"' ?>></li>
+                                <li data-target="#caroussel_banners" data-slide-to="<?php echo $key - 2 ?>" <?php if ($key == 2) echo 'class="active"' ?>></li>
                             <?php }
                             ?>
                         </ol>
@@ -360,6 +233,16 @@
 
             next.children(':first-child').clone().appendTo($(this));
         }
+    });
+
+
+    fetch("./php/categories/categories_read").then(resp => resp.json()).then(json => {
+        const data = json.data;
+        data.forEach(element => {
+            $("#categories_aside").append(`
+                <li><a href="navigation?categorie=${element.id_categorie}" title="${element.prod_count} produits dans cette categorie">${element.nom_categorie}</a></li>
+            `)
+        });
     });
 </script>
 
