@@ -173,30 +173,36 @@
                     </ul>
                 </div>
                 <div class="col-9">
-                    <div id="caroussel_banners" class="carousel slide" data-bs-ride="carousel">
+                    <div id="caroussel_banners" class="carousel slide" data-ride="carousel">
+
                         <ol class="carousel-indicators">
-                            <li data-bs-target="#caroussel_banners" data-bs-slide-to="0" class="active"></li>
-                            <li data-bs-target="#caroussel_banners" data-bs-slide-to="1"></li>
-                            <li data-bs-target="#caroussel_banners" data-bs-slide-to="2"></li>
+                            <?php
+                            $files = array_diff(scandir("./img/banners"), array('..', '.'));
+                            foreach ($files as $key => $value) {
+                            ?>
+                                <li data-target="#caroussel_banners" data-slide-to="<?php echo $key-2 ?>" <?php if ($key == 2) echo 'class="active"' ?>></li>
+                            <?php }
+                            ?>
                         </ol>
                         <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg" class="d-block w-100 " alt="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/250px-Image_created_with_a_mobile_phone.png" class="d-block w-100" alt="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg" class="d-block w-100" alt="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg">
-                            </div>
+                            <?php
+                            foreach ($files as $key => $value) {
+                            ?>
+                                <div class="carousel-item <?php if ($key == 2) echo 'active' ?>">
+                                    <img src="./img/banners/<?php echo $value ?>" class="d-block w-100" alt="...">
+                                </div>
+                            <?php }
+                            ?>
+
+
                         </div>
-                        <a class="carousel-control-prev" href="#caroussel_banners" role="button" data-bs-slide="prev">
+                        <a class="carousel-control-prev" href="#caroussel_banners" role="button" data-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
+                            <span class="sr-only">Previous</span>
                         </a>
-                        <a class="carousel-control-next" href="#caroussel_banners" role="button" data-bs-slide="next">
+                        <a class="carousel-control-next" href="#caroussel_banners" role="button" data-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
+                            <span class="sr-only">Next</span>
                         </a>
                     </div>
                 </div>
