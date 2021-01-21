@@ -2,7 +2,7 @@
 require_once "../connection/db.php";
 //require_once "../verify_session.php";
 $query =  'SELECT c.id_client, CONCAT(c.nom_client ," " , c.prenom_client) as nom_client, COUNT(co.id_commande) as nbr_commande, MAX(co.date_commande) as last_commande ,MIN(co.date_commande) as first_commande , c.email, c.tel_client,  c.date_naissance, c.sexe, MIN(co.prix_commande) as minimum_spent, MAX(co.prix_commande) as maximum_spent,AVG(co.prix_commande) as avg_spent FROM client c left join commande co on c.id_client=co.id_client GROUP BY c.id_client';
-
+//$query2 = 'SELECT id_client, id_commande, date_commande, etat_actuell, prix_commande from commande GROUP BY id_client';
 $filters = array("search", "from_date", "to_date", "adresse", "code_postal", "minimum_commande", "maximum_commande", "minimum_spent", "maximum_spent");
 $filters_active = array();
 $params = array();
@@ -54,7 +54,12 @@ $sql = $conn->prepare($query);
 $sql->execute($params);
 
 $clients = $sql->fetchAll(PDO::FETCH_ASSOC);
+/*$sql = $conn->prepare($query2);
+$sql->execute();
+
+$commandes = $sql->fetchAll(PDO::FETCH_ASSOC);*/
 $msg["data"] = $clients;
+//$msg["data2"] = $commandes;
 $msg["filters"] = $filters_active;
 $msg["params"] = $params;
 $msg["query"] = $query;

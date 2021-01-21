@@ -170,13 +170,87 @@
                     </div>
                     <div class="row">
                         <div class="col-6">
-                            <label>Nom Client</label>
+                            <label>Nom et Prenom</label>
                             <input type="text" class="form-control" readonly value="${nom_client}">
 
                         </div>
                         <div class="col-6">
                             <label>Telephone</label>
                             <input type="text" class="form-control" readonly value="${tel_client}">
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-6">
+                            <label>Date de Naissance</label>
+                            <input type="text" class="form-control" readonly value="${date_naissance}">
+
+                        </div>
+                        <div class="col-6">
+                            <label>Email</label>
+                            <input type="text" class="form-control" readonly value="${email}">
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-6">
+                            <label>Sexe</label>
+                            <input type="text" class="form-control" readonly value="${sexe}">
+
+                        </div>
+                        
+                    </div><br>
+                    <div class="mt-2 col-12 row">
+                        <div class="col-auto">
+
+                            <h6>
+                                Statistiques
+                            </h6>
+                        </div>
+                        <div class="col">
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <label>Premiere activte</label>
+                            <input type="text" class="form-control" readonly value="${first_commande}">
+
+                        </div>
+                        <div class="col-6">
+                            <label>Derniere activite</label>
+                            <input type="text" class="form-control" readonly value="${last_commande}">
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-6">
+                            <label>Achat Maximum</label>
+                            <input type="text" class="form-control" readonly value="${maximum_spent}">
+
+                        </div>
+                        <div class="col-6">
+                            <label>Achat Minimum</label>
+                            <input type="text" class="form-control" readonly value="${minimum_spent}">
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-6">
+                            <label>Moyenne d'achat</label>
+                            <input type="text" class="form-control" readonly value="${avg_spent}">
+
+                        </div>
+                        <div class="col-6">
+                            <label>Nombre total de commandes</label>
+                            <input type="text" class="form-control" readonly value="${nbr_commande}">
+                        </div>
+                    </div><br>
+                    <div class="mt-2 col-12 row">
+                        <div class="col-auto">
+
+                            <h6>
+                                Dernieres Commandes
+                            </h6>
+                        </div>
+                        <div class="col">
+                            <hr>
                         </div>
                     </div>
                     
