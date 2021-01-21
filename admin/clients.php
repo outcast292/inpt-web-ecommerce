@@ -35,15 +35,15 @@
                         </button>
                     </p>
                     <div class="collapse" id="collapseExample">
-                        <form class="col-12" id='search_form'>
+                        <form class="col-12" id='form_search'>
 
                             <div class='filtres'>
                                 <div class='mt-2 row'>
                                     <div class="form-row p-2 col-12">
-                                        <div class="pt-3 col-3">
+                                        <div class="pt-3 col-2">
                                             <h6>Par mots-cles: </h6>
                                         </div>
-                                        <div class="mt-2 col-9">
+                                        <div class="mt-2 col-10">
                                             <input class="form-control mr-sm-2" type="search" placeholder="Mots-cles" aria-label="Search" name="search">
                                         </div>
                                     </div>
@@ -66,58 +66,13 @@
 
                                 <div class="mt-2 row">
                                     <div class="form-row p-2 col-12">
-                                        <div class="mt-4 pt-3 col-3">
-                                            <h6>Sexe: </h6>
-                                        </div>
-                                        <div class="mt-4 pt-3 col-2">
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="sexe" id="RadioH" value="hommes">
-                                                <label class="form-check-label" for="inlineRadio1">Hommes</label>
-                                            </div>
-                                        </div>
-                                        <div class="mt-4 pt-3 col-2">
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="sexe" id="RadioF" value="femmes">
-                                                <label class="form-check-label" for="inlineRadio2">Femmes</label>
-                                            </div>
-                                        </div>
-                                        <div class="mt-4 pt-3 col-2">
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="sexe" id="RadioN" value="aucun">
-                                                <label class="form-check-label" for="inlineRadio3">Non precis</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="mt-2 row">
-                                    <div class="form-row p-2 col-12">
-                                        <div class="mt-4 col-3">
-                                            <h6>Age: </h6>
-                                        </div>
-                                        <div class="col-3">
-                                            <div class="mcol-3 mt-3">
-                                                <div class="input-group">
-                                                    <input type="number" aria-label="min" name='minimum_age' class="form-control" placeholder="Minimum" min="18">
-                                                    <input type="number" aria-label="max" name='maximum_age' class="form-control" placeholder="Maximum" min="18">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="mt-2 row">
-                                    <div class="form-row p-2 col-12">
-                                        <div class="mt-4 col-1">
+                                        <div class="mt-4 col-2">
                                             <h6>Localisation: </h6>
                                         </div>
-                                        <div class="col-11 mt-2">
+                                        <div class="col-10 mt-2">
                                             <div class="input-group">
-                                                <div class="col-8 mt-2">
+                                                <div class="col-10 mt-2">
                                                     <input type="text" aria-label="adresse" name="adresse" class="form-control" placeholder="Adresse" id="input_adresse">
-                                                </div>
-                                                <div class="col-2 mt-2">
-                                                    <input type="text" aria-label="ville" name="ville" class="form-control" placeholder="Ville" id="input_ville">
                                                 </div>
                                                 <div class="col-2 mt-2">
                                                     <input type="text" aria-label="ZIP" name="code_postal" class="form-control" placeholder="Code Postal" id="input_zip">
@@ -162,7 +117,7 @@
                                 <div class="mt-2 row">
                                     <div class='col-4'></div>
                                     <div class="ml-3 pt-2 col-4">
-                                        <input type="submit" id="fitlre_btn" class="btn btn-success btn-block  form-control" value="Confirmer">
+                                        <input type="submit" id="submit_search" class="btn btn-success btn-block  form-control" value="Confirmer">
                                     </div>
                                 </div>
 
@@ -175,8 +130,8 @@
 
 
                 <div class="mt-4">
-                    <div class="alert alert-info" hidden>
-                        Nombre de clients trouvées : <span id="nbr_clt"></span>
+                    <div class="alert alert-info" id='div_nbr' hidden>
+                        Nombre de clients trouvés : <span id="nbr_clt"></span>
                     </div>
 
                     <table class="table table-hover" id="table_search">
@@ -201,8 +156,124 @@
 
         </div>
     </div>
+    <!--modal-->
+    <div class="modal  fade" id="modal_details" tabindex="-1" aria-labelledby="modal_details" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content" id="modal_content">
+
+            </div>
+        </div>
     </div>
 
+    <script>
+    function show_details(id_client, nom_client, nbr_commande,email,tel_client,date_naissance,sexe) {
+            
+                $('#modal_content').html(`
+                     <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModal">Client N° ${id_client}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="mt-2 col-12 row">
+                        <div class="col-auto">
+
+                            <h6>
+                                Informations Clients
+                            </h6>
+                        </div>
+                        <div class="col">
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <label>Nom Client</label>
+                            <input type="text" class="form-control" readonly value="${nom_client}">
+
+                        </div>
+                        <div class="col-6">
+                            <label>Telephone</label>
+                            <input type="text" class="form-control" readonly value="${tel_client}">
+                        </div>
+                    </div>
+                    
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                </div>
+                     `);
+
+                $('#modal_details').modal('show')
+            
+        };
+    /*
+        $("#submit_search").click(function(event) {
+            event.preventDefault();
+            var dataform = $("#form_search").serialize();
+            if (dataform.length > 0) {
+                fetch("../php/commandes/client_read_filtre?" + dataform).then(resp => resp.json()).then(json => {
+                    var data = json.data;
+                    $("#table_body").text('');
+                    data.forEach((element, index) => {
+                        $('#table_body').append(`
+                        <tr class=" ${element.valide==1? "table-success":element.valide==-1?"table-danger":"" }">
+                        <td>${index+1}</td>
+                            <td>${element.nom_client}</td>
+                            <td>${element.nbr_commande}</td>
+                            <td>${element.last_commande}</td>
+                            <td>
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">OPTIONS</button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                           
+                                <a class="dropdown-item" href="#" onclick='show_details(${element.id_client},"${element.nom_client}","0${element.tel_client}");'>Details</a>
+                            
+                                <a class="dropdown-item" href="mailto:${element.email}">Envoyer email</a>
+                                <a class="dropdown-item" href="tel:${element.tel_client}">Appeler</a>
+                            </div>
+                            </td>
+                        </tr>
+                        `);
+                    });
+                    $("#nbr_cmnd").text(data.length);
+                    $("#div_nbr").removeAttr("hidden");
+
+                }).catch(err => {
+                    console.log(err);
+                });
+            }
+        });
+*/
+        fetch("../php/client/client_read").then(resp => resp.json()).then(json => {
+            var data = json.data;
+            $("#table_body").text('');
+            data.forEach((element, index) => {
+                $('#table_body').append(`
+                        <tr class=" ${element.valide==1? "table-success":element.valide==-1?"table-danger":"" }">
+                            <td>${index+1}</td>
+                            <td>${element.nom_client}</td>
+                            <td>${element.nbr_commande}</td>
+                            <td>${element.last_commande}</td>
+                            <td>
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">OPTIONS</button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                           
+                                <a class="dropdown-item" href="#" onclick='show_details(${element.id_client},${element.nom_client},${element.nbr_commande},${element.email},${element.tel_client},${element.date_naissance},${element.sexe});'>Details</a>
+                            
+                                <a class="dropdown-item" href="mailto:${element.email}">Envoyer email</a>
+                                <a class="dropdown-item" href="tel:${element.tel_client}">Appeler</a>
+                            </div>
+                            </td>
+                        </tr>
+                        `);
+            });
+            $("#nbr_clt").text(data.length);
+            $("#div_nbr").removeAttr("hidden");
+
+        }).catch(err => {
+            console.log(err);
+        });
+    </script>
 </body>
 
 </html>
