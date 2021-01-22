@@ -25,6 +25,7 @@
         <div class="row">
             <?php require "req/sidebar.php" ?>
             <div class="col pt-4">
+
                 <h2>
                     <a href="" data-target="#sidebar" data-toggle="collapse" class="d-md-none"><i class="fa fa-bars"></i></a> Utilisateurs
                 </h2>
@@ -75,10 +76,16 @@
                         <td>' . $row[$i]['is_admin'] . '</td>
                         <td>' . $row[$i]['tel_user'] . '</td>
                         <td>' . $row[$i]['fonction'] . '</td>
-                        <td><form action="" method="post">
+                        <td>
+                        <button  class="edit"  name="change' . ($row[$i]['id_user']) . '" data-toggle="modal" data-target="#change" style="border: none; background: none;padding: 0;" >
+                            <span aria-hidden="true"><i class="bi bi-pencil text-muted"></i></span>
+                        </button>
+                        <form style="display:inline" action="" method="post">
+                        
                         <button type="submit" class="close" name="submit' . ($row[$i]['id_user']) . '" action="delete_line(${3})" >
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    
                     </form></td>';
                     echo '</tr>';
                 }
@@ -96,7 +103,7 @@
 
 
 
-                <!-- Modal -->
+                <!-- Modal adding-->
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="addUser" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
@@ -128,21 +135,21 @@
                                         <input type="text" name="mdp" id="inputMdp" class="form-control" placeholder="mot de passe" required autofocus>
 
                                     </div><br>
-                                   
+
                                     <div class="form-label-group col-6">
                                         <label for="inputEmail">Telephone</label>
                                         <input type="number" name="tel" id="inputTelephone" class="form-control" placeholder="Telephone" required autofocus>
 
                                     </div><br>
-                                    <div class="form-label-group col-6" >
+                                    <div class="form-label-group col-6">
                                         <label for="inputEmail">Fonction</label>
                                         <input type="text" name="fonction" id="inputFonction" class="form-control" placeholder="Fonction" required autofocus>
 
                                     </div><br>
                                     <div class="form-label-group col-12">
                                         <label for="inputEmail">Admin:</label>
-                                         <input type="radio" name="admin" id="inputadmin" value="0">non |
-                                         <input type="radio" name="admin" id="inputadmin" value="1">oui
+                                        <input type="radio" name="admin" id="inputadmin" value="0">non |
+                                        <input type="radio" name="admin" id="inputadmin" value="1">oui
 
                                     </div><br>
 
@@ -160,7 +167,7 @@
                                     $nom = $_POST["nom"];
                                     $prenom = $_POST["prenom"];
                                     $email = $_POST["mail"];
-                                    $mdp = $_POST["mdp"];
+                                    $mdp = password_hash($_POST["mdp"], PASSWORD_BCRYPT);
                                     $admin = $_POST["admin"];
                                     $tel = $_POST["tel"];
                                     $fonction = $_POST["fonction"];
@@ -188,6 +195,70 @@
                     </div>
                 </div>
 
+                <!-- Modal changing-->
+
+                <div class="modal fade" id="change" tabindex="-1" role="addUser" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Ajouter un utilisateur</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body container-fluid">
+                                <form action="" class="form row" method="post">
+                                    <div class="form-label-group col-6">
+                                        <label for="inputNom">Nom</label>
+                                        <input type="text" name="nom" id="inputNom" class="form-control" placeholder="Nom" required autofocus>
+
+                                    </div>
+                                    <div class="form-label-group col-6">
+                                        <label for="inputEmail">Prenom</label>
+                                        <input type="text" name="prenom" id="inputPrenom" class="form-control" placeholder="Prenom" required autofocus>
+
+                                    </div><br>
+                                    <div class="form-label-group col-12">
+                                        <label for="inputEmail">Adresse email</label>
+                                        <input type="email" name="mail" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+
+                                    </div><br>
+                                    <div class="form-label-group col-12">
+                                        <label for="inputEmail">Mot de passe </label>
+                                        <input type="text" name="mdp" id="inputMdp" class="form-control" placeholder="mot de passe" required autofocus>
+
+                                    </div><br>
+
+                                    <div class="form-label-group col-6">
+                                        <label for="inputEmail">Telephone</label>
+                                        <input type="number" name="tel" id="inputTelephone" class="form-control" placeholder="Telephone" required autofocus>
+
+                                    </div><br>
+                                    <div class="form-label-group col-6">
+                                        <label for="inputEmail">Fonction</label>
+                                        <input type="text" name="fonction" id="inputFonction" class="form-control" placeholder="Fonction" required autofocus>
+
+                                    </div><br>
+                                    <div class="form-label-group col-12">
+                                        <label for="inputEmail">Admin:</label>
+                                        <input type="radio" name="admin" id="inputadmin" value="0">non |
+                                        <input type="radio" name="admin" id="inputadmin" value="1">oui
+
+                                    </div><br>
+
+
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                        <button class="btn btn-success" type="submit" name="submit">Ajouter</button>
+                                    </div>
+                                </form>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </div>
