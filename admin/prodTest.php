@@ -1,7 +1,7 @@
 <?php
 $action=isset($_GET['action']) ? $_GET['action']:'';
 // si cette variable existe on prend la valr et on la met dans action.sinon on met chaine vide
-require_once "addProduit.php";
+require_once "prodFncts.php";
 switch($action)
 {
 case 'Ajouter';
