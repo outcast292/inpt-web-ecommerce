@@ -5,11 +5,11 @@ require_once "addProduit.php";
 switch($action)
 {
 case 'Ajouter';
-$id_marque=$_GET['id_marque'];
-$id_categorie=$_GET['id_categorie'];
+$nom_marque=$_GET['nom_marque'];
+$nom_categorie=$_GET['nom_categorie'];
 $label=$_GET['label'];
 $prix_produit=$_GET['prix_produit'];
-ajoutProduit($id_marque , $id_categorie , $label , $prix_produit);
+ajoutProduit($nom_marque , $nom_categorie , $label , $prix_produit);
 break;
 
 case 'Supprimer';

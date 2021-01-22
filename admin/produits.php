@@ -1,9 +1,7 @@
 <?php
                 $connect=new PDO('mysql:host=localhost;dbname=ecommerce', 'root' , '');
 
-                $sql="select id_produit, id_marque , id_categorie, label, prix_produit from produit";
-                $stml=$connect->query($sql);
-                $rows=$stml->fetchAll(PDO::FETCH_ASSOC);
+              
                 
                 require_once "Recpura.php";
 
@@ -86,99 +84,52 @@
                     <h6 class="hidden-sm-down">page pour ajouter , modifier ou supprimer un produit</h6>
                     <hr>
                     <!--Modal d'ajout du produit -->
-                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">
-                            Ajouter un produit
-                                </button>
-                            <div class="modal" id="myModal">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title">AjoutProduit</h4>
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                </div>
-
-                                <div class="modal-body">
-                                <form action="#" method="get">
+                    <p>
+                        <button class="btn btn-secondary btn-block" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                            <h5>AJOUTER UN PRODUIT</h5>
+                        </button>
+                    </p>
+                    <div class="collapse" id="collapseExample">
+                    <form action="#" method="get">
                                     <input type="hidden" name="action" value="Ajouter">
                             <div class="form-group">
-                                <label>id_marque</label>
-                                <input type="number" name="id_marque" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label>id_categorie</label>
-                                <input type="number" name="id_categorie" class="form-control" >
-                            </div>
-                            <div class="form-group">
-                                <label>label</label>
-                                <input type="text"name="label" class="form-control" >
-                            </div>
-                            <div class="form-group">
-                                <label>prix_produit</label>
-                                <input type="text" name="prix_produit" class="form-control" >
-                            </div>
-                            <button type="submit" class="btn btn-warning">Ajouter</button>
-                            </form></div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                </div>
-
-                                </div>
-                            </div>
-                            </div>
-                        <br/> <br/>
-                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">
-                            Modifier un
-                            </button>
-
-                            <div class="modal" id="myModal">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-
-                                <div class="modal-header">
-                                    <h4 class="modal-title">ModifierProduit</h4>
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                </div>
-
-                                <div class="modal-body">
-                                <form action="#" method="get"> 
-                                    <input type="hidden" name="action" value="Modifier">
-                                     
-                            <div class="form-group">
-                                <label>id_produit</label>
-                                <input type="text" class="form-control" name="id_produit" >
+                                <h6>La marque :</h6>
+                                <input type="text" name="nom_marque" class="form-control">
                             </div>
                             
                             <div class="form-group">
-                                <label>label</label>
-                                <input type="text" class="form-control" name="label" >
+                                <h6>La categorie :</h6>
+                                <input type="text" name="nom_categorie" class="form-control" >
                             </div>
                             <div class="form-group">
-                                <label>prix_produit</label>
-                                <input type="text" class="form-control" name="prix_produit" >
+                            <h6>Label :</h6>
+                                <input type="text"name="label" class="form-control" >
                             </div>
-                            <button type="submit" class="btn btn-warning">Modifier</button>
-                            </form></div>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            <div class="form-group">
+                            <h6>Le prix :</h6>
+                                <input type="text" name="prix_produit" class="form-control" >
+                            </div>
+                            <div class="mt-2 row">
+                                    <div class='col-4'></div>
+                                    <div class="ml-3 pt-2 col-4">
+                                        <input type="submit" id="submit_search" class="btn btn-success btn-block  form-control" value="Ajouter">
+                                    </div>
                                 </div>
 
-                                </div>
-                            </div>
+                     
+                </form></div>
+                            
                             </div>
                         
-                                            
-                        
-
-
                         <table class="table table-hover" id="table_search">
                             <thead class="thead-dark">
                                 <tr>
                                     <th scope="col">id</th>
-                                    <th scope="col">marque</th>
-                                    <th scope="col">id_categorie</th>
-                                    <th scope="col">label</th>
-                                    <th scope="col">prixproduit</th>
+                                    <th scope="col">Marque</th>
+                                    <th scope="col">Categorie</th>
+                                    <th scope="col">Label</th>
+                                    <th scope="col">Prix</th>
                                     <th scope="col">Options</th>
-                                    <!-- #TODO  view or mail client -->
                                 </tr>
                             </thead>
                             <tbody id="table_body">
@@ -189,60 +140,24 @@
                         <tr>
                         <?php foreach($produit as $produits): ?>
                         <td><?php  echo $produits['id_produit'] ?></td>
-                        <td><?php  echo $produits['id_marque'] ;?></td>
-                        <td><?php  echo $produits['id_categorie']; ?></td>
+                        <td><?php  echo $produits['nom_marque'] ;?></td>
+                        <td><?php  echo $produits['nom_categorie']; ?></td>
                         <td><?php  echo $produits['label']; ?></td>
                         <td><?php  echo $produits['prix_produit']; ?></td>
-                        <td><a href="?action=Supprimer&id=<?php echo $produits['id_produit']?>">
-                             <button type="submit" class="btn btn-danger">SUPPRIMER</button>
-                    </a>    </td>
+                        <td>
+                               
+                                <a href="?action=Supprimer&id=<?php echo $produits['id_produit']?>"> Supprimer</a>
+                               
+                                
+                        </td>
                         </tr>
                         <?php endforeach; ?>
                         </table>
                         
+ 
+                        
                     
-
-
-
-
               
-               <!--   <form action="addProduit.php">
-              
-              <input type="text" name="prix" >
-              <input type="text" name="label" > 
-              <button>Ajouter </button>
-              
-              </form>
-              
- <table border="1" width="100%">
-              <tr><th>prix</th><th>label</th>
-              <?php   foreach($rows as $row):  ?>
-              <tr>
-              <td><?php echo $row['prix_produit']; ?></td>
-              <td><?php echo $row['label']; ?></td>
-              <td><a href="DeleteProd.php?id=.."><button>SUPPRIMER</button></a>    </td>
-
-              <td></td>
-              </tr>
-              <?php endforeach; ?>
-              
-              
-            
-              </table>
-           
-              <form action="ModifProduit.php">
-              
-              <input type="text" name="prix" >
-              <input type="text" name="label" > 
-              <button>Ajouter </button>
-              
-              </form>
--->
-                </div>
-        </div>
-    </div>
-
-
 </body>
 
 </html>
