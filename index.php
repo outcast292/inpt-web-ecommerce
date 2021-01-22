@@ -32,7 +32,7 @@
 
             <div class="row bg-secondary">
 
-                <div class="col-3  border border-warning bg-light  ml-3 ">
+                <div class="col-md-3 col-sm-12  border border-warning bg-light  ml-3 ">
                     <div>
                         <h3 class="text-center  p-2 ">categories</h3>
                         <hr>
@@ -84,56 +84,17 @@
             <div class="row p-4 my-3">
                 <h4>Mieux Notés</h4>
                 <hr>
-                <div id="caroussel_bestof1" class="carousel slide mt-2 w-100" data-ride="carousel">
-                    <div class="carousel-inner w-100" role="listbox">
-                        <div class="carousel-item active">
-                            <div class="col-md-4">
-                                <div class="card card-body">
-                                    <img class="img-fluid" src="http://placehold.it/380?text=1">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="col-md-4">
-                                <div class="card card-body">
-                                    <img class="img-fluid" src="http://placehold.it/380?text=2">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="col-md-4">
-                                <div class="card card-body">
-                                    <img class="img-fluid" src="http://placehold.it/380?text=3">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="col-md-4">
-                                <div class="card card-body">
-                                    <img class="img-fluid" src="http://placehold.it/380?text=4">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="col-md-4">
-                                <div class="card card-body">
-                                    <img class="img-fluid" src="http://placehold.it/380?text=5">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="col-md-4">
-                                <div class="card card-body">
-                                    <img class="img-fluid" src="http://placehold.it/380?text=6">
-                                </div>
-                            </div>
-                        </div>
+                <div id="caroussel_bestof" class="carousel slide mt-2 w-100" data-ride="carousel">
+                    <div class="carousel-inner w-100" role="listbox" id="caroussel_bestof_items">
+
+
+
                     </div>
-                    <a class="carousel-control-prev w-auto" href="#caroussel_bestof1" role="button" data-slide="prev">
+                    <a class="carousel-control-prev w-auto" href="#caroussel_bestof" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon bg-dark border border-dark rounded-circle" aria-hidden="true"></span>
                         <span class="sr-only">Previous</span>
                     </a>
-                    <a class="carousel-control-next w-auto" href="#caroussel_bestof1" role="button" data-slide="next">
+                    <a class="carousel-control-next w-auto" href="#caroussel_bestof" role="button" data-slide="next">
                         <span class="carousel-control-next-icon bg-dark border border-dark rounded-circle" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
                     </a>
@@ -143,49 +104,10 @@
                 <h4>Nouvautés</h4>
                 <hr>
                 <div id="caroussel_newitems" class="carousel slide mt-2 w-100" data-ride="carousel">
-                    <div class="carousel-inner w-100" role="listbox">
-                        <div class="carousel-item active">
-                            <div class="col-md-4">
-                                <div class="card card-body">
-                                    <img class="img-fluid" src="http://placehold.it/380?text=1">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="col-md-4">
-                                <div class="card card-body">
-                                    <img class="img-fluid" src="http://placehold.it/380?text=2">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="col-md-4">
-                                <div class="card card-body">
-                                    <img class="img-fluid" src="http://placehold.it/380?text=3">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="col-md-4">
-                                <div class="card card-body">
-                                    <img class="img-fluid" src="http://placehold.it/380?text=4">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="col-md-4">
-                                <div class="card card-body">
-                                    <img class="img-fluid" src="http://placehold.it/380?text=5">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="col-md-4">
-                                <div class="card card-body">
-                                    <img class="img-fluid" src="http://placehold.it/380?text=6">
-                                </div>
-                            </div>
-                        </div>
+                    <div class="carousel-inner w-100" role="listbox" id="caroussel_newitems_items">
+
+
+
                     </div>
                     <a class="carousel-control-prev w-auto" href="#caroussel_newitems" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon bg-dark border border-dark rounded-circle" aria-hidden="true"></span>
@@ -216,9 +138,13 @@
     $('#caroussel_bestof').carousel({
         interval: 10000
     })
+    $('#caroussel_newitems').carousel({
+        interval: 10000
+    })
+
 
     $('.carousel .carousel-item').each(function() {
-        var minPerSlide = 3;
+        var minPerSlide = 4;
         var next = $(this).next();
         if (!next.length) {
             next = $(this).siblings(':first');
@@ -242,6 +168,52 @@
             $("#categories_aside").append(`
                 <li><a href="navigation?categorie=${element.id_categorie}" title="${element.prod_count} produits dans cette categorie">${element.nom_categorie}</a></li>
             `)
+        });
+    });
+    fetch("./php/products/get_most_products").then(resp => resp.json()).then(json => {
+        const data = json.data;
+        data.forEach((element, index) => {
+            $("#caroussel_bestof_items").append(`
+                <div class="carousel-item ${index==0?'active':''}">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card  card_item  m-2 p-1">
+                            <a href="produit?id_produit=${element.id_produit}">
+                                <img src="img/products/${element.id_produit}.jpg" class="card-img-top w-100" >
+                            </a>
+                        <div class="card-body">
+                            <a href="#" style="color: black;">
+                                <span class="card-title h4">${element.label}</span>
+                            </a>
+                            <a href="#" class="btn btn-primary">BUY</a>
+                            <span class="h6" style="margin-left: 30%;">${element.prix_produit.toFixed(2)} DH</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            `);
+        });
+    });
+    fetch("./php/products/get_newest_products").then(resp => resp.json()).then(json => {
+        const data = json.data;
+        data.forEach((element, index) => {
+            $("#caroussel_newitems_items").append(`
+                <div class="carousel-item ${index==0?'active':''}">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card  card_item  m-2 p-1">
+                            <a href="produit?id_produit=${element.id_produit}">
+                                <img src="img/products/${element.id_produit}.jpg" class="card-img-top w-100" >
+                            </a>
+                        <div class="card-body">
+                            <a href="#" style="color: black;">
+                                <span class="card-title h4">${element.label}</span>
+                            </a>
+                            <a href="#" class="btn btn-primary">BUY</a>
+                            <span class="h6" style="margin-left: 30%;">${element.prix_produit.toFixed(2)} DH</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            `);
         });
     });
 </script>
