@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pnavigation</title>
+  <title>Navigation</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
@@ -95,217 +95,21 @@
 
       <div class="col">
         <div class="jumbotron">
-          <div class="row justify-content-around">
-            <div class="card  card_item col-lg-3 col-md-4 col-sm-5  m-2 p-1">
-              <a href="#">
-                <img src="img/products/pc.jpg" class="card-img-top w-100 " alt="...">
-              </a>
-              <div class="card-body">
-                <a href="#" style="color: black;">
-                  <span class="card-title h4">product</span>
-                </a>
-                <img src="img/stars.jpg" alt="rating" class=" d-inline-flex align-self-r w-lg-50 w-sm-50 w-md-75">
-                <p style="color:gray">exemple of a discription about the product</p>
-                <a href="#" class="btn btn-primary">BUY</a>
-                <span class="h6" style="margin-left: 30%;">12.213$</span>
-              </div>
-            </div>
-            <div class="card  card_item col-lg-3 col-md-4 col-sm-5 m-2 p-1">
-              <a href="#">
-                <img src="img/products/pc.jpg" class="card-img-top w-100 " alt="...">
-              </a>
-              <div class="card-body">
-                <a href="#" style="color: black;">
-                  <span class="card-title h4">product</span>
-                </a>
-                <img src="img/stars.jpg" alt="rating" class="  w-lg-50 w-sm-50 w-md-75">
-                <p style="color:gray">exemple of a discription about the product</p>
-                <a href="#" class="btn btn-primary">BUY</a>
-                <span class="h6" style="margin-left: 30%;">12.213$</span>
-              </div>
-            </div>
-            <div class="card  card_item col-lg-3 col-md-4 col-sm-5 m-2 p-1">
-              <a href="#">
-                <img src="img/products/pc.jpg" class="card-img-top  w-100 " alt="...">
-              </a>
-              <div class="card-body">
-                <a href="#" style="color: black;">
-                  <span class="card-title h4">product</span>
-                </a>
-                <img src="img/stars.jpg" alt="rating" class="  w-lg-50 w-sm-50 w-md-75">
-                <p style="color:gray">exemple of a discription about the product</p>
-                <a href="#" class="btn btn-primary">BUY</a>
-                <span class="h6" style="margin-left: 30%;">12.213$</span>
-              </div>
-            </div>
-            <div class="card  card_item col-lg-3 col-md-4 col-sm-5 m-2 p-1">
-              <a href="#">
-                <img src="img/products/pc.jpg" class="card-img-top w-100 " alt="...">
-              </a>
-              <div class="card-body">
-                <a href="#" style="color: black;">
-                  <span class="card-title h4">product</span>
-                </a>
-                <img src="img/stars.jpg" alt="rating" class="  w-lg-50 w-sm-50 w-md-75">
-                <p style="color:gray">exemple of a discription about the product</p>
-                <a href="#" class="btn btn-primary">BUY</a>
-                <span class="h6" style="margin-left: 30%;">12.213$</span>
-              </div>
-            </div>
-            <div class="card card_item col-lg-3 col-md-4 col-sm-5 m-2 p-1">
-              <a href="#">
-                <img src="img/products/pc.jpg" class="card-img-top w-100 " alt="...">
-              </a>
-              <div class="card-body">
-                <a href="#" style="color: black;">
-                  <span class="card-title h4">product</span>
-                </a>
-                <img src="img/stars.jpg" alt="rating" class="  w-lg-50 w-sm-50 w-md-75">
-                <p style="color:gray">exemple of a discription about the product</p>
-                <a href="#" class="btn btn-primary">BUY</a>
-                <span class="h6" style="margin-left: 30%;">12.213$</span>
-              </div>
-            </div>
-            <div class="card  card_item col-lg-3 col-md-4 col-sm-5 m-2 p-1">
-              <a href="#">
-                <img src="img/products/pc.jpg" class="card-img-top w-100 " alt="...">
-              </a>
-              <div class="card-body">
-                <a href="#" style="color: black;">
-                  <span class="card-title h4">product</span>
-                </a>
-                <img src="img/stars.jpg" alt="rating" class="  w-lg-50 w-sm-50 w-md-75">
-                <p style="color:gray">exemple of a discription about the product</p>
-                <a href="#" class="btn btn-primary">BUY</a>
-                <span class="h6" style="margin-left: 30%;">12.213$</span>
-              </div>
-            </div>
-            <div class="card  card_item col-lg-3 col-md-4 col-sm-5 m-2 p-1">
-              <a href="#">
-                <img src="img/products/pc.jpg" class="card-img-top w-100 " alt="...">
-              </a>
-              <div class="card-body">
-                <a href="#" style="color: black;">
-                  <span class="card-title h4">product</span>
-                </a>
-                <img src="img/stars.jpg" alt="rating" class="  w-lg-50 w-sm-50 w-md-75">
-                <p style="color:gray">exemple of a discription about the product</p>
-                <a href="#" class="btn btn-primary">BUY</a>
-                <span class="h6" style="margin-left: 30%;">12.213$</span>
-              </div>
-            </div>
-            <div class="card  card_item col-lg-3 col-md-4 col-sm-5 m-2 p-1">
-              <a href="#">
-                <img src="img/products/pc.jpg" class="card-img-top w-100 " alt="...">
-              </a>
-              <div class="card-body">
-                <a href="#" style="color: black;">
-                  <span class="card-title h4">product</span>
-                </a>
-                <img src="img/stars.jpg" alt="rating" class="  w-lg-50 w-sm-50 w-md-75">
-                <p style="color:gray">exemple of a discription about the product</p>
-                <a href="#" class="btn btn-primary">BUY</a>
-                <span class="h6" style="margin-left: 30%;">12.213$</span>
-              </div>
-            </div>
-            <div class="card  card_item col-lg-3 col-md-4 col-sm-5 m-2 p-1">
-              <a href="#">
-                <img src="img/products/pc.jpg" class="card-img-top w-100 " alt="...">
-              </a>
-              <div class="card-body">
-                <a href="#" style="color: black;">
-                  <span class="card-title h4">product</span>
-                </a>
-                <img src="img/stars.jpg" alt="rating" class="  w-lg-50 w-sm-50 w-md-75">
-                <p style="color:gray">exemple of a discription about the product</p>
-                <a href="#" class="btn btn-primary">BUY</a>
-                <span class="h6" style="margin-left: 30%;">12.213$</span>
-              </div>
-            </div>
-            <div class="card  card_item col-lg-3 col-md-4 col-sm-5 m-2 p-1">
-              <a href="#">
-                <img src="img/products/pc.jpg" class="card-img-top w-100 " alt="...">
-              </a>
-              <div class="card-body">
-                <a href="#" style="color: black;">
-                  <span class="card-title h4">product</span>
-                </a>
-                <img src="img/stars.jpg" alt="rating" class="  w-lg-50 w-sm-50 w-md-75">
-                <p style="color:gray">exemple of a discription about the product</p>
-                <a href="#" class="btn btn-primary">BUY</a>
-                <span class="h6" style="margin-left: 30%;">12.213$</span>
-              </div>
-            </div>
-            <div class="card  card_item col-lg-3 col-md-4 col-sm-5 m-2 p-1">
-              <a href="#">
-                <img src="img/products/pc.jpg" class="card-img-top w-100 " alt="...">
-              </a>
-              <div class="card-body">
-                <a href="#" style="color: black;">
-                  <span class="card-title h4">product</span>
-                </a>
-                <img src="img/stars.jpg" alt="rating" class="  w-lg-50 w-sm-50 w-md-75">
-                <p style="color:gray">exemple of a discription about the product</p>
-                <a href="#" class="btn btn-primary">BUY</a>
-                <span class="h6" style="margin-left: 30%;">12.213$</span>
-              </div>
-            </div>
-            <div class="card  card_item col-lg-3 col-md-4 col-sm-5 m-2 p-1">
-              <a href="#">
-                <img src="img/products/pc.jpg" class="card-img-top w-100 " alt="...">
-              </a>
-              <div class="card-body">
-                <a href="#" style="color: black;">
-                  <span class="card-title h4">product</span>
-                </a>
-                <img src="img/stars.jpg" alt="rating" class="  w-lg-50 w-sm-50 w-md-75">
-                <p style="color:gray">exemple of a discription about the product</p>
-                <a href="#" class="btn btn-primary">BUY</a>
-                <span class="h6" style="margin-left: 30%;">12.213$</span>
-              </div>
-            </div>
-            <div class="card  card_item col-lg-3 col-md-4 col-sm-5 m-2 p-1">
-              <a href="#">
-                <img src="img/products/pc.jpg" class="card-img-top w-100 " alt="...">
-              </a>
-              <div class="card-body">
-                <a href="#" style="color: black;">
-                  <span class="card-title h4">product</span>
-                </a>
-                <img src="img/stars.jpg" alt="rating" class="  w-lg-50 w-sm-50 w-md-75">
-                <p style="color:gray">exemple of a discription about the product</p>
-                <a href="#" class="btn btn-primary">BUY</a>
-                <span class="h6" style="margin-left: 30%;">12.213$</span>
-              </div>
-            </div>
-            <div class="card  card_item col-lg-3 col-md-4 col-sm-5 m-2 p-1">
-              <a href="#">
-                <img src="img/products/pc.jpg" class="card-img-top w-100 " alt="...">
-              </a>
-              <div class="card-body">
-                <a href="#" style="color: black;">
-                  <span class="card-title h4">product</span>
-                </a>
-                <img src="img/stars.jpg" alt="rating" class="  w-lg-50 w-sm-50 w-md-75">
-                <p style="color:gray">exemple of a discription about the product</p>
-                <a href="#" class="btn btn-primary">BUY</a>
-                <span class="h6" style="margin-left: 30%;">12.213$</span>
-              </div>
-            </div>
-            <div class="card  card_item col-lg-3 col-md-4 col-sm-5 m-2 p-1">
-              <a href="#">
-                <img src="img/products/pc.jpg" class="card-img-top w-100 " alt="...">
-              </a>
-              <div class="card-body">
-                <a href="#" style="color: black;">
-                  <span class="card-title h4">product</span>
-                </a>
-                <img src="img/stars.jpg" alt="rating" class="  w-lg-50 w-sm-50 w-md-75">
-                <p style="color:gray">exemple of a discription about the product</p>
-                <a href="#" class="btn btn-primary">BUY</a>
-                <span class="h6" style="margin-left: 30%;">12.213$</span>
-              </div>
-            </div>
+          <div class="row justify-content-around" id="products_div">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
           </div>
           <br>
           <br><br>
@@ -347,6 +151,37 @@
 
     ?>
   </div>
+
+  <script>
+
+    const queryString = window.location.search;
+
+    function get_products() {
+      fetch("./php/products/read_products" + queryString).then(resp => resp.json()).then(json => {
+        const data = json.data;
+        data.forEach((element, index) => {
+          $("#products_div").append(`
+          <div class="card  card_item col-lg-3 col-md-4 col-sm-5  m-2 p-1">
+              <a href="#">
+                <img src="img/products/${element.id_produit}.jpg" class="card-img-top w-100 " alt="...">
+              </a>
+              <div class="card-body">
+                <a href="#" style="color: black;">
+                  <span class="card-title h4">${element.label}</span>
+                </a>
+                <img src="img/stars.jpg" alt="rating" class=" d-inline-flex align-self-r w-lg-50 w-sm-50 w-md-75">
+                <p style="color:gray">${element.description_produit}</p>
+                <a href="#" class="btn btn-primary">BUY</a>
+                <span class="h6" style="margin-left: 30%;">${element.prix_produit.toFixed(2)} DH</span>
+              </div>
+            </div>
+            `);
+        });
+      }).catch(err => console.error(err));
+    }
+    get_products();
+
+  </script>
 
 </body>
 
