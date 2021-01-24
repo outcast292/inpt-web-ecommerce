@@ -40,41 +40,44 @@
           </div>
           <hr>
           <div class="h4" style="color: navy;">Affiner par</div>
-          <div class="prix">
-            <div class="h5" style="color: gold;">Prix</div>
+
+
+
+          <div class="Marques my-5">
+            <div class="h5" style="color: gold;">Marques</div>
             <br>
-            <div>
-              entre:
-              <input type="text" name="from_price" style="width:40px;margin-right: 3px;margin-left: 2px;border-radius: 5px;border-width: 1px;">
-              et
-              <input type="text" name="to_price" style="width:40px;margin-left: 3px;border-radius: 5px;border-width: 1px;">
+            <div id="marques">
             </div>
-            <div>
 
-              <input type="checkbox" style="margin-right: 15px;">0-50$
-              <br>
-
-              <input type="checkbox" style="margin-right: 15px;">50-200$
-              <br>
-
-
-              <input type="checkbox" style="margin-right: 15px;">200-500$
-              <br>
-
-
-              <input type="checkbox" style="margin-right: 15px;">500-1000$
-              <br>
-
-              <input type="checkbox" style="margin-right: 15px;">1000-2000$
-
-            </div>
             <br>
 
-
-            <div class="Marques my-5">
-              <div class="h5" style="color: gold;">Marques</div>
+            <div class="prix">
+              <div class="h5" style="color: gold;">Prix</div>
               <br>
-              <div id="marques">
+              <div>
+                entre:
+                <input type="text" name="from_price" style="width:40px;margin-right: 3px;margin-left: 2px;border-radius: 5px;border-width: 1px;">
+                et
+                <input type="text" name="to_price" style="width:40px;margin-left: 3px;border-radius: 5px;border-width: 1px;">
+              </div>
+              <div id="prices">
+
+                <input type="checkbox" min="0" max="49" style="margin-right: 15px;">0-49 DH
+                <br>
+
+                <input type="checkbox" min="50" max="199" style="margin-right: 15px;">50-199 DH
+                <br>
+
+
+                <input type="checkbox" min="200" max="499" style="margin-right: 15px;">200-499 DH
+                <br>
+
+
+                <input type="checkbox" min="500" max="1000" style="margin-right: 15px;">500-1000 DH
+                <br>
+
+                <input type="checkbox" min="1000" max="10000000000" style="margin-right: 15px;">1000-+ DH
+
               </div>
         </form>
 
@@ -144,6 +147,7 @@
     function show_products(val) {
       $("#products_div").text('');
       var p = [...products]
+      p = p.filter(el => filterRange(el.prix_produit));
       if (filters.categories.length > 0)
         p = p.filter(el => filters.categories.includes(el.id_categorie))
       if (filters.marques.length > 0)
@@ -225,19 +229,24 @@
 
 
     $("#marques").on('change', 'input:checkbox', function() {
-      filters.marques = $("input:checkbox:checked").map(function() {
+      filters.marques = $("#marques > input:checkbox:checked").map(function() {
         return parseInt($(this).val())
       }).get();
       console.log(filters.marques);
       show_products(0);
     });
     $("#categories").on('change', 'input:checkbox', function() {
-      filters.categories = $("input:checkbox:checked").map(function() {
+      filters.categories = $("#categories > input:checkbox:checked").map(function() {
         return parseInt($(this).val())
       }).get();
       console.log(filters.categories);
       show_products(0);
 
+    });
+
+    $("#prices").on('change', 'input:checkbox', function() {
+
+      show_products(0);
     });
 
     function paginate(arr, size) {
@@ -247,6 +256,23 @@
         page.push(val)
         return acc
       }, [])
+    }
+
+    function filterRange(amount) {
+      var checkedInputs = $("#prices").find("input:checked").length;
+      var totalInputs = $("#prices").find("input").length;
+      var returnValue = false;
+
+      $("#prices").find("input:checked").each(function() {
+        var min = $(this).attr('min');
+        var max = $(this).attr('max');
+        if (amount >= min && amount <= max) {
+          returnValue = true;
+          return true;
+        }
+      });
+
+      return (checkedInputs == 0 || totalInputs == checkedInputs || returnValue);
     }
   </script>
 

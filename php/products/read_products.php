@@ -11,7 +11,7 @@ if (isset($_GET["search"]) || isset($_GET["categorie"]) || isset($_GET["marque"]
         $params["search"] = "%" . $_GET["search"] . "%";
     }
     if (!empty($_GET["categorie"])) {
-        $query .= " and id_categorie = :categorie";
+        $query .= " and pr.id_categorie = :categorie";
         $params["categorie"] = $_GET["categorie"];
     }
     if (!empty($_GET["marque"])) {
