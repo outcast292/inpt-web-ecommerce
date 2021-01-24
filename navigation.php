@@ -56,9 +56,9 @@
               <br>
               <div>
                 entre:
-                <input type="text" name="from_price" style="width:40px;margin-right: 3px;margin-left: 2px;border-radius: 5px;border-width: 1px;">
+                <input type="number" name="from_price" id="from_price" onblur="show_products(0)" style="width:40px;margin-right: 3px;margin-left: 2px;border-radius: 5px;border-width: 1px;">
                 et
-                <input type="text" name="to_price" style="width:40px;margin-left: 3px;border-radius: 5px;border-width: 1px;">
+                <input type="number" name="to_price" id="to_price" onblur="show_products(0)" style="width:40px;margin-left: 3px;border-radius: 5px;border-width: 1px;">
               </div>
               <div id="prices">
 
@@ -146,7 +146,10 @@
 
     function show_products(val) {
       $("#products_div").text('');
+      var from_price = parseFloat($("#from_price").val()) || -1;
+      var to_price = parseFloat($("#to_price").val()) || -1;
       var p = [...products]
+      p = p.filter(el => (from_price != -1 ? el.prix_produit >= from_price : true) && (to_price != -1 ? el.prix_produit <= to_price : true));
       p = p.filter(el => filterRange(el.prix_produit));
       if (filters.categories.length > 0)
         p = p.filter(el => filters.categories.includes(el.id_categorie))
@@ -186,8 +189,6 @@
 
       `);
     }
-    //TODO fix paginations
-    //TODO FIX FILTERS
     async function get_products() {
       await fetch("./php/products/read_products" + queryString).then(resp => resp.json()).then(json => {
         products = json.data;
