@@ -24,9 +24,9 @@
     <div class="container ">
         <div class="jumbotron ">
             <div class="m-5">
-                <form action="" method="get">
+                <form action="navigation" method="get">
                     <label for="search_input" class="form-label">Vous recherchez quelque chose ?</label>
-                    <input class="form-control" type="search" name="search_input" id="search_input">
+                    <input class="form-control" type="search" name="search" id="search_input">
                 </form>
             </div>
 
@@ -136,11 +136,15 @@
 </body>
 <script>
     $('#caroussel_bestof').carousel({
+        interval: 2500
+    })
+    $('#caroussel_newitems').carousel({
         interval: 10000
     })
     $('#caroussel_newitems').carousel({
         interval: 10000
     })
+
 
 
     $('.carousel .carousel-item').each(function() {
