@@ -58,7 +58,7 @@
                                         </div>
                                         <div class="ml-3 col-2">
                                             <label for="to_date">Date Fin:</label>
-                                            <input type="date" name="to_date" class="form-control" id="to_date" value="<?php echo  date("Y-m-d") ?>">
+                                            <input type="date" name="to_date" class="form-control" id="to_date">
                                         </div>
                                     </div>
                                 </div>
@@ -148,7 +148,7 @@
 
     <script>
         function show_details(id_client, nom_client, nbr_commande, email, tel_client, date_naissance, sexe, first_commande, last_commande, minimum_spent, maximum_spent, avg_spent) {
-            fetch("../php/client/client_commande?id_client=" + id_client).then(resp => resp.json()).then(json => {
+            fetch("../php/clients/client_commande?id_client=" + id_client).then(resp => resp.json()).then(json => {
                 const data = json.data;
                 $('#modal_content').html(`
                      <div class="modal-header">
@@ -160,7 +160,6 @@
                 <div class="modal-body">
                     <div class="mt-2 col-12 row">
                         <div class="col-auto">
-
                             <h5>
                                 Informations du Clients
                             </h5>
@@ -197,11 +196,9 @@
                             <input type="text" class="form-control" readonly value="${sexe}">
 
                         </div>
-                        
                     </div><br>
                     <div class="mt-2 col-12 row">
                         <div class="col-auto">
-
                             <h5>
                                 Statistiques
                             </h5>
@@ -225,7 +222,6 @@
                         <div class="col-6">
                             <label>Montant d'Achat Maximum</label>
                             <input type="text" class="form-control" readonly value="${maximum_spent}">
-
                         </div>
                         <div class="col-6">
                             <label>Montant d'Achat Minimum</label>
@@ -245,7 +241,6 @@
                     </div><br>
                     <div class="mt-2 col-12 row">
                         <div class="col-auto">
-
                             <h5>
                                 Dernières Commandes
                             </h5>
@@ -267,13 +262,13 @@
                                     </tr>
                                 </thead>
                                 <tbody id="table_body">
-                                    ${data.map((elelement) => `
+                                    ${data.map((element) => `
                                         <tr>
-                                            <td>${elelement.id_commande}</td>
-                                            <td>${elelement.date_commande}</td>
-                                            <td>${elelement.etat_actuell}</td>
-                                            <td>${elelement.prix_commande}</td>
-                                            <td><a href=''><button type="button" class="btn btn-link">VOIR</button></a></td>
+                                            <td>${element.id_commande}</td>
+                                            <td>${element.date_commande}</td>
+                                            <td>${element.etat_actuell}</td>
+                                            <td>${element.prix_commande}</td>
+                                            <td><a href='commandes_hist?id_commande=${element.id_commande}&nom_client=${nom_client}&tel_client=0${tel_client}'><button type="button" class="btn btn-link">VOIR</button></a></td>
                                         </tr>`)}
                                 </tbody>
                             </table>
@@ -281,13 +276,12 @@
                     </div>
                     <div class="row">
                         <div class='col-3'></div>
-                        <div class='col-5 m-3'><a href=''><button type="button" class="btn btn-info">Toutes les Commandes de ce Client</button></a></div>  
+                        <div class='col-5 m-3'><a href='commandes_hist?id_client=${id_client}&nom_client=${nom_client}'><button type="button" class="btn btn-info">Toutes les Commandes de ce Client</button></a></div>  
                     </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">FERMER</button>
                 </div>
-                </div>     `);
-
+                </div>`);
                 $('#modal_details').modal('show');
             }).catch(err => {
                 console.log(err);
@@ -301,7 +295,7 @@
 
         function search() {
             var dataform = $("#form_search :input[value!='']").serialize();
-            fetch("../php/client/client_read?" + dataform).then(resp => resp.json()).then(json => {
+            fetch("../php/clients/clients_read?" + dataform).then(resp => resp.json()).then(json => {
                 var data = json.data;
                 $("#table_body").text('');
                 data.forEach((element, index) => {
