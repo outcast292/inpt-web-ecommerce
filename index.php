@@ -147,6 +147,7 @@
 
 
 
+
     $('.carousel .carousel-item').each(function() {
         var minPerSlide = 4;
         var next = $(this).next();

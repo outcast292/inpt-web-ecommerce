@@ -9,6 +9,8 @@
     <script src="../js/jquery-3.5.1.slim.min.js"></script>
 
     <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/bootstrap-select.min.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap-select.min.css">
     <link rel="stylesheet" href="../css/bootstrap-icons.css">
     <link rel="stylesheet" href="../css/admin/sidebar.css">
     <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -44,6 +46,12 @@
                                     <label for="to_date">Date debut</label>
 
                                     <input type="date" name="to_date" class="form-control" value="<?php echo  date("Y-m-d") ?>" id="to_date">
+                                </div>
+                                <div class="ml-3 col-2">
+                                    <label for="client_list">Client</label>
+                                    <select class="form-control selectpicker" id="client_list" name="id_client" data-live-search="true">
+                                        <option data-tokens="" selected value></option>
+                                    </select>
                                 </div>
                                 <div class="ml-3 col-2">
                                     <label for="submit_search">.</label>
@@ -93,6 +101,26 @@
     </div>
 
     <script>
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        fetch("../php/clients/clients_get").then(resp => resp.json()).then(json => {
+            const data = json.data;
+
+            data.forEach(element => {
+                $("#client_list").append(`
+                    <option data-tokens="${element.id_client}" value="${element.id_client}" selected>${element.nom_client}</option>
+                `);
+
+
+            })
+            $('.selectpicker').selectpicker('refresh');
+            if (urlParams.has("id_client"))
+                $('.selectpicker').selectpicker('val', urlParams.get("id_client"));
+            else
+                $('.selectpicker').selectpicker('val', '');
+
+        });
+
         function show_details(id_commande, nom_client, tel_client) {
             fetch("../php/commandes/commande_read?id_commande=" + id_commande).then(resp => resp.json()).then(json => {
                 const data = json.data;
@@ -216,7 +244,14 @@
         };
         $("#submit_search").click(function(event) {
             event.preventDefault();
-            var dataform = $("#form_search").serialize();
+            search()
+        });
+
+        function search(id_client) {
+            if (id_client)
+                var dataform = "id_client=" + id_client;
+            else
+                var dataform = $("#form_search").serialize();
             if (dataform.length > 0) {
                 fetch("../php/commandes/commandes_read?" + dataform).then(resp => resp.json()).then(json => {
                     var data = json.data;
@@ -247,7 +282,11 @@
                     console.log(err);
                 });
             }
-        });
+        }
+        if (urlParams.has("id_commande") && urlParams.has("nom_client") && urlParams.has("tel_client"))
+            show_details(urlParams.get("id_commande"), urlParams.get("nom_client"), urlParams.get("tel_client"))
+        else if (urlParams.has("id_client"))
+            search(urlParams.get("id_client"))
     </script>
 
 </body>
