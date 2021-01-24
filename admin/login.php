@@ -25,6 +25,7 @@
             $_SESSION["id_user"] = $row["id_user"];
             $_SESSION["connection_status"] = "connected";
             header("location: index.php");
+            //header("location: ".$_SESSION["LAST_PAGE"]); //pour etre envoyer a la page voulue au depart
         } else {
             $x = 1;
         }
