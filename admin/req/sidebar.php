@@ -27,7 +27,8 @@
                     <a class="nav-link text-truncate" href="./categories.php"><i class="bi bi-tags-fill"></i> <span class="d-none d-sm-inline">Categories</span></a>
                 </li>
                 <li class="nav-item"><a class="nav-link text-truncate" href="./clients.php"><i class="bi bi-person-circle"></i> <span class="d-none d-sm-inline">Clients</span></a></li>
-                <li class="nav-item"><a class="nav-link text-truncate" href="./utilisateurs.php"><i class="bi bi-person-circle"></i> <span class="d-none d-sm-inline">Utilisateurs</span></a></li>
+                <hr>
+                <li class="nav-item"><a class="nav-link text-truncate" href="./utilisateurs.php"><i class="bi bi-emoji-smile"></i> <span class="d-none d-sm-inline">Utilisateurs</span></a></li>
             </ul>
         </div>
 

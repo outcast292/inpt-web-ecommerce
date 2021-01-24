@@ -11,7 +11,7 @@ if ($_GET["mdp"] == null) {
     $query = "update utilisateurs set mdp_user = :mdp_user where id_user= :id_user;";
     $sql = $conn->prepare($query);
     $sql->execute(array(
-        "id_user" => $_GET["id"],
+        "id_user" => $_GET["id_user"],
         "mdp_user" => password_hash($_GET["mdp"], PASSWORD_BCRYPT),
 
     ));

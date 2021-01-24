@@ -1,6 +1,6 @@
 <?php
 require_once "../connection/db.php";
-$query = "select id_user, nom_user , prenom_user , email_user , is_admin , tel_user,fonction from utilisateurs";
+$query = "select id_user, nom_user , prenom_user , email_user , is_admin , tel_user from utilisateurs";
 $sql = $conn->prepare($query);
 $sql->execute();
 $data = $sql->fetchAll(PDO::FETCH_ASSOC);

@@ -22,7 +22,7 @@ if ($_GET["nom"] == null) {
     $msg["code"] = 406;
     $msg["msg"] = "Merci de confirmer le mot de passe";
 } else if ($_GET["mdp"] == $_GET["mdp_conf"]) {
-    $query = "INSERT into utilisateurs (nom_user,prenom_user,email_user,mdp_user,is_admin,tel_user,fonction) values(:nom_user,:prenom_user,:email_user,:mdp_user,:is_admin,:tel_user,:fonction  );";
+    $query = "INSERT into utilisateurs (nom_user,prenom_user,email_user,mdp_user,is_admin,tel_user) values(:nom_user,:prenom_user,:email_user,:mdp_user,:is_admin,:tel_user  );";
     $sql = $conn->prepare($query);
     $sql->execute(array(
         "nom_user" => $_GET["nom"],
@@ -31,9 +31,6 @@ if ($_GET["nom"] == null) {
         "mdp_user" => password_hash($_GET["mdp"], PASSWORD_BCRYPT),
         "is_admin" => $_GET["admin"],
         "tel_user" => $_GET["tel"],
-        "fonction" => $_GET["fonction"],
-
-
     ));
     $msg["code"] = 200;
     $msg["msg"] = "ok";

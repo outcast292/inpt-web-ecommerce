@@ -3,7 +3,7 @@ require_once "../connection/db.php";
 $query = "delete from utilisateurs where id_user= :id_user";
 $sql = $conn->prepare($query);
 $sql->execute(array(
-    "id_user"=>$_GET["id"]
+    "id_user"=>$_GET["id_user"]
 ));
 
 $msg["code"] = 200;
