@@ -7,7 +7,10 @@
   <?php if ($_SERVER['REQUEST_URI'] != "/" && $_SERVER['REQUEST_URI'] != "/index.php") {
   ?>
     <div class="col-6 col-lg-8  col-md-5 col-sm-4 d-flex justify-content-center">
-      <input class="form-control " type="text" placeholder="Search..." style="width: 80%;">
+      <form action="navigation" method="get" class="col-12">
+        <input  class="form-control col-12 " name="search" type="text" placeholder="Search..." style="width: 80%;">
+
+      </form>
 
     </div><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
