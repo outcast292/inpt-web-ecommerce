@@ -19,7 +19,7 @@ if (isset($_GET["search"]) || isset($_GET["categorie"]) || isset($_GET["marque"]
         $params["marque"] = $_GET["marque"];
     }
 
-    $query .= ' GROUP by pr.id_produit   order by qtt_sold  desc limit 12';
+    $query .= ' GROUP by pr.id_produit   order by qtt_sold  desc ';
 
     $sql = $conn->prepare($query);
     $sql->execute($params);

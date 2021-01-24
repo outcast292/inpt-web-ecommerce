@@ -93,7 +93,7 @@
       <br><br>
       <div class=" col-12 d-flex justify-content-center">
         <nav>
-          <ul class="pagination">
+          <ul class="pagination" id="pagination">
             <li class="page-item ">
               <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
             </li>
@@ -142,7 +142,6 @@
     var pages = [];
 
     function show_products(val) {
-      console.log(val)
       $("#products_div").text('');
       var p = [...products]
       if (filters.categories.length > 0)
@@ -150,7 +149,8 @@
       if (filters.marques.length > 0)
         p = p.filter(el => filters.marques.includes(el.id_marque));
       console.log(p);
-      p.forEach((element, index) => {
+      pages = paginate(p, 12);
+      pages[val].forEach((element, index) => {
         $("#products_div").append(`
           <div class="card  card_item col-lg-3 col-md-4 col-sm-5  m-2 p-1">
               <a href="#">
@@ -168,6 +168,19 @@
             </div>
             `);
       });
+
+      $("#pagination").html(`
+            <li class="page-item ${val>0? "":"disabled"} ">
+              <a class="page-link" href="#" tabindex="-1" onclick="show_products( ${val>0? val-1:0})" aria-disabled="true">precedant</a>
+            </li>
+            ${pages.map((el,index)=> `
+              <li class="page-item ${val==index?"active":""}"><a class="page-link" onclick="show_products(${index})" href="#">${index+1}</a></li>  
+              `)}         
+            <li class="page-item ${val<pages.length-1? "":"disabled"}">
+              <a class="page-link" href="#" onclick="show_products( ${val<pages.length-1? val+1:pages.length-1})">suivant</a>
+            </li>
+
+      `);
     }
     //TODO fix paginations
     //TODO FIX FILTERS
@@ -190,9 +203,9 @@
         }).filter((v, i, a) => a.findIndex(t => (t.id_categorie === v.id_categorie)) === i);
         //calculate pags
 
-        pages = paginate(products, 12);
+
       }).catch(err => console.error(err));
-      return "ok";
+      return 0;
     }
     get_products().then(val => {
       show_products(val);
@@ -216,14 +229,14 @@
         return parseInt($(this).val())
       }).get();
       console.log(filters.marques);
-      show_products("true");
+      show_products(0);
     });
     $("#categories").on('change', 'input:checkbox', function() {
       filters.categories = $("input:checkbox:checked").map(function() {
         return parseInt($(this).val())
       }).get();
       console.log(filters.categories);
-      show_products("true");
+      show_products(0);
 
     });
 
