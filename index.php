@@ -141,6 +141,11 @@
     $('#caroussel_newitems').carousel({
         interval: 10000
     })
+    $('#caroussel_newitems').carousel({
+        interval: 10000
+    })
+
+
 
 
     $('.carousel .carousel-item').each(function() {
