@@ -1,12 +1,3 @@
-<?php
-                $connect=new PDO('mysql:host=localhost;dbname=ecommerce', 'root' , '');
-
-              
-                
-                require_once "prodTest.php";
-
-                
-                ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -23,141 +14,245 @@
     <script src="../js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="../css/bootstrap-icons.css">
     <link rel="stylesheet" href="../css/admin/sidebar.css">
-  
 
-    
+    <?php require "req/verify.php";  ?>
+
 </head>
 
 <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-2 collapse  show d-md-flex bg-secondary  text-light   pt-2 pl-0 min-vh-100" id="sidebar">
-    <div class="row">
-
-        <h1 class="col-12  text-center">AMOIL</h1>
-        <h6 class="col-12  text-center">Interface d'administration de site AMOIl</h6>
-
-        <div class="col-12">
-            <hr>
-            <ul class="nav flex-column flex-nowrap overflow-hidden">
-                <li class="nav-item">
-                    <a class="nav-link text-truncate" href="#"><i class="bi bi-house-fill"></i> <span class="d-none d-sm-inline">principale</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link collapsed text-truncate" href="#submenu1" data-toggle="collapse" data-target="#submenu1"><i class="bi bi-bag"></i> <span class="d-none d-sm-inline">Commandes</span></a>
-                    <div class="collapse" id="submenu1" aria-expanded="false">
-                        <ul class="flex-column pl-2 nav">
-                            <li class="nav-item"><a class="nav-link py-0" href="./commandes.php"><i class="bi bi-bag-check"></i><span>Validation des commandes</span></a></li>
-                            <li class="nav-item"><a class="nav-link py-0" href="./commandes_hist.php"><i class="bi bi-clock-history"></i><span>Historique</span></a></li>
-
-                        </ul>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-truncate" href="./produits.php"><i class="bi bi-cart-check"></i> <span class="d-none d-sm-inline">Produits</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-truncate" href="./categories.php"><i class="bi bi-tags-fill"></i> <span class="d-none d-sm-inline">Categories</span></a>
-                </li>
-                <li class="nav-item"><a class="nav-link text-truncate" href="./clients.php"><i class="bi bi-person-circle"></i> <span class="d-none d-sm-inline">Clients</span></a></li>
-            </ul>
-        </div>
-
-
-        <div class="col-12 text-center">
-
-        <button class="btn btn-danger"> se decconecter</button>
-
-        </div>
-
-    </div>
-
-
-
-
-</div>            <div class="col pt-4 ">
+            <?php require "req/sidebar.php" ?>
+            <div class="col pt-4">
                 <div class="container.fluid">
-
-                    <h2>
-                        <a href="" data-target="#sidebar" data-toggle="collapse" class="d-md-none"><i class="fa fa-bars"></i></a>Page Produit
-                    </h2>
-                    <h6 class="hidden-sm-down">page pour ajouter , modifier ou supprimer un produit</h6>
+                    <h1><a href="" data-target="#sidebar" data-toggle="collapse" class="d-md-none"><i class="fa fa-bars"></i></a> Produits</h1>
+                    <h6 class="hidden-sm-down">Page pour ajouter, modifier ou supprimer un produit</h6>
                     <hr>
-                    <!--Modal d'ajout du produit -->
                     <p>
                         <button class="btn btn-secondary btn-block" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                             <h5>AJOUTER UN PRODUIT</h5>
                         </button>
                     </p>
+
                     <div class="collapse" id="collapseExample">
-                    <form action="#" method="get">
-                                    <input type="hidden" name="action" value="Ajouter">
+                        <form  method="get" id='form_search'>
                             <div class="form-group">
                                 <h6>La marque :</h6>
-                                <input type="text" name="nom_marque" class="form-control">
+                                <select name="id_marque">
+                                <option value="1">Nike</option>
+                                <option value="2">Adidas</option>
+                                <option value="3">puma</option>
+                                </select>
+                                
                             </div>
-                            
+
                             <div class="form-group">
                                 <h6>La categorie :</h6>
-                                <input type="text" name="nom_categorie" class="form-control" >
+                                <select name="id_categorie">
+                                <option value="1">Vetements</option>
+                                <option value="2">Electronique</option>
+                                <option value="3">Voitures</option>
+                                </select>
                             </div>
                             <div class="form-group">
-                            <h6>Label :</h6>
-                                <input type="text"name="label" class="form-control" >
+                                <h6>Label :</h6>
+                                <input type="text" name="label" class="form-control">
                             </div>
                             <div class="form-group">
-                            <h6>Le prix :</h6>
-                                <input type="text" name="prix_produit" class="form-control" >
+                                <h6>Le prix :</h6>
+                                <input type="text" name="prix_produit" class="form-control">
                             </div>
                             <div class="mt-2 row">
-                                    <div class='col-4'></div>
-                                    <div class="ml-3 pt-2 col-4">
-                                        <input type="submit" id="submit_search" class="btn btn-success btn-block  form-control" value="Ajouter">
-                                    </div>
+                                <div class='col-4'></div>
+                                <div class="ml-3 pt-2 col-4">
+                                    <input type="submit" id="submit_search" class="btn btn-success btn-block  form-control" value="Ajouter">
                                 </div>
-
-                     
-                </form></div>
-                            
                             </div>
-                        
-                        <table class="table table-hover" id="table_search">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th scope="col">id</th>
-                                    <th scope="col">Marque</th>
-                                    <th scope="col">Categorie</th>
-                                    <th scope="col">Label</th>
-                                    <th scope="col">Prix</th>
-                                    <th scope="col">Options</th>
-                                </tr>
-                            </thead>
-                            <tbody id="table_body">
 
-                            </tbody>
-                            
 
-                        <tr>
-                        <?php foreach($produit as $produits): ?>
-                        <td><?php  echo $produits['id_produit'] ?></td>
-                        <td><?php  echo $produits['nom_marque'] ;?></td>
-                        <td><?php  echo $produits['nom_categorie']; ?></td>
-                        <td><?php  echo $produits['label']; ?></td>
-                        <td><?php  echo $produits['prix_produit']; ?></td>
-                        <td>
-                               
-                                <a href="?action=Supprimer&id=<?php echo $produits['id_produit']?>"> Supprimer</a>
-                               
-                                
-                        </td>
-                        </tr>
-                        <?php endforeach; ?>
-                        </table>
-                        
- 
-                        
+                        </form>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <div class="alert alert-info" id='div_nbr' hidden>
+                        Nombre de Produits Trouvés : <span id="nbr_prd"></span>
+                    </div>
+
+                    <table class="table table-hover" id="table_search">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Marque</th>
+                                <th scope="col">Categorie</th>
+                                <th scope="col">Label</th>
+                                <th scope="col">Prix</th>
+                                <th scope="col">Options</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table_body">
+
+                        </tbody>
+                    </table>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--modal-->
+    <div class="modal  fade" id="modal_details" tabindex="-1" aria-labelledby="modal_details" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content" id="modal_content">
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function ajouter() {
+            var dataform = $("#form_search :input[value!='']").serialize();
+            fetch("../php/products/products_insert?" + dataform).then(resp => resp.json()).then(json => {
+            }).catch(err => {
+                console.log(err);
+            });
+        };
+        function modifier(id_produit) {
+            $('#modal_content').html(`
+                     <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModal">MODIFICATION DU PRODUIT N° ${id_produit}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="col-12" id='form_modify'>
+                        <div class='mt-2 row'>
+                            <div class="form-row p-2 col-12">
+                                <div class="pt-3 col-2">
+                                    <h6>Label: </h6>
+                                </div>
+                                <div class="mt-2 col-10">
+                                    <input class="form-control mr-sm-2" type="search" aria-label="Search" name="label" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='mt-2 row'>
+                            <div class="form-row p-2 col-12">
+                                <div class="pt-3 col-2">
+                                    <h6>Prix: </h6>
+                                </div>
+                                <div class="mt-2 col-10">
+                                    <input class="form-control mr-sm-2" type="search" aria-label="Search" name="prix_produit" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-2 row">
+                            <div class='col-4'></div>
+                            <div class="ml-3 pt-2 col-4">
+                                <input type="submit" id="submit_modify" class="btn btn-success btn-block  form-control" value="Confirmer">
+                            </div>
+                        </div>
+                    </form>
+                </div>
                     
-              
-</body>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">FERMER</button>
+                </div>
+                </div>     `);
+                $('#modal_details').modal('show');
+            $("#submit_modify").click(function(event) {
+                event.preventDefault();
+                confirm_modifier(id_produit);
+            });
 
+        };
+
+        function confirm_modifier(id_produit) {
+            var dataform = $("#form_modify :input[value!='']").serialize();
+            fetch("../php/products/products_modify?id_produit=" + id_produit + "&" + dataform).then(resp => resp.json()).then(json => {
+                $('#modal_details').modal('hide');
+            }).catch(err => {
+                console.log(err);
+            });
+            search();
+        };
+
+        function supprimer(id_produit) {
+            $('#modal_content').html(`
+                     <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModal">SUPPRESSION DU PRODUIT N° ${id_produit}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="col-12" id='form_delete'>
+                        <div class="mt-2 row">
+                            <div class='col-4'></div>
+                            <div class="ml-3 pt-2 col-4">
+                                <input type="submit" id="submit_delete" class="btn btn-success btn-block  form-control" value="Confirmer Suppression">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                    
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">FERMER</button>
+                </div>
+                </div>     `);
+                $('#modal_details').modal('show');
+            $("#submit_delete").click(function(event) {
+                event.preventDefault();
+                confirm_supprimer(id_produit);
+            });
+        };
+
+        function confirm_supprimer(id_produit) {
+            fetch("../php/products/products_delete?id_produit=" + id_produit).then(resp => resp.json()).then(json => {
+                 $('#modal_details').modal('hide');
+            }).catch(err => {
+                console.log(err);
+            });
+            search();
+        };
+
+        $("#submit_search").click(function(event) {
+            event.preventDefault();
+            ajouter(); 
+            search();
+        });
+
+        function search() {
+            fetch("../php/products/products_read").then(resp => resp.json()).then(json => {
+                var data = json.data;// valeur de key data
+                $("#table_body").text('');
+                data.forEach((element) => {
+                    $('#table_body').append(`
+                        <tr class=" ${element.valide==1? "table-success":element.valide==-1?"table-danger":"" }">
+                            <td>${element.id_produit}</td>
+                            <td>${element.nom_marque}</td>
+                            <td>${element.nom_categorie}</td>
+                            <td>${element.label}</td>
+                            <td>${element.prix_produit.toFixed(2)}</td>
+                            <td>
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">OPTIONS</button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                           
+                                <a class="dropdown-item" href="#" onclick='modifier(${element.id_produit});'>MODIFIER</a>
+                                <a class="dropdown-item" href="#" onclick='supprimer(${element.id_produit});'>SUPPRIMER </a>
+                            </div>
+                            </td>
+                        </tr>
+                        `);
+                });
+                $("#nbr_prd").text(data.length);
+                $("#div_nbr").removeAttr("hidden");
+
+            }).catch(err => {
+                console.log(err);
+            });
+        }
+        search();
+    </script>
+</body>
 </html>
