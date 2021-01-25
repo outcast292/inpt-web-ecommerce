@@ -10,6 +10,7 @@
 
     <script src="../js/bootstrap.bundle.min.js"></script>
     <script src="../js/bootstrap-select.min.js"></script>
+    <script src="../js/i18n/defaults-fr_FR.js"></script>
     <link rel="stylesheet" href="../css/bootstrap-select.min.css">
     <link rel="stylesheet" href="../css/bootstrap-icons.css">
     <link rel="stylesheet" href="../css/admin/sidebar.css">

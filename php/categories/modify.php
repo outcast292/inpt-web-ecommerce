@@ -1,6 +1,7 @@
 <?php
 require_once "../connection/db.php";
 //require_once "../verify_session.php";
+if (isset($_GET["id_categorie"])&&isset($_GET["nom_categorie"])) {
 
 $query = "UPDATE categorie set nom_categorie=:nom_categorie where id_categorie=:id_categorie";
 $stmt = $conn->prepare($query);
@@ -18,3 +19,5 @@ $msg["msg"] = "ok";
 
 $json = json_encode($msg, JSON_NUMERIC_CHECK);
 echo $json;
+} else
+echo json_encode(array("code" => 400, "message" => "Error, parametres non sufficent"));
