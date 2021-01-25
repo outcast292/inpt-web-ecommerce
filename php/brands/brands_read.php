@@ -3,12 +3,12 @@ require_once "../connection/db.php";
 //require_once "../verify_session.php";
 $results;
 if (!isset($_GET["search"])) {
-    $query = 'SELECT  cat.id_categorie, cat.nom_categorie, count(pr.id_produit) as prod_count from categorie cat left join produit pr on cat.id_categorie = pr.id_categorie  group by cat.id_categorie';
+    $query = 'SELECT  mr.id_marque, mr.nom_marque, count(pr.id_produit) as prod_count from marque mr left join produit pr on mr.id_marque = pr.id_marque  group by mr.id_marque';
     $sql = $conn->prepare($query);
     $sql->execute();
     $results = $sql->fetchAll(PDO::FETCH_ASSOC);
 } else {
-    $query = 'SELECT  cat.id_categorie, cat.nom_categorie, count(pr.id_produit) as prod_count from categorie cat left join produit pr on cat.id_categorie = pr.id_categorie where  cat.nom_categorie like :search   group by cat.id_categorie';
+    $query = 'SELECT  mr.id_marque, mr.nom_marque, count(pr.id_produit) as prod_count from marque mr left join produit pr on mr.id_marque = pr.id_marque where  mr.nom_marque like :search   group by mr.id_marque';
     $sql = $conn->prepare($query);
     $sql->execute(array("search" => "%" . $_GET["search"] . "%"));
     $results = $sql->fetchAll(PDO::FETCH_ASSOC);

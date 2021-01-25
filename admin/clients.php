@@ -172,7 +172,6 @@
                         <div class="col-6">
                             <label>Nom et Prénom</label>
                             <input type="text" class="form-control" readonly value="${nom_client}">
-
                         </div>
                         <div class="col-6">
                             <label>N° de Téléphone</label>
@@ -183,7 +182,6 @@
                         <div class="col-6">
                             <label>Date de Naissance</label>
                             <input type="text" class="form-control" readonly value="${date_naissance}">
-
                         </div>
                         <div class="col-6">
                             <label>E-mail</label>
@@ -211,7 +209,6 @@
                         <div class="col-6">
                             <label>Première Activté</label>
                             <input type="text" class="form-control" readonly value="${first_commande}">
-
                         </div>
                         <div class="col-6">
                             <label>Dernière Activité</label>
@@ -232,7 +229,6 @@
                         <div class="col-6">
                             <label>Moyenne d'Achat</label>
                             <input type="text" class="form-control" readonly value="${avg_spent}">
-
                         </div>
                         <div class="col-6">
                             <label>Nombre Total de Commandes</label>
