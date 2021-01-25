@@ -33,9 +33,10 @@ if (isset($_GET["search"]) || isset($_GET["categorie"]) || isset($_GET["marque"]
     $json = json_encode($msg, JSON_NUMERIC_CHECK);
     echo $json;
 } else if (isset($_GET["search_admin"])) {
-    $query = 'SELECT  pr.id_produit,label,prix_produit,pr.id_marque,pr.id_categorie,m.nom_marque,nom_categorie from produit pr left join marque m on pr.id_marque=m.id_marque left join categorie cat on pr.id_categorie=cat.id_categorie WHERE act=1 ';
+    $query = 'SELECT  pr.id_produit,label,prix_produit,pr.id_marque,pr.id_categorie,m.nom_marque,nom_categorie from produit pr left join marque m on pr.id_marque=m.id_marque left join categorie cat on pr.id_categorie=cat.id_categorie WHERE act=1 and (label LIKE :search  OR nom_marque LIKE :search  OR nom_categorie LIKE :search  OR description_produit LIKE :search)    ';
+
     $sql = $conn->prepare($query);
-    $sql->execute();
+    $sql->execute(array("search" => "%" . $_GET["search_admin"] . "%"));
     $results = $sql->fetchAll(PDO::FETCH_ASSOC);
 
 

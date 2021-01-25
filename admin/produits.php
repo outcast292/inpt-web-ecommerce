@@ -26,7 +26,7 @@
         <div class="row">
             <?php require "req/sidebar.php" ?>
             <div class="col pt-4">
-                <div class="container.fluid">
+                <div class="container-fluid">
                     <h1><a href="" data-target="#sidebar" data-toggle="collapse" class="d-md-none"><i class="fa fa-bars"></i></a> Produits</h1>
                     <h6 class="hidden-sm-down">Page pour ajouter, modifier ou supprimer un produit</h6>
                     <hr>
@@ -37,7 +37,7 @@
                         <h5 class="font-italic  text-secondary">Filtrer ?</h5>
                         <div class="row">
                             <div class="col-6">
-                                <input class="form-control" type="search" id="search_categories" placeholder="Type to search...">
+                                <input class="form-control" type="search" id="search_admin" placeholder="entrer un mot clé">
 
                             </div>
                             <div class="col-3">
@@ -120,7 +120,7 @@
                     </button>
                     </div>
                 <div class="modal-body">
-                        <form onsubmit="add_product()" id='form_add_product'>                          
+                        <form  id='form_add_product'>                          
                             <div class="form-group">
                                 <label for="label"> Label :</label>
 
@@ -156,7 +156,7 @@
                 </div>
                     
                 <div class="modal-footer">
-                                <input type="submit" onclick="add_product();" class="btn btn-success"  form-control" value="Confirmer Ajout">
+                                <input type="button"  onclick="add_product()" class="btn btn-success"  form-control" value="Confirmer Ajout">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">FERMER</button>               
                 </div>
                 </div>`);
@@ -168,30 +168,11 @@
             if ($("#label_add").val() != "" && $("#prix_produit_add").val() != "" && $("#id_categorie_add").val() != null && $("#id_marque_add").val() != null) {
                 var dataform = $("#form_add_product").serialize();
                 fetch("../php/products/insert_product?" + dataform).then(resp => resp.json()).then(json => {
-                    const id_produit = json.id_produit;
-                    const categorie = categories.find(el => el.id_categorie == $("#id_categorie_add").val());
-                    const marque = marques.find(el => el.id_marque == $("#id_marque_add").val());
-                    $('#table_body').append(`
-                        <tr>
-                            <td>${id_produit}</td>
-                            <td>${$("#label_add").val()}</td>
-                            <td>${marque.nom_marque}</td>
-                            <td>${categorie.nom_categorie}</td>
-                            <td>${parseFloat($("#prix_produit_add").val()).toFixed(2)}</td>
-                            <td>
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">OPTIONS</button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                           
-                                <a class="dropdown-item" href="#" onclick='modifier(${id_produit});'>MODIFIER</a>
-                                <a class="dropdown-item" href="#" onclick='supprimer(${id_produit});'>SUPPRIMER </a>
-                            </div>
-                            </td>
-                        </tr>
-                        `);
+
 
                     $('#modal_details').modal('hide');
                     $("#form_add_product").reset();
-                    $("#nbr_prd").text(parseInt($("#nbr_prd").text()) + 1);
+                    search()
 
                 }).catch(err => {
                     console.log(err);
@@ -202,10 +183,84 @@
 
         };
 
+        function update_product(id_produit) {
+            if ($("#label_update").val() != "" && $("#prix_produit_update").val() != "" && $("#id_categorie_update").val() != null && $("#id_marque_update").val() != null) {
+                var dataform = $("#form_update_product").serialize();
+                fetch("../php/products/update_product?id_produit=" + id_produit + "&" + dataform).then(resp => resp.json()).then(json => {
+
+                    $('#modal_details').modal('hide');
+                    search()
+
+                }).catch(err => {
+                    console.log(err);
+                });
+            } else {
+                $("#alert_add").removeAttr("hidden");
+            }
+
+        };
+
+        function update_modal_show(id_produit, label, id_marque, id_categorie, prix_produit, description_produit) {
+            fetch("../php/products/read_desc_product?id_produit=" + id_produit).then(resp => resp.json()).then(json => {
+                var data = json.data;
+                $('#modal_content').html(`
+            <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModal">Modifier Produit ${id_produit}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                <div class="modal-body">
+                        <form  id='form_update_product'>                          
+                            <div class="form-group">
+                                <label for="label"> Label :</label>
+
+                                <input type="text" id="label_update" name="label" value="${label}" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="prix_produit">Le prix :</label>
+                                <input type="number"  id="prix_produit_update" value="${prix_produit}" name="prix_produit"  class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                            <label for="id_marque">La marque :</label>
+                                <select class="form-control selectpicker" name="id_marque" id="id_marque_update" data-live-search="true" required>
+                                ${marques.map(element => `<option value="${element.id_marque}" ${id_marque==element.id_marque?"selected":""}>${element.nom_marque}</option>`)}
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="id_categorie">La categorie :</label>
+                                <select class="form-control selectpicker" name="id_categorie" id="id_categorie_update" data-live-search="true" required>       
+                                <option data-tokens="" selected value disabled></option>
+                                ${categories.map(element => `<option value="${element.id_categorie}" ${id_categorie==element.id_categorie?"selected":""} >${element.nom_categorie}</option>`)}</select>
+                            </div>
+                            <div class="form-group">
+                                <label for="description_produit">Description :</label>
+                                <textarea class="form-control" name="description_produit" id="description_produit">${data.description_produit}</textarea>
+                                
+                            </div>      
+                            <div class="alert alert-danger alert-dismissible fade show" id="alert_update" hidden>
+                                un ou plusieurs champs sont vides
+                            </div>
+                            
+                        </form>
+                </div>
+                    
+                <div class="modal-footer">
+                                <input type="button" onclick="update_product(${id_produit})" class="btn btn-info"  form-control" value="Confirmer modification">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">FERMER</button>               
+                </div>
+                </div> `);
+                $('.selectpicker').selectpicker();
+                $('#modal_details').modal('show');
+            });
+        };
+
         function search() {
-            fetch("../php/products/read_products?search_admin=").then(resp => resp.json()).then(json => {
+            
+            fetch("../php/products/read_products?search_admin="+$("#search_admin").val()).then(resp => resp.json()).then(json => {
                 var data = json.data;
                 $("#table_body").text('');
+
                 data.forEach((element) => {
                     $('#table_body').append(`
                         <tr>
@@ -218,8 +273,8 @@
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">OPTIONS</button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                            
-                                <a class="dropdown-item" href="#" onclick='modifier(${element.id_produit});'>MODIFIER</a>
-                                <a class="dropdown-item" href="#" onclick='supprimer(${element.id_produit},"${element.label}");'>SUPPRIMER </a>
+                                <a class="dropdown-item" href="#" onclick='update_modal_show(${element.id_produit},"${element.label}",${element.id_marque},${element.id_categorie},${element.prix_produit});'>MODIFIER</a>
+                                <a class="dropdown-item" href="#" onclick='modal_delete_show(${element.id_produit},"${element.label}");'>SUPPRIMER </a>
                             </div>
                             </td>
                         </tr>
@@ -233,7 +288,7 @@
             });
         }
 
-        function supprimer(id_produit, nom_produit) {
+        function modal_delete_show(id_produit, nom_produit) {
             $('#modal_content').html(`
             <div class="modal-header">                  
                     <h5 class="modal-title " >Suppression du produit N° ${id_produit}</h5>          
