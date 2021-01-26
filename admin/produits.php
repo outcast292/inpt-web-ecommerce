@@ -19,6 +19,31 @@
     <link href="../css/navbar.css" rel="stylesheet">
     <?php require "req/verify.php";  ?>
 
+    <style>
+        .imagePreview {
+            width: 100%;
+            height: 180px;
+            background-position: center center;
+            background: url(../img/no_img.jpg);
+            background-color: #fff;
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: inline-block;
+            box-shadow: 0px -3px 6px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary {
+            display: block;
+            border-radius: 0px;
+            box-shadow: 0px 4px 6px 2px rgba(0, 0, 0, 0.2);
+            margin-top: -5px;
+        }
+
+        .imgUp {
+            margin-bottom: 15px;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -145,13 +170,22 @@
                             </div>
                             <div class="form-group">
                                 <label for="description_produit">Description :</label>
-                                <textarea class="form-control" name="description_produit" id="description_produit"></textarea>
-                                
+                                <textarea class="form-control" name="description_produit" id="description_produit"></textarea>                               
                             </div>      
-                            <div class="alert alert-danger alert-dismissible fade show" id="alert_add" hidden>
+                            <div class="form-group">
+                                <label for="description_produit">Image de produit :</label>
+                                <div class="d-flex justify-content-center">
+                                    <div class="col-4 imgUp">
+                                    <div class="imagePreview"></div>
+                                    <label class="btn btn-primary">
+                                    charger photo<input type="file" name="photo" input class="uploadFile img" value="charger photo" style="width: 0px;height: 0px;overflow: hidden;">
+                                    </label>
+                                    </div>    
+                                </div>
+                                <div class="alert alert-danger alert-dismissible fade show" id="alert_add" hidden>
                                 un ou plusieurs champs sont vides
-                            </div>
-                            
+                            </div>                                                       
+                            </div>                                
                         </form>
                 </div>
                     
@@ -237,7 +271,18 @@
                                 <label for="description_produit">Description :</label>
                                 <textarea class="form-control" name="description_produit" id="description_produit">${data.description_produit}</textarea>
                                 
-                            </div>      
+                            </div>
+                            <div class="form-group">
+                                <label for="description_produit">Image de produit :</label>
+                                <div class="d-flex justify-content-center">
+                                    <div class="col-4 imgUp">
+                                    <div class="imagePreview"></div>
+                                    <label class="btn btn-primary">
+                                    charger photo<input type="file" name="photo" id="img_mod_up" input class="uploadFile img" value="charger photo" style="width: 0px;height: 0px;overflow: hidden;">
+                                    </label>
+                                    </div>    
+                                </div>                                                   
+                            </div>  
                             <div class="alert alert-danger alert-dismissible fade show" id="alert_update" hidden>
                                 un ou plusieurs champs sont vides
                             </div>
@@ -252,12 +297,13 @@
                 </div> `);
                 $('.selectpicker').selectpicker();
                 $('#modal_details').modal('show');
+                $('#img_mod_up').closest(".imgUp").find('.imagePreview').css("background-image", "url(" + `../img/products/${id_produit}.jpg` + ")")
             });
         };
 
         function search() {
-            
-            fetch("../php/products/read_products?search_admin="+$("#search_admin").val()).then(resp => resp.json()).then(json => {
+
+            fetch("../php/products/read_products?search_admin=" + $("#search_admin").val()).then(resp => resp.json()).then(json => {
                 var data = json.data;
                 $("#table_body").text('');
 
@@ -326,6 +372,24 @@
             });
         }
         search();
+        $(function() {
+            $(document).on("change", ".uploadFile", function() {
+                var uploadFile = $(this);
+                var files = !!this.files ? this.files : [];
+                if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
+
+                if (/^image/.test(files[0].type)) { // only image file
+                    var reader = new FileReader(); // instance of the FileReader
+                    reader.readAsDataURL(files[0]); // read the local file
+
+                    reader.onloadend = function() { // set image data as background of div
+                        //alert(uploadFile.closest(".upimage").find('.imagePreview').length);
+                        uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url(" + this.result + ")");
+                    }
+                }
+
+            });
+        });
     </script>
 </body>
 
