@@ -50,7 +50,7 @@
     <div class="container-fluid">
         <div class="row">
             <?php require "req/sidebar.php" ?>
-            <div class="col pt-4">
+            <div class="col pt-4 h-100">
                 <div class="container-fluid">
                     <h1><a href="" data-target="#sidebar" data-toggle="collapse" class="d-md-none"><i class="fa fa-bars"></i></a> Produits</h1>
                     <h6 class="hidden-sm-down">Page pour ajouter, modifier ou supprimer un produit</h6>
@@ -69,7 +69,7 @@
                                 <button type="button" onclick="search(true)" class="btn btn-dark btn-block ">Rechercher</button>
                             </div>
                             <div class="col-3">
-                                <button onclick="add_modal_show();" type="button" class="btn btn-success " style="width: 100%;">Ajouter une nouvelle catégorie</button>
+                                <button onclick="add_modal_show();" type="button" class="btn btn-success btn-block ">Ajouter un produit</button>
                             </div>
                         </div>
                     </form>
@@ -80,8 +80,8 @@
 
                 </div>
                 <div class="mt-4 ">
-                    <div class="row">
-                        <div class="alert alert-info col-10 ml-1" id='div_nbr' hidden>
+                    <div class="d-flex justify-content-center">
+                        <div class="alert alert-info col-9 " id='div_nbr' hidden>
                             Nombre de Produits Trouvés : <span id="nbr_prd"></span>
                         </div>
 
@@ -93,6 +93,7 @@
                         <thead class="thead-dark">
                             <tr>
                                 <th scope="col">ID</th>
+                                <th scope="col">Photo</th>
                                 <th scope="col">Label</th>
                                 <th scope="col">Marque</th>
                                 <th scope="col">Categorie</th>
@@ -120,6 +121,7 @@
     </div>
 
     <script>
+        var img_updated = false;
         var marques;
         var categories;
         fetch("../php/brands/brands_read").then(resp => resp.json()).then(json => {
@@ -128,7 +130,7 @@
         }).catch(err => {
             console.log(err);
         });
-        fetch("../php/categories/categories_read    ").then(resp => resp.json()).then(json => {
+        fetch("../php/categories/categories_read").then(resp => resp.json()).then(json => {
             categories = json.data;
         }).catch(err => {
             console.log(err);
@@ -137,6 +139,7 @@
 
 
         function add_modal_show() {
+            img_updated = false;
             $('#modal_content').html(`
                      <div class="modal-header">
                     <h5 class="modal-title" id="exampleModal">AJOUTER PRODUIT</h5>
@@ -178,7 +181,7 @@
                                     <div class="col-4 imgUp">
                                     <div class="imagePreview"></div>
                                     <label class="btn btn-primary">
-                                    charger photo<input type="file" name="photo" input class="uploadFile img" value="charger photo" style="width: 0px;height: 0px;overflow: hidden;">
+                                    charger photo<input type="file" name="file" id="img_input_add" input class="uploadFile img" value="charger photo" style="width: 0px;height: 0px;overflow: hidden;">
                                     </label>
                                     </div>    
                                 </div>
@@ -202,15 +205,32 @@
             if ($("#label_add").val() != "" && $("#prix_produit_add").val() != "" && $("#id_categorie_add").val() != null && $("#id_marque_add").val() != null) {
                 var dataform = $("#form_add_product").serialize();
                 fetch("../php/products/insert_product?" + dataform).then(resp => resp.json()).then(json => {
-
-
-                    $('#modal_details').modal('hide');
-                    $("#form_add_product").reset();
-                    search()
+                    const id_produit = json.id_produit;
+                    if (img_updated) {
+                        const form = document.getElementById("form_add_product")
+                        var data = new FormData(form);
+                        data.append('id_produit', id_produit);
+                        fetch('../php/utility/upload_image', {
+                                method: 'POST',
+                                body: data,
+                            } // This is your file object
+                        ).then(
+                            response => response.json() // if the response is a JSON object
+                        ).then(
+                            success => {
+                                $('#modal_details').modal('hide');
+                                search()
+                            }
+                            // Handle the success response object
+                        ).catch(
+                            error => console.log(error) // Handle the error response object
+                        );
+                    }
 
                 }).catch(err => {
                     console.log(err);
-                });
+                })
+
             } else {
                 $("#alert_add").removeAttr("hidden");
             }
@@ -221,9 +241,26 @@
             if ($("#label_update").val() != "" && $("#prix_produit_update").val() != "" && $("#id_categorie_update").val() != null && $("#id_marque_update").val() != null) {
                 var dataform = $("#form_update_product").serialize();
                 fetch("../php/products/update_product?id_produit=" + id_produit + "&" + dataform).then(resp => resp.json()).then(json => {
+                    if (img_updated) {
+                        const form = document.getElementById("form_update_product")
+                        var data = new FormData(form);
+                        data.append('id_produit', id_produit);
+                        fetch('../php/utility/upload_image', {
+                                method: 'POST',
+                                body: data,
+                            } // This is your file object
+                        ).then(
+                            response => response.json() // if the response is a JSON object
+                        ).then(
+                            success => {
+                                $('#modal_details').modal('hide');
+                                search()
+                            } // Handle the success response object
+                        ).catch(
+                            error => console.log(error) // Handle the error response object
+                        );
+                    }
 
-                    $('#modal_details').modal('hide');
-                    search()
 
                 }).catch(err => {
                     console.log(err);
@@ -235,6 +272,7 @@
         };
 
         function update_modal_show(id_produit, label, id_marque, id_categorie, prix_produit, description_produit) {
+            img_updated = false;
             fetch("../php/products/read_desc_product?id_produit=" + id_produit).then(resp => resp.json()).then(json => {
                 var data = json.data;
                 $('#modal_content').html(`
@@ -278,7 +316,7 @@
                                     <div class="col-4 imgUp">
                                     <div class="imagePreview"></div>
                                     <label class="btn btn-primary">
-                                    charger photo<input type="file" name="photo" id="img_mod_up" input class="uploadFile img" value="charger photo" style="width: 0px;height: 0px;overflow: hidden;">
+                                    charger photo<input type="file" name="file" id="img_mod_up" input class="uploadFile img" value="charger photo" style="width: 0px;height: 0px;overflow: hidden;">
                                     </label>
                                     </div>    
                                 </div>                                                   
@@ -297,7 +335,8 @@
                 </div> `);
                 $('.selectpicker').selectpicker();
                 $('#modal_details').modal('show');
-                $('#img_mod_up').closest(".imgUp").find('.imagePreview').css("background-image", "url(" + `../img/products/${id_produit}.jpg` + ")")
+                if (file_exists(`../img/products/${id_produit}.jpg`))
+                    $('#img_mod_up').closest(".imgUp").find('.imagePreview').css("background-image", "url(" + `../img/products/${id_produit}.jpg` + ")")
             });
         };
 
@@ -311,6 +350,7 @@
                     $('#table_body').append(`
                         <tr>
                             <td>${element.id_produit}</td>
+                            <td><img src="../img/products/${element.id_produit}.jpg" height="50px" width="50px"  ></td>
                             <td>${element.label}</td>
                             <td>${element.nom_marque}</td>
                             <td>${element.nom_categorie}</td>
@@ -381,7 +421,7 @@
                 if (/^image/.test(files[0].type)) { // only image file
                     var reader = new FileReader(); // instance of the FileReader
                     reader.readAsDataURL(files[0]); // read the local file
-
+                    img_updated = true;
                     reader.onloadend = function() { // set image data as background of div
                         //alert(uploadFile.closest(".upimage").find('.imagePreview').length);
                         uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url(" + this.result + ")");
