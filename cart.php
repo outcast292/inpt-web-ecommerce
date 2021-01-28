@@ -2,212 +2,171 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>panier</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/navbar.css" rel="stylesheet">
-  <link href="css/cart.css" rel="stylesheet">
-  <script src="js/bootstrap.bundle.min.js"></script>
-  
-  <link rel="stylesheet" href="css/bootstrap-icons.css">
-  <style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>panier</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/navbar.css" rel="stylesheet">
+    <link href="css/cart.css" rel="stylesheet">
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+    <link rel="stylesheet" href="css/bootstrap-icons.css">
+    <style>
 
 
-  </style>
+    </style>
 </head>
 
 <body>
     <div>
-  <?php
-  require_once "req/navbar.php";
+        <?php
+        require_once "req/navbar.php";
 
-  ?>
-</div>
-<div class="container-fluid  ">
+        ?>
+    </div>
+    <div class="container-fluid  ">
 
 
-  <div class="container-fluid ">
-      <div class="jumbotron d-flex justify-content-center ">    
-        <div class="card">
-            <div class="card-top border-bottom text-center"> <a href="#" class="link"> Retour a la boutique</a> <span id="logo">Amoil.com</span> </div>
-            <div class="card-body">
-                <div class="row upper"> <span class="panier"> panier</span> <span class="payment">Payment</span> </div>
-                <div class="row">
-                    <div class="col-lg-8">
-                        <div class="left border">
-                            <div class="row"><span><i  class="bi bi-basket3-fill " style="font-size: 2rem ;" aria-hidden="true"></i></i></span> <span class="header" style="font-size: 2rem;">Panier</span>
-                               
-                            </div>
-                            <div>
-                                <div class="card mb-3 p-0 h-25" >
-                                    <div class="row no-gutters">
-                                      <div class="col-md-2">
-                                        <img src="img/products/pc.jpg" class="card-img w-75" alt="...">
-                                      </div>
-                                      <div class="col-md-10">
-                                        <div class="card-body p-3 col-12 " style="width: 100%;">
-                                          <span class="card-title p-0 h5 d-flex justify-content-between" style="color: black;"><span style="color: black;">product1</span>
-                                          <span>
-                                          <span class="border pt-2 pl-3 pr-3 pb-1" id="qty">1</span>
-                                          <button id="minus" onclick='minus("qty","price")' style="padding: 2px 5px; border-radius: 10px; background-color: rgb(230,230,230) ;border-color:(230,230,230); border-width: 1px;">-</button>
-                                          <button  id="plus" onclick='plus("qty","price")' style="padding: 2px 3px; border-radius: 10px; background-color: rgb(230,230,230) ;border-color:(230,230,230); border-width: 1px;">+</button>
-                                          </span>
-                                          <span>
-                                          <span style="color: black;">$</span> 
-                                          <span class="mr-1" id="price" style="color: black;">1000</span> </span>
-                                          </span>
-                                          <span><div class="d-flex justify-content-end px-3">
-                                            <button type="button" style="border-radius: 5px;" class="h-50 w-25 btn-success">view</button>
-                                            <button type="button" style="border-radius: 5px;" class="h-50 w-25 ml-1 btn-danger">remove</button>
-                                            
-                                        </div></span>
-                                          
-                                        </div>
-                                      </div>
+        <div class="container-fluid ">
+            <div class="jumbotron d-flex justify-content-center ">
+                <div class="card">
+                    <div class="card-top border-bottom text-center"> <a href="index.php" class="link"> Retour a la boutique</a> <span id="logo">Amoil.com</span> </div>
+                    <div class="card-body">
+                        <div class="row upper"> <span class="panier"> Panier</span> <span class="payment">Payment</span> </div>
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="left border">
+                                    <div class="row"><span><i class="bi bi-basket3-fill " style="font-size: 2rem ;" aria-hidden="true"></i></i></span> <span class="header" style="font-size: 2rem;"> Panier</span></div>
+
+                                    <div id="cart_content">
+
                                     </div>
-                                  </div>
-                                  <div class="card mb-3 p-0 h-25" >
-                                    <div class="row no-gutters">
-                                      <div class="col-md-2">
-                                        <img src="img/products/product2.jpg" class="card-img w-75" alt="...">
-                                      </div>
-                                      <div class="col-md-10">
-                                        <div class="card-body p-3 col-12 " style="width: 100%;">
-                                            <span class="card-title p-0 h5 d-flex justify-content-between" style="color: black;"><span style="color: black;">product1</span>
-                                            <span>
-                                            <span class="border pt-2 pl-3 pr-3 pb-1" id="qty2">1</span>
-                                            <button id="minus" onclick='minus("qty2","price2")' style="padding: 2px 5px; border-radius: 10px; background-color: rgb(230,230,230) ;border-color:(230,230,230); border-width: 1px;">-</button>
-                                            <button  id="plus" onclick='plus("qty2","price2")' style="padding: 2px 3px; border-radius: 10px; background-color: rgb(230,230,230) ;border-color:(230,230,230); border-width: 1px;">+</button>
-                                            </span>
-                                            <span>
-                                            <span style="color: black;">$</span> 
-                                            <span class="mr-1" id="price2" style="color: black;">1200</span> </span>
-                                            </span>
-                                            <span><div class="d-flex justify-content-end px-3">
-                                              <button type="button" style="border-radius: 5px;" class="h-50 w-25 btn-success">view</button>
-                                              <button type="button" style="border-radius: 5px;" class="h-50 w-25 ml-1 btn-danger">remove</button>
-                                              
-                                          </div></span>
-                                          
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  
-                                  
-                            </div>
-                            <div class="d-flex justify-content-end h3" >
 
-                           <span >Totale: $</span>
-                           <span id="total"></span>
-                        </div>
-                        </div>
-                        
-                    
-                    </div>
-                   
-                    <div class="col-lg-4">
-                        <div class="right border">
-                            <div class="header">Adresse de livraison</div>
-                            <form>
-                                <div class="form-group">
-                                  <label for="exampleFormControlInput1">Address</label>
-                                  <input type="Adress" class="form-control" id="exampleFormControlInput1" placeholder="12 rue X ">
+                                    <div class="d-flex justify-content-end h3">
+
+                                        <span>Total: DH</span>
+                                        <span id="total"></span>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                  <label for="exampleFormControlSelect1">Ville</label>
-                                  <select class="form-control" id="exampleFormControlSelect1">
-                                    <option>Meknes</option>
-                                    <option>Taza</option>
-                                    <option>Fes</option>
-                                    <option>MPT</option>
-                                    <option>Casablanca</option>
-                                  </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlInput1">Code Postale</label>
-                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="code postale ">
-                                  </div>
-                                  <div class="row"><input type="checkbox" id="save_card" class="col-2 align-left "> <label class="col-10" for="save_card">Enregistrer l'adresse pour prochaine commandes</label>
-                                  </div>
-                              </form>
-                            
-                                
-                            </div> <a href="payment.php"><button class="btn" style="border-radius: 5px;">Allez au payment</button></a>
-                            
+
+
+                            </div>
+
+
                         </div>
+
                     </div>
-                    
                 </div>
             </div>
-          </div>
         </div>
 
-      </div>
+    </div>
     </div>
 
 
 
 
-  </div>
-  
+    <!--modal-->
+    <div class="modal  fade" id="modal_details" tabindex="-1" aria-labelledby="modal_details" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content" id="modal_content">
+
+            </div>
+        </div>
+    </div>
+
+
+    <div>
+
+        <?php
+        require_once "req/footbar.php";
+
+        ?>
+    </div>
 
 
 
+    <script>
+        function fill_cart(id_client) {
+            fetch("../php/cart/cart_read?id_client=" + id_client).then(resp => resp.json()).then(json => {
+                var data = json.data;
+                $("#cart_content").text('');
+                data.forEach((element) => {
+                    $('#cart_content').append(`
+                        <div class="card mb-3 p-0 h-25">
+                            <div class="row no-gutters">
+                                <div class="col-md-2">
+                                    <!--TODO image du produit par son id src="${element.id_produit}.jpg"-->
+                                    <img src="img/products/pc.jpg" class="card-img w-75" alt="image_produit">
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="card-body p-3 col-12 " style="width: 100%;">
+                                        <span class="card-title p-0 h5 d-flex justify-content-between" style="color: black;"><span style="color: black;">${element.label}</span>
+                                            <span>
+                                                <span class="border pt-2 pl-3 pr-3 pb-1" id="qty">${element.qtt_panier}</span>
+                                                <button id="minus" onclick='' style="padding: 2px 5px; border-radius: 10px; background-color: rgb(230,230,230) ;border-color:(230,230,230); border-width: 1px;">-</button>
+                                                <button id="plus" onclick='' style="padding: 2px 3px; border-radius: 10px; background-color: rgb(230,230,230) ;border-color:(230,230,230); border-width: 1px;">+</button>
+                                            </span>
+                                            <span>
+                                                <span class="mr-1" id="price" style="color: black;">${element.prix_produit}</span>
+                                                <span style="color: black;">DH</span>
+                                            </span>
+                                        </span>
+                                        <span>
+                                            <div class="d-flex justify-content-end px-3">
+                                                <button style="border-radius: 5px;" class="h-50 w-25 btn-info">VOIR</button>
+                                                <button style="border-radius: 5px;" class="h-50 w-25 ml-1 btn-danger" onclick="retirer_du_panier(${id_client},${element.id_produit},'${element.options_produit}')">RETIRER</button>
+                                            </div>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        `);
+                });
 
 
+            }).catch(err => {
+                console.log(err);
+            });
+        }
 
-</div>
+        function retirer_du_panier(id_client, id_produit, options_produit) {
+            $('#modal_content').html(`
+            <div class="modal-header">                  
+                    <h5 class="modal-title " >RETIRER DU PANIER</h5>          
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Etes-vous sûr de vouloir retirer ce produit du panier?</p>
+                </div>
+                <div class="modal-footer d-flex justify-content-around">
+                     <button type="button" class="btn btn-danger"  onclick="delete_produit(${id_client},${id_produit},'${options_produit}')" >oui</button>
+                     <button type="button" class="btn btn-secondary" data-dismiss="modal">non</button>
+                </div>    `);
+            $('#modal_details').modal('show');
+        }
 
+        function delete_produit(id_client, id_produit, options_produit) {
+            fetch("../php/cart/delete_from_cart?id_client=" + id_client + "&id_produit=" + id_produit + "&options_produit=" + options_produit).then(resp => resp.json()).then(json => {
+                $("#modal_details").modal("hide");
+                fill_cart(id_client_session_actuelle);
 
-<div>
+            }).catch(err => {
+                console.log(err);
+            });
+        }
 
-    <?php
-    require_once "req/footbar.php";
-
-    ?>
-</div>
+        //id_client de la session
+        fill_cart(id_client_session_actuelle);
+    </script>
 
 </body>
-<script>
-  var px=document.getElementById("price").innerHTML;
-var px2=document.getElementById("price2").innerHTML;
-    function plus(qty,price) {
-        
-        var h=parseFloat(document.getElementById(qty).innerHTML);
-        var px=parseFloat(document.getElementById(price).innerHTML);
-        if(h>0){
-            px=px+px/h;
-            h++;
-         document.getElementById(qty).innerHTML=h;
-         document.getElementById(price).innerHTML=px;
-         var pxa=parseFloat(document.getElementById("price").innerHTML);
-         var pxa2=parseFloat(document.getElementById("price2").innerHTML);
-         document.getElementById("total").innerHTML=pxa+pxa2;
-        }
-        
-}
-function minus(qty,price) {
-        var h=parseFloat(document.getElementById(qty).innerHTML);
-        var px=parseFloat(document.getElementById(price).innerHTML);
-        if(h>1){
-          px=px-px/h;
-            h--;
-            
-         document.getElementById(qty).innerHTML=h;   
-         document.getElementById(price).innerHTML=px;
-         var pxa=parseFloat(document.getElementById("price").innerHTML);
-         var pxa2=parseFloat(document.getElementById("price2").innerHTML);
-         document.getElementById("total").innerHTML=pxa+pxa2;
 
-        }   
-}
-var px=parseFloat(document.getElementById("price").innerHTML);
-var px2=parseFloat(document.getElementById("price2").innerHTML);
-document.getElementById("total").innerHTML=px+px2;
-</script>
 </html>

@@ -160,11 +160,15 @@
       pages[val].forEach((element, index) => {
         $("#products_div").append(`
           <div class="card  card_item col-lg-3 col-md-4 col-sm-5  m-2 p-1">
+<<<<<<< HEAD
+              <a href="produit?id_produit=${element.id_produit}">
+=======
               <a href="#">
+>>>>>>> smail
                 <img src="img/products/${element.id_produit}.jpg" height="250px" width="250px" class="card-img-top w-100 " alt="...">
               </a>
               <div class="card-body">
-                <a href="produit?id_product=${element.id_produit}" style="color: black;">
+                <a href="produit?id_produit=${element.id_produit}" style="color: black;">
                   <span class="card-title h4">${element.label}</span>
                 </a>
                 <img src="img/stars.jpg" alt="rating" class=" d-inline-flex align-self-r w-lg-50 w-sm-50 w-md-75">

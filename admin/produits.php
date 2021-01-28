@@ -18,6 +18,30 @@
 
     <link href="../css/navbar.css" rel="stylesheet">
     <?php require "req/verify.php";  ?>
+    <style>
+        .imagePreview {
+            width: 100%;
+            height: 180px;
+            background-position: center center;
+            background: url(../img/no_img.jpg);
+            background-color: #fff;
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: inline-block;
+            box-shadow: 0px -3px 6px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary {
+            display: block;
+            border-radius: 0px;
+            box-shadow: 0px 4px 6px 2px rgba(0, 0, 0, 0.2);
+            margin-top: -5px;
+        }
+
+        .imgUp {
+            margin-bottom: 15px;
+        }
+    </style>
 
     <style>
         .imagePreview {
@@ -236,7 +260,11 @@
             }
 
         };
+<<<<<<< HEAD
+        //TODO ADD OPTIONS
+=======
 
+>>>>>>> smail
         function update_product(id_produit) {
             if ($("#label_update").val() != "" && $("#prix_produit_update").val() != "" && $("#id_categorie_update").val() != null && $("#id_marque_update").val() != null) {
                 var dataform = $("#form_update_product").serialize();

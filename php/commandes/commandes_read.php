@@ -1,7 +1,6 @@
 <?php
 require_once "../connection/db.php";
 //require_once "../verify_session.php";
-#TODO add security
 $_GET = array_filter($_GET);
 
 if (isset($_GET["from_date"]) and isset($_GET["to_date"])) {
