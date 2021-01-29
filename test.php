@@ -1,5 +1,7 @@
 <?php 
+echo($_SERVER['REQUEST_URI']."<br>");
+$link = preg_replace('~(\?|&)disconnect=[^&]*~','$1',$_SERVER['REQUEST_URI']);
+$link = rtrim($link, '?&');
+echo($link);
+header("location: " . $link);
 
-
-$files = array_diff(scandir("./img/banners"), array('..', '.'));
-var_dump($files);

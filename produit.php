@@ -15,8 +15,6 @@
 
 
     <style>
-     
-
         .options_label {
             background-color: #dc3545;
             border-color: #dc3545;
@@ -93,36 +91,6 @@
             </div>
         </div>
 
-    </div>
-
-    <div class="modal fade" id="formulaire">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Votre Commentaire:</h4>
-                    <button type="button" class="close" data-dismiss="modal">
-                        <span>&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form class="col" action="test.php">
-                        <div class="form-group">
-                            <label for="nom" class="form-control-label">Nom d'utilisateur</label>
-                            <input type="text" class="form-control" name="nom" id="nom" placeholder="Votre nom" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="Commentaire" class="form-control-label">Commentaire</label>
-                            <textarea id="note" rows="5" class="form-control" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary pull-right">Envoyer</button>
-
-                        </div>
-
-                    </form>
-                </div>
-            </div>
-        </div>
     </div>
 
     </div>
@@ -203,29 +171,29 @@
                                     </li>
                                 </ul>
                             </div>
+                            <form action="" id="form_product">
                             <h4 style="color: red;">${product.prix_produit.toFixed(2)} DH</h4>
-                            ${options.map((element,index)=> `
-                                <h5 class="mt-5 mx-3 "><small>${element.type_options}:</small></h5>
+                            ${options.map((element,index)=> `<h5 class="mt-2 mx-3 "><small>${element.type_options}:</small></h5>
                             <div class="btn-group btn-group-toggle d-flex justify-content-around" data-toggle="buttons">
                                 ${element.options.split(";").map((option,index)=> `
                                     <label class="btn  btn-warning options_label ${index==0?'active':''}">
-                                    <input type="radio" name="options${index}"  autocomplete="off" ${index==0?'checked':''}> ${option}
-                                    </label> 
-                                    `)}
+                                    <input type="radio" name="${element.type_options}" value="${option}"  autocomplete="off" ${index==0?'checked':''}> ${option}
+                                    </label>`)}
                             </div>
                                 `) }
-                            <form action="">
+                            
                                 <div class="form-group">
 
                                     <span>
-                                        <h5 class="card-text mt-3 mx-3 "><small class="text-muted">Quantité:</small></h5>
-                                    </span><input type="number" value="0" class=" input my-3 mx-3" style="border-radius: 15px;height: 30px;width: 130px; color:darkblue;">
-                                </div>
-                                <div class="form-group mt-5  ">
-                                    <button type="button" class="btn btn-warning" style="border-radius: 20px;">Ajouter au panier</button>
-                                    <button type="button" class="btn btn-danger" style="border-radius: 20px;">Acheter maintenant</button>
+                                        <h5 class="card-text mt-2 mx-3 "><small class="text-muted">Quantité:</small></h5>
+                                    </span><input type="number" value="1" name="qtt" class=" input my-3 mx-3" style="border-radius: 15px;height: 30px;width: 130px; color:darkblue;">
+                                    <div class="form-group mt-2  ">
+                                    <button type="button" class="btn btn-warning" onclick="add_to_cart()" <?php if (!isset($_SESSION["id_client"])) echo "disabled"  ?> style="border-radius: 20px;">Ajouter au panier</button>
+                                    <button type="button" class="btn btn-danger" <?php if (!isset($_SESSION["id_client"])) echo "disabled"  ?> style="border-radius: 20px;">Acheter maintenant</button>
 
                                 </div>
+                                    </div>
+                               
                             </form>
 
                         </div>
@@ -360,23 +328,15 @@
 
         });
 
-        $(function() {
-            $('form').submit(function(e) {
-                e.preventDefault()
-                var $form = $(this)
-                $.post($form.attr('action'), $form.serialize())
-                    .done(function(data) {
-                        $('#html').html(data)
-                        $('#formulaire').modal('hide')
-                    })
-                    .fail(function() {
-                        alert('ça ne marche pas...')
-                    })
-            })
-            $('.modal').on('shown.bs.modal', function() {
-                $('input:first').focus()
-            })
-        })
+        function add_to_cart() {
+            var data = ("#form_product").serialize();
+            fetch("php/cart/add_to_cart.php", {
+                method: 'POST',
+                body: data,
+            }).then(resp => resp.json()).then(json => {
+
+            }).catch(err => console.log(err));
+        }
     </script>
 
 

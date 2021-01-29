@@ -260,11 +260,7 @@
             }
 
         };
-<<<<<<< HEAD
         //TODO ADD OPTIONS
-=======
-
->>>>>>> smail
         function update_product(id_produit) {
             if ($("#label_update").val() != "" && $("#prix_produit_update").val() != "" && $("#id_categorie_update").val() != null && $("#id_marque_update").val() != null) {
                 var dataform = $("#form_update_product").serialize();
