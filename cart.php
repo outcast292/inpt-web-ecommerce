@@ -91,6 +91,14 @@
 
 
     <script>
+        <?php
+        if (!isset($_SESSION["id_client"]))
+            header("location: index.php");
+        else
+            echo "var id_client=" . $_SESSION["id_client"];
+        ?>
+
+
         function fill_cart(id_client) {
             fetch("../php/cart/cart_read?id_client=" + id_client).then(resp => resp.json()).then(json => {
                 var data = json.data;
@@ -101,7 +109,7 @@
                             <div class="row no-gutters">
                                 <div class="col-md-2">
                                     <!--TODO image du produit par son id src="${element.id_produit}.jpg"-->
-                                    <img src="img/products/pc.jpg" class="card-img w-75" alt="image_produit">
+                                    <img src="img/products/${element.id_produit}.jpg" class="card-img w-75" alt="image_produit">
                                 </div>
                                 <div class="col-md-10">
                                     <div class="card-body p-3 col-12 " style="width: 100%;">
@@ -156,7 +164,7 @@
         function delete_produit(id_client, id_produit, options_produit) {
             fetch("../php/cart/delete_from_cart?id_client=" + id_client + "&id_produit=" + id_produit + "&options_produit=" + options_produit).then(resp => resp.json()).then(json => {
                 $("#modal_details").modal("hide");
-                fill_cart(id_client_session_actuelle);
+                fill_cart(id_client);
 
             }).catch(err => {
                 console.log(err);
@@ -164,7 +172,7 @@
         }
 
         //id_client de la session
-        fill_cart(id_client_session_actuelle);
+        fill_cart(id_client);
     </script>
 
 </body>
