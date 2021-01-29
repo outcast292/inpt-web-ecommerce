@@ -7,9 +7,9 @@ if (isset($_SESSION["id_client"]) && isset($_GET["id_produit"]) && isset($_GET["
     foreach ($_GET as $key => $value) {
         # code...
         if ($key != "id_produit" && $key != "qtt_panier")
-            $options_produit .= $key . " : " . $value ."\n";
+            $options_produit .= $key . " : " . $value ."<br>";
     }
-    $query = 'INSERT INTO panier(id_client, id_produit, qtt_panier, options_produit) VALUES (:id_client, :id_produit, :qtt_panier, :options_produit)';
+    $query = 'INSERT INTO panier(id_client, id_produit, qtt_panier, options_produit) VALUES (:id_client, :id_produit, :qtt_panier, :options_produit)  ON DUPLICATE KEY UPDATE qtt_panier = qtt_panier + :qtt_panier';
     $sql = $conn->prepare($query);
     $sql->execute(array("id_client" => $_SESSION["id_client"], "id_produit" => $_GET["id_produit"], "qtt_panier" => $_GET["qtt_panier"], "options_produit" => $options_produit));
     $id = $conn->lastInsertId();

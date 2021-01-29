@@ -74,7 +74,7 @@ if (isset($_POST["password"])) {
   <div class=" collapse navbar-collapse " id="navbarNavDropdown">
     <ul class="ml-md-auto navbar-nav">
       <li class="nav-item">
-        <a href="#" class="nav-link pl-2 pr-1 mx-1 py-3 my-n2" aria-label="Panier">
+        <a href="cart" class="nav-link pl-2 pr-1 mx-1 py-3 my-n2" aria-label="Panier">
           <i class="bi bi-cart4 mr-4" style="font-size: 2rem;"></i>
         </a>
       </li>

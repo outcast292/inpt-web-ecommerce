@@ -92,8 +92,21 @@
         </div>
 
     </div>
+    <div class="toast bg-success text-dark" role="alert" id="toast_cart" aria-live="assertive" style="position: absolute; top: 100px; right: 0;width:25%" aria-atomic="true">
+        <div class="toast-header">
+        <i class="bi bi-check2 text-success"></i>
+            <strong class="mr-auto">Succes</strong>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="toast-body">
+            Ajouté au panier !!!
+        </div>
+    </div>
 
     </div>
+    
     <div class="container-fluid">
         <?php
         require_once "req/footbar.php";
@@ -332,7 +345,10 @@
             var data = $("#form_product").serialize();
             data += "&id_produit=" + product.id_produit;
             fetch("php/cart/add_to_cart.php?" + data).then(resp => resp.json()).then(json => {
-
+                $('#toast_cart').toast({
+                    delay: 3000
+                })
+                $('#toast_cart').toast('show')
             }).catch(err => console.log(err));
         }
     </script>
