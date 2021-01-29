@@ -186,7 +186,7 @@
 
                                     <span>
                                         <h5 class="card-text mt-2 mx-3 "><small class="text-muted">Quantité:</small></h5>
-                                    </span><input type="number" value="1" name="qtt" class=" input my-3 mx-3" style="border-radius: 15px;height: 30px;width: 130px; color:darkblue;">
+                                    </span><input type="number" value="1" name="qtt_panier" class=" input my-3 mx-3" style="border-radius: 15px;height: 30px;width: 130px; color:darkblue;">
                                     <div class="form-group mt-2  ">
                                     <button type="button" class="btn btn-warning" onclick="add_to_cart()" <?php if (!isset($_SESSION["id_client"])) echo "disabled"  ?> style="border-radius: 20px;">Ajouter au panier</button>
                                     <button type="button" class="btn btn-danger" <?php if (!isset($_SESSION["id_client"])) echo "disabled"  ?> style="border-radius: 20px;">Acheter maintenant</button>
@@ -329,11 +329,9 @@
         });
 
         function add_to_cart() {
-            var data = ("#form_product").serialize();
-            fetch("php/cart/add_to_cart.php", {
-                method: 'POST',
-                body: data,
-            }).then(resp => resp.json()).then(json => {
+            var data = $("#form_product").serialize();
+            data += "&id_produit=" + product.id_produit;
+            fetch("php/cart/add_to_cart.php?" + data).then(resp => resp.json()).then(json => {
 
             }).catch(err => console.log(err));
         }
