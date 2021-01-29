@@ -12,33 +12,129 @@
     <script src="js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="css/bootstrap-icons.css">
     <link rel="stylesheet" href="css/index.css">
+
+
+    <style>
+        .options_label {
+            background-color: #dc3545;
+            border-color: #dc3545;
+            color: white;
+        }
+
+        .options_label:hover,
+        .options_label:focus,
+        .options_label:active,
+        .options_label.active {
+            background-color: #d32535;
+            border-color: #bd2130;
+            color: white;
+
+        }
+    </style>
+
 </head>
 
 <body>
     <?php require_once "req/navbar.php"; ?>
 
-    <body>
-        <div class="bg-dark">
-            <div class="container">
-                <div class="row">
-                    <nav class="col navbar navbar-expand-lg navbar-dark">
-                    </nav>
+
+
+    <div class="container">
+        <div class=" jumbotron ">
+            <div class="">
+                <div class="row " id="product_section">
+                    <!--premiere section-->
+
+                </div>
+            </div>
+
+
+
+            <div>
+                <div>
+                    <div>
+                        <div class="card">
+                            <nav class="nav nav-tabs">
+                                <a class="nav-item nav-link active" href="#p1" data-toggle="tab">Description</a>
+                                <a class="nav-item nav-link" href="#p2" data-toggle="tab">Commentaires</a>
+                            </nav>
+                            <div class="tab-content" id="tab-content">
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div>
+                <h2 class="my-5" style="color: rgb(2, 2, 58);text-decoration: underline;font-style: italic;">De la meme catégorie
+                </h2>
+                <div class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner w-100" id="same_categorie">
+                    </div>
+
+                </div>
+
+                <h2 class="my-5" style="color: rgb(2, 2, 58);text-decoration: underline;font-style: italic;">Vous pouvez admirer
+                    aussi</h2>
+                <div id="carouselControls2" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner w-100" id="new_items">
+
+
+
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="container mt-5">
-            <div class="card mb-3">
-                <div class="row ">
-                    <!--premiere section-->
-                    <div class="col-12 col-md-6">
+
+    </div>
+    <div class="toast bg-success text-dark" role="alert" id="toast_cart" aria-live="assertive" style="position: absolute; top: 100px; right: 0;width:25%" aria-atomic="true">
+        <div class="toast-header">
+        <i class="bi bi-check2 text-success"></i>
+            <strong class="mr-auto">Succes</strong>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="toast-body">
+            Ajouté au panier !!!
+        </div>
+    </div>
+
+    </div>
+    
+    <div class="container-fluid">
+        <?php
+        require_once "req/footbar.php";
+
+        ?>
+    </div>
+
+    <script>
+        var product = {};
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        if (!urlParams.has("id_produit"))
+            window.location.replace("..");
+        else {
+            fetch("./php/products/read_product?id_produit=" + urlParams.get("id_produit")).then(resp => resp.json()).then(json => {
+                const data = json.data;
+                product = data.product;
+                options = data.options;
+                $("#product_section").html(`
+                <div class="col-12 col-md-6 mt-5">
                         <div class="row">
                             <div class="col">
 
-                                <img src="img/pc2.jpeg" alt="" class="card-img" style="max-height: 400px;">
+                                <img src="img/products/${product.id_produit}.jpg" alt="" class="card-img" style="max-height: 400px;">
 
                             </div>
                         </div>
-                        <!--d'autres photos (ajouter un carroussel apres)-->
+                        <!--d'autres photos (ajouter un carroussel apres)
                         <div class="row mx-3 my-2">
                             <div class="col-3">
                                 <div class="card ">
@@ -60,22 +156,16 @@
                                     <a href=""><img src="img/pc2.jpeg" alt="" class="card-img"></a>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-
-                            </div>
-
-                        </div>
-
+                        </div>-->
                     </div>
 
                     <!--deuxieme section-->
-                    <div class="col-12 col-md-6">
+                    <div class="col-12 col-md-6 mt-5">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-12 col-md-9">
-                                    <h3 class="card-title">PC Portable - ACER Aspire 3 </h3>
+                                <h5 class="card-title text-secondary">${product.nom_marque}</h5>
+                                <h3 class="card-title">${product.label}</h3>
                                 </div>
                                 <div class="col-3 ">
                                     <a href=""><i class="bi bi-suit-heart " style="font-size: 22px; color:red;"></i></a>
@@ -94,425 +184,176 @@
                                     </li>
                                 </ul>
                             </div>
-                            <h4 style="color: red;">5599,99 MAD</h4>
-                            <h5 class="card-text mt-5 mx-3 "><small class="text-muted">Option1</small></h5>
-                            <ul class="list-inline pull-right mx-3">
-                                <li>
-                                    <a href=""><i class="bi bi-app" style="color: darkblue;"></i></a>
-                                    <a href=""><i class="bi bi-app" style="color: darkblue;"></i></a>
-                                    <a href=""><i class="bi bi-app" style="color: darkblue;"></i></a>
-                                    <a href=""><i class="bi bi-app" style="color: darkblue;"></i></a>
-                                    <a href=""><i class="bi bi-app" style="color: darkblue;"></i></a>
-                                    <a href=""><i class="bi bi-app" style="color: darkblue;"></i></a>
-
-                                </li>
-                            </ul>
-                            <h5 class="card-text mt-3 mx-3 "><small class="text-muted">Option2</small></h5>
-                            <ul class="list-inline pull-right mx-3">
-                                <li>
-                                    <a href=""><i class="bi bi-app" style="color: darkblue;"></i></a>
-                                    <a href=""><i class="bi bi-app" style="color: darkblue;"></i></a>
-                                    <a href=""><i class="bi bi-app" style="color: darkblue;"></i></a>
-                                    <a href=""><i class="bi bi-app" style="color: darkblue;"></i></a>
-                                    <a href=""><i class="bi bi-app" style="color: darkblue;"></i></a>
-                                    <a href=""><i class="bi bi-app" style="color: darkblue;"></i></a>
-
-                                </li>
-                            </ul>
-
-                            <form action="">
+                            <form action="" id="form_product">
+                            <h4 style="color: red;">${product.prix_produit.toFixed(2)} DH</h4>
+                            ${options.map((element,index)=> `<h5 class="mt-2 mx-3 "><small>${element.type_options}:</small></h5>
+                            <div class="btn-group btn-group-toggle d-flex justify-content-around" data-toggle="buttons">
+                                ${element.options.split(";").map((option,index)=> `
+                                    <label class="btn  btn-warning options_label ${index==0?'active':''}">
+                                    <input type="radio" name="${element.type_options}" value="${option}"  autocomplete="off" ${index==0?'checked':''}> ${option}
+                                    </label>`)}
+                            </div>
+                                `) }
+                            
                                 <div class="form-group">
 
                                     <span>
-                                        <h5 class="card-text mt-3 mx-3 "><small class="text-muted">Quantité:</small></h5>
-                                    </span><input type="number" class=" input my-3 mx-3" style="border-radius: 15px;height: 30px;width: 130px; color:darkblue;">
-                                </div>
-                                <div class="form-group mt-5  ">
-                                    <button type="button" class="btn btn-warning" style="border-radius: 20px;">Ajouter au panier</button>
-                                    <button type="button" class="btn btn-danger" style="border-radius: 20px;">Acheter maintenant</button>
+                                        <h5 class="card-text mt-2 mx-3 "><small class="text-muted">Quantité:</small></h5>
+                                    </span><input type="number" value="1" name="qtt_panier" class=" input my-3 mx-3" style="border-radius: 15px;height: 30px;width: 130px; color:darkblue;">
+                                    <div class="form-group mt-2  ">
+                                    <button type="button" class="btn btn-warning" onclick="add_to_cart()" <?php if (!isset($_SESSION["id_client"])) echo "disabled"  ?> style="border-radius: 20px;">Ajouter au panier</button>
+                                    <button type="button" class="btn btn-danger" <?php if (!isset($_SESSION["id_client"])) echo "disabled"  ?> style="border-radius: 20px;">Acheter maintenant</button>
 
                                 </div>
+                                    </div>
+                               
                             </form>
 
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <div class="card" style="max-height: 300px;">
-                        <nav class="nav nav-tabs">
-                            <a class="nav-item nav-link active" href="#p1" data-toggle="tab">Description</a>
-                            <a class="nav-item nav-link" href="#p2" data-toggle="tab">Spécifications</a>
-                            <a class="nav-item nav-link" href="#p3" data-toggle="tab">Commentaires</a>
-                        </nav>
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="p1">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores molestiae assumenda aliquid, voluptatibus incidunt repellat nesciunt praesentium recusandae aliquam necessitatibus, molestias ullam corporis. Aliquam voluptatem ut fugit cumque et atque!
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. A, vel unde laborum fugiat tempora eaque magni accusamus obcaecati sunt dolorum facilis eveniet debitis, consequuntur mollitia earum omnis quam voluptatem quae.
-                            </div>
-                            <div class="tab-pane" id="p2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique modi earum temporibus, optio iste sed, voluptate fugiat ducimus rerum delectus quibusdam non. Suscipit, velit. Quod voluptates molestias enim ut. Asperiores.
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Provident, ex architecto? Adipisci explicabo quas pariatur? Recusandae magnam, molestiae voluptate ipsa officiis quasi laboriosam magni distinctio, deserunt iure explicabo, velit iste?
-                            </div>
-                            <div class="tab-pane" id="p3">
-
-                                <div class="card mx-3 my-2">
-                                    <div class="card-body">
-                                        <h6 class="card-title ">User x</h6>
-                                        This is some text within a card body.
-                                    </div>
-                                </div>
-
-                                <div class="card mx-3 my-2">
-                                    <div class="card-body">
-                                        <h6 class="card-title ">User x</h6>
-                                        This is some text within a card body.
-                                    </div>
-                                </div>
-
-                                <div class="container mb-5">
-
-                                    <div id="html">
-                                        <button data-toggle="modal" data-target="#formulaire" class="btn btn-primary">Ajouter un commantaire</button>
-                                    </div>
-                                    <div class="modal fade" id="formulaire">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title">Votre Commentaire:</h4>
-                                                    <button type="button" class="close" data-dismiss="modal">
-                                                        <span>&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body row">
-                                                    <form class="col" action="test.php">
-                                                        <div class="form-group">
-                                                            <label for="nom" class="form-control-label">Nom d'utilisateur</label>
-                                                            <input type="text" class="form-control" name="nom" id="nom" placeholder="Votre nom" required>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="Commentaire" class="form-control-label">Commentaire</label>
-                                                            <textarea id="note" rows="5" class="form-control" required></textarea>
-                                                        </div>
-
-                                                        <button type="submit" class="btn btn-primary pull-right">Envoyer</button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-
-            <div class="container">
-                <h2 class="my-5" style="color: rgb(2, 2, 58);text-decoration: underline;font-style: italic;">De la meme catégorie
-                </h2>
-                <div class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <div class="row">
-                                <div class="col-12 col-lg-3">
-                                    <div class="card">
-                                        <img src="./pc.jpeg" class="card-img-top" alt="...">
+                `);
+                //FIX COMMENTS
+                $("#tab-content").html(`
+                                <div class="tab-pane active  p-3 " id="p1">${product.description_produit}</div>
+                                <div class="tab-pane " id="p2">
+                                    <div class="card  mx-3 my-3 ">
                                         <div class="card-body">
-                                            <a class="stretched-link" href="#" style="color: rgb(2, 2, 58);">
-                                                <span class="card-title h4">pc</span>
-                                            </a>
-
-                                            <p style="color:gray">description</p>
-                                            <a href="#" class="btn btn-danger">Acheter</a>
-                                            <span class="h6" style="margin-left:20px;">3499,99 MAD</span>
+                                            <h6 class="card-title ">User x</h6>
+                                            This is some text within a card body.
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-12 col-lg-3">
-                                    <div class="card">
-                                        <img src="./pc.jpeg" class="card-img-top" alt="...">
+
+                                    <div class="card  mx-3 my-3 ">
                                         <div class="card-body">
-                                            <a class="stretched-link" href="#" style="color: rgb(2, 2, 58);">
-                                                <span class="card-title h4">pc</span>
-                                            </a>
-
-                                            <p style="color:gray">description</p>
-                                            <a href="#" class="btn btn-danger">Acheter</a>
-                                            <span class="h6" style="margin-left:20px;">3499,99 MAD</span>
+                                            <h6 class="card-title ">User x</h6>
+                                            This is some text within a card body.
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-12 col-lg-3">
-                                    <div class="card">
-                                        <img src="./pc.jpeg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <a class="stretched-link" href="#" style="color: rgb(2, 2, 58);">
-                                                <span class="card-title h4">pc</span>
-                                            </a>
-
-                                            <p style="color:gray">description</p>
-                                            <a href="#" class="btn btn-danger">Acheter</a>
-                                            <span class="h6" style="margin-left:20px;">3499,99 MAD</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-lg-3">
-                                    <div class="card ">
-                                        <img src="./pc.jpeg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <a class="stretched-link" href="#" style="color: rgb(2, 2, 58);">
-                                                <span class="card-title h4">pc</span>
-                                            </a>
-
-                                            <p style="color:gray">description</p>
-                                            <a href="#" class="btn btn-danger">Acheter</a>
-                                            <span class="h6" style="margin-left:20px;">3499,99 MAD</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="carousel-item">
-                            <div class="row">
-                                <div class="col-12 col-lg-3">
-                                    <div class="card">
-                                        <img src="./pc.jpeg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <a class="stretched-link" href="#" style="color: rgb(2, 2, 58);">
-                                                <span class="card-title h4">pc</span>
-                                            </a>
-
-                                            <p style="color:gray">description</p>
-                                            <a href="#" class="btn btn-danger">Acheter</a>
-                                            <span class="h6" style="margin-left:20px;">3499,99 MAD</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-lg-3">
-                                    <div class="card">
-                                        <img src="./pc.jpeg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <a class="stretched-link" href="#" style="color: rgb(2, 2, 58);">
-                                                <span class="card-title h4">pc</span>
-                                            </a>
-
-                                            <p style="color:gray">description</p>
-                                            <a href="#" class="btn btn-danger">Acheter</a>
-                                            <span class="h6" style="margin-left:20px;">3499,99 MAD</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-lg-3">
-                                    <div class="card">
-                                        <img src="./pc.jpeg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <a class="stretched-link" href="#" style="color: rgb(2, 2, 58);">
-                                                <span class="card-title h4">pc</span>
-                                            </a>
-
-                                            <p style="color:gray">description</p>
-                                            <a href="#" class="btn btn-danger">Acheter</a>
-                                            <span class="h6" style="margin-left:20px;">3499,99 MAD</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-lg-3">
-                                    <div class="card ">
-                                        <img src="./pc.jpeg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <a class="stretched-link" href="#" style="color: rgb(2, 2, 58);">
-                                                <span class="card-title h4">pc</span>
-                                            </a>
-
-                                            <p style="color:gray">description</p>
-                                            <a href="#" class="btn btn-danger">Acheter</a>
-                                            <span class="h6" style="margin-left:20px;">3499,99 MAD</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
-
-                    </div>
-
-                </div>
-
-                <h2 class="my-5" style="color: rgb(2, 2, 58);text-decoration: underline;font-style: italic;">Vous pouvez admirer
-                    aussi</h2>
-                <div id="carouselControls2" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <div class="row">
-                                <div class="col-12 col-lg-3">
-                                    <div class="card">
-                                        <img src="./pc.jpeg" class="card-img-top" alt="...">
-
-                                        <div class="card-body">
-                                            <a class="stretched-link" href="#" style="color: rgb(2, 2, 58);">
-                                                <span class="card-title h4">pc</span>
-                                            </a>
-
-                                            <p style="color:gray">description</p>
-                                            <a href="#" class="btn btn-danger">Acheter</a>
-                                            <span class="h6" style="margin-left:20px;">3499,99 MAD</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-lg-3">
-                                    <div class="card">
-                                        <img src="./pc.jpeg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <a class="stretched-link" href="#" style="color: rgb(2, 2, 58);">
-                                                <span class="card-title h4">pc</span>
-                                            </a>
-
-                                            <p style="color:gray">description</p>
-                                            <a href="#" class="btn btn-danger">Acheter</a>
-                                            <span class="h6" style="margin-left:20px;">3499,99 MAD</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-lg-3">
-                                    <div class="card">
-                                        <img src="./pc.jpeg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <a class="stretched-link" href="#" style="color: rgb(2, 2, 58);">
-                                                <span class="card-title h4">pc</span>
-                                            </a>
-
-                                            <p style="color:gray">description</p>
-                                            <a href="#" class="btn btn-danger">Acheter</a>
-                                            <span class="h6" style="margin-left:20px;">3499,99 MAD</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-lg-3">
-                                    <div class="card ">
-                                        <img src="./pc.jpeg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <a class="stretched-link" href="#" style="color: rgb(2, 2, 58);">
-                                                <span class="card-title h4">pc</span>
-                                            </a>
-
-                                            <p style="color:gray">description</p>
-                                            <a href="#" class="btn btn-danger">Acheter</a>
-                                            <span class="h6" style="margin-left:20px;">3499,99 MAD</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div id="carouselControls" class="carousel-item">
-                            <div class="row">
-                                <div class="col-12 col-lg-3">
-                                    <div class="card">
-                                        <img src="./pc.jpeg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <a class="stretched-link" href="#" style="color: rgb(2, 2, 58);">
-                                                <span class="card-title h4">pc</span>
-                                            </a>
-
-                                            <p style="color:gray">description</p>
-                                            <a href="#" class="btn btn-danger">Acheter</a>
-                                            <span class="h6" style="margin-left:20px;">3499,99 MAD</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-lg-3">
-                                    <div class="card">
-                                        <img src="./pc.jpeg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <a class="stretched-link" href="#" style="color: rgb(2, 2, 58);">
-                                                <span class="card-title h4">pc</span>
-                                            </a>
-
-                                            <p style="color:gray">description</p>
-                                            <a href="#" class="btn btn-danger">Acheter</a>
-                                            <span class="h6" style="margin-left:20px;">3499,99 MAD</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-lg-3">
-                                    <div class="card">
-                                        <img src="./pc.jpeg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <a class="stretched-link" href="#" style="color: rgb(2, 2, 58);">
-                                                <span class="card-title h4">pc</span>
-                                            </a>
-
-                                            <p style="color:gray">description</p>
-                                            <a href="#" class="btn btn-danger">Acheter</a>
-                                            <span class="h6" style="margin-left:20px;">3499,99 MAD</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-lg-3">
-                                    <div class="card ">
-                                        <img src="./pc.jpeg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <a class="stretched-link" href="#" style="color: rgb(2, 2, 58);">
-                                                <span class="card-title h4">pc</span>
-                                            </a>
-
-                                            <p style="color:gray">description</p>
-                                            <a href="#" class="btn btn-danger">Acheter</a>
-                                            <span class="h6" style="margin-left:20px;">3499,99 MAD</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-
-
-
-        </div>
-        <div class="container-fluid">
-            <?php
-            require_once "req/footbar.php";
-
-            ?>
-        </div>
-
-        <script>
-            $(function() {
-                $('form').submit(function(e) {
-                    e.preventDefault()
-                    var $form = $(this)
-                    $.post($form.attr('action'), $form.serialize())
-                        .done(function(data) {
-                            $('#html').html(data)
-                            $('#formulaire').modal('hide')
-                        })
-                        .fail(function() {
-                            alert('ça ne marche pas...')
-                        })
-                })
-                $('.modal').on('shown.bs.modal', function() {
-                    $('input:first').focus()
-                })
+                `);
             })
-        </script>
+
+        }
+
+        fetch("./php/products/get_most_products").then(resp => resp.json()).then(json => {
+            const data = json.data;
+            for (let index = 0; index < data.length / 2; index++) {
+                const element = data[index];
+                $("#same_categorie").append(`
+                <div class="carousel-item ${index==0?'active':''}">
+                    <div class="col-12 col-lg-4">
+                        <div class="card">
+                            <img src="./img/products/${data[index].id_produit}.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <a class="stretched-link" href="#" style="color: rgb(2, 2, 58);">
+                                    <span class="card-title h4">${data[index].label}</span>
+                                </a>
+
+                                <p style="color:gray">description</p>
+                                <a href="#" class="btn btn-danger">Acheter</a>
+                                <span class="h6" style="margin-left:20px;">${data[index].prix_produit.toFixed(2)} DH</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-4">
+                        <div class="card">
+                            <img src="./img/products/${data[index+1].id_produit}.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <a class="stretched-link" href="#" style="color: rgb(2, 2, 58);">
+                                    <span class="card-title h4">${data[index+1].label}</span>
+                                </a>
+
+                                <p style="color:gray">description</p>
+                                <a href="#" class="btn btn-danger">Acheter</a>
+                                <span class="h6" style="margin-left:20px;">${data[index+1].prix_produit.toFixed(2)} DH</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-4">
+                        <div class="card">
+                            <img src="./img/products/${data[index+2].id_produit}.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <a class="stretched-link" href="#" style="color: rgb(2, 2, 58);">
+                                    <span class="card-title h4">${data[index+2].label}</span>
+                                </a>
+
+                                <p style="color:gray">description</p>
+                                <a href="#" class="btn btn-danger">Acheter</a>
+                                <span class="h6" style="margin-left:20px;">${data[index+2].prix_produit.toFixed(2)} DH</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>                   
+            `);
+            }
+        });
+        fetch("./php/products/get_newest_products").then(resp => resp.json()).then(json => {
+            const data = json.data;
+            for (let index = 0; index < data.length / 2; index++) {
+                const element = data[index];
+                $("#new_items").append(`
+                <div class="carousel-item ${index==0?'active':''}">
+                    <div class="col-12 col-lg-4">
+                        <div class="card">
+                            <img src="./img/products/${data[index].id_produit}.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <a class="stretched-link" href="#" style="color: rgb(2, 2, 58);">
+                                    <span class="card-title h4">${data[index].label}</span>
+                                </a>
+
+                                <p style="color:gray">description</p>
+                                <a href="#" class="btn btn-danger">Acheter</a>
+                                <span class="h6" style="margin-left:20px;">${data[index].prix_produit.toFixed(2)} DH</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-4">
+                        <div class="card">
+                            <img src="./img/products/${data[index+1].id_produit}.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <a class="stretched-link" href="#" style="color: rgb(2, 2, 58);">
+                                    <span class="card-title h4">${data[index+1].label}</span>
+                                </a>
+
+                                <p style="color:gray">description</p>
+                                <a href="#" class="btn btn-danger">Acheter</a>
+                                <span class="h6" style="margin-left:20px;">${data[index+1].prix_produit.toFixed(2)} DH</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-4">
+                        <div class="card">
+                            <img src="./img/products/${data[index+2].id_produit}.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <a class="stretched-link" href="#" style="color: rgb(2, 2, 58);">
+                                    <span class="card-title h4">${data[index+2].label}</span>
+                                </a>
+
+                                <p style="color:gray">description</p>
+                                <a href="#" class="btn btn-danger">Acheter</a>
+                                <span class="h6" style="margin-left:20px;">${data[index+2].prix_produit.toFixed(2)} DH</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>                   
+            `);
+
+            }
+
+        });
+
+        function add_to_cart() {
+            var data = $("#form_product").serialize();
+            data += "&id_produit=" + product.id_produit;
+            fetch("php/cart/add_to_cart.php?" + data).then(resp => resp.json()).then(json => {
+                $('#toast_cart').toast({
+                    delay: 3000
+                })
+                $('#toast_cart').toast('show')
+            }).catch(err => console.log(err));
+        }
+    </script>
 
 
-    </body>
+</body>
 
 </html>

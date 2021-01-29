@@ -80,7 +80,6 @@
                                     <th scope="col">Etat</th>
                                     <th scope="col">Montant</th>
                                     <th scope="col">Options</th>
-                                    <!-- #TODO  view or mail client -->
                                 </tr>
                             </thead>
                             <tbody id="table_body">

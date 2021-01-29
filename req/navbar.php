@@ -1,3 +1,57 @@
+<?php
+session_start();
+$x = 0;
+if (isset($_POST["password"])) {
+  require "./php/connection/db.php";
+  $email_client = htmlspecialchars($_POST["email"]);
+  $pass = $_POST["password"];
+  $query = "SELECT  id_client, nom_client, prenom_client,  mdp_client FROM client where email = :email_client ";
+  $sql = $conn->prepare($query);
+  $sql->execute(array("email_client" => $email_client));
+
+  if ($row = $sql->fetch())
+    if (password_verify($pass, $row["mdp_client"])) {
+      $_SESSION["email_client"] = $email_client;
+      $_SESSION["nom_client"] = $row["nom_client"];
+      $_SESSION["prenom_client"] = $row["prenom_client"];
+      $_SESSION["id_client"] = $row["id_client"];
+      $_SESSION["connection_status"] = "connected";
+      //header("location: ".$_SESSION["LAST_PAGE"]); //pour etre envoyer a la page voulue au depart
+    } else {
+      $x = 1;
+    }
+  else
+    $x = 1;
+  if ($x == 1) {
+    echo "
+      <script>
+      $( document ).ready(function() {
+        $('#toast_connex').toast({
+          delay: 3000
+      })
+      $('#toast_connex').toast('show')
+       });
+      </script>
+      
+      ";
+  }
+  
+}
+
+
+?>
+<div class="toast bg-danger text-light" role="alert" id="toast_connex" aria-live="assertive" style="position: absolute; top: 100px; right: 0;" aria-atomic="true">
+  <div class="toast-header">
+    <i class="bi bi-x-octagon-fill text-danger"></i>
+    <strong class="mr-auto">Erreur de conenxion</strong>
+    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="toast-body">
+    Erreur de connexion : Compte inexistant ou MDP incorrect
+  </div>
+</div>
 <nav class="navbar navbar-expand-sm  fixed-top navbar-light bg-light ">
   <a class="navbar-brand" href="index.php" class="h4" style="color:navy">
     <img src="img/logo.png" alt="" height="50">
@@ -8,7 +62,7 @@
   ?>
     <div class="col-6 col-lg-8  col-md-5 col-sm-4 d-flex justify-content-center">
       <form action="navigation" method="get" class="col-12">
-        <input  class="form-control col-12 " name="search" type="text" placeholder="Search..." style="width: 80%;">
+        <input class="form-control col-12 " name="search" type="text" placeholder="Search..." style="width: 80%;">
 
       </form>
 
@@ -20,7 +74,7 @@
   <div class=" collapse navbar-collapse " id="navbarNavDropdown">
     <ul class="ml-md-auto navbar-nav">
       <li class="nav-item">
-        <a href="#" class="nav-link pl-2 pr-1 mx-1 py-3 my-n2" aria-label="Panier">
+        <a href="cart" class="nav-link pl-2 pr-1 mx-1 py-3 my-n2" aria-label="Panier">
           <i class="bi bi-cart4 mr-4" style="font-size: 2rem;"></i>
         </a>
       </li>
@@ -35,24 +89,21 @@
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownAccount">
           <?php
-          if (!isset($_SESSION["user_id"])) {
+          if (!isset($_SESSION["id_client"])) {
           ?>
 
-            <form class="px-4 py-3">
+            <form class="px-4 py-3" method="POST">
               <div class="form-group">
                 <label for="exampleDropdownFormEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
+                <input type="email" name="email" class="form-control" placeholder="email@example.com">
               </div>
               <div class="form-group">
                 <label for="exampleDropdownFormPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
+                <input type="password" name="password" class="form-control" placeholder="Password">
               </div>
               <div class="form-group">
                 <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="dropdownCheck">
-                  <label class="form-check-label" for="dropdownCheck">
-                    Remember me
-                  </label>
+
                 </div>
               </div>
               <button type="submit" class="btn btn-primary">Sign in</button>
@@ -66,7 +117,7 @@
             <a class="dropdown-item" href="#">Action</a>
             <a class="dropdown-item" href="#">Another action</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
+            <a class="dropdown-item" href="php/clients/logout">Se deconnecter</a>
           <?php
           }
           ?>
