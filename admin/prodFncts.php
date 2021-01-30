@@ -43,7 +43,3 @@ $stml=$pdo->prepare($sql);
 $stml->execute();
 return $stml->fetchAll(PDO::FETCH_ASSOC);
 }
-
-?>
-
-

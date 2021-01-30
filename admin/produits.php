@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,9 +17,7 @@
     <?php require "req/verify.php";  ?>
 
 </head>
-
-<body>
-    <div class="container-fluid">
+<div class="container-fluid">
         <div class="row">
             <?php require "req/sidebar.php" ?>
             <div class="col pt-4">
@@ -35,37 +32,67 @@
                     </p>
 
                     <div class="collapse" id="collapseExample">
-                        <form  method="get" id='form_search'>
-                            <div class="form-group">
-                                <h6>La marque :</h6>
-                                <select name="id_marque">
-                                <option value="1">Nike</option>
-                                <option value="2">Adidas</option>
-                                <option value="3">puma</option>
-                                </select>
-                                
-                            </div>
 
-                            <div class="form-group">
-                                <h6>La categorie :</h6>
-                                <select name="id_categorie">
+                        <form  method="get" id='form_search'>
+                        
+                                <div class='filtres'>
+                                <div class='mt-2 row'>
+                                    <div class="form-row p-2 col-12">
+                                        <div class="pt-3 col-2">
+                                            <h6>Label </h6>
+                                        </div>
+                                        <div class="mt-2 col-10">
+                                            <input class="form-control mr-sm-2" placeholder="Label de votre produit"  name="label">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='mt-2 row'>
+                                    <div class="form-row p-2 col-12">
+                                        <div class="pt-3 col-2">
+                                            <h6>Marque: </h6>
+                                        </div>
+                                        <div class="mt-2 col-10">
+                                        <select class="custom-select" name="id_marque">
+                                            <option selected>Selectionner la marque de votre produit</option>
+                                            <option value="1">Nike</option>
+                                            <option value="2">Adidas</option>
+                                            <option value="3">puma</option>
+                                            </select>                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class='mt-2 row'>
+                                    <div class="form-row p-2 col-12">
+                                        <div class="pt-3 col-2">
+                                            <h6>Categorie </h6>
+                                        </div>
+                                        <div class="mt-2 col-10">
+                                        <select class="custom-select" name="id_marque">
                                 <option value="1">Vetements</option>
                                 <option value="2">Electronique</option>
                                 <option value="3">Voitures</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <h6>Label :</h6>
-                                <input type="text" name="label" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <h6>Le prix :</h6>
-                                <input type="text" name="prix_produit" class="form-control">
-                            </div>
+                                </select>                                        </div>
+                                    </div>
+                                </div>
+                               
+                               
+                              
+                                <div class='mt-2 row'>
+                                    <div class="form-row p-2 col-12">
+                                        <div class="pt-3 col-2">
+                                            <h6>Prix: </h6>
+                                        </div>
+                                        <div class="mt-2 col-10">
+                                            <input class="form-control mr-sm-2" placeholder="Prix de votre produit" name="prix_produit">
+                                        </div>
+                                    </div>
+                                </div>
+                         
                             <div class="mt-2 row">
                                 <div class='col-4'></div>
                                 <div class="ml-3 pt-2 col-4">
                                     <input type="submit" id="submit_search" class="btn btn-success btn-block  form-control" value="Ajouter">
+
                                 </div>
                             </div>
 
@@ -99,6 +126,7 @@
             </div>
         </div>
     </div>
+    
     <!--modal-->
     <div class="modal  fade" id="modal_details" tabindex="-1" aria-labelledby="modal_details" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -109,6 +137,21 @@
     </div>
 
     <script>
+        
+        function select_categorie() {
+            fetch("../php/products/read_categories").then(resp => resp.json()).then(json => {
+                var data = json.data;
+                $("#selectcategorie").text('');
+                data.forEach((element) => {
+                    $('#selectcategorie').append(`
+                        <option value="${element.nom_categorie}">${element.nom_categorie}</option>
+                        `);
+                });
+            }).catch(err => {
+                console.log(err);
+            });
+        }
+
         function ajouter() {
             var dataform = $("#form_search :input[value!='']").serialize();
             fetch("../php/products/products_insert?" + dataform).then(resp => resp.json()).then(json => {
@@ -116,6 +159,7 @@
                 console.log(err);
             });
         };
+
         function modifier(id_produit) {
             $('#modal_content').html(`
                      <div class="modal-header">
@@ -209,7 +253,7 @@
 
         function confirm_supprimer(id_produit) {
             fetch("../php/products/products_delete?id_produit=" + id_produit).then(resp => resp.json()).then(json => {
-                 $('#modal_details').modal('hide');
+                $('#modal_details').modal('hide');
             }).catch(err => {
                 console.log(err);
             });
@@ -218,13 +262,13 @@
 
         $("#submit_search").click(function(event) {
             event.preventDefault();
-            ajouter(); 
+            ajouter();
             search();
         });
 
         function search() {
             fetch("../php/products/products_read").then(resp => resp.json()).then(json => {
-                var data = json.data;// valeur de key data
+                var data = json.data;
                 $("#table_body").text('');
                 data.forEach((element) => {
                     $('#table_body').append(`
@@ -253,6 +297,8 @@
             });
         }
         search();
+       
     </script>
 </body>
+
 </html>
