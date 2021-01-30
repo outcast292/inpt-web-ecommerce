@@ -161,6 +161,7 @@
         $("#products_div").append(`
           <div class="card  card_item col-lg-3 col-md-4 col-sm-5  m-2 p-1">
               <a href="produit?id_produit=${element.id_produit}">
+
                 <img src="img/products/${element.id_produit}.jpg" height="250px" width="250px" class="card-img-top w-100 " alt="...">
               </a>
               <div class="card-body">
