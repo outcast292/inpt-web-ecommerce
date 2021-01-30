@@ -22,7 +22,7 @@
     require_once "req/navbar3.php";
     ?>
     <div class="container ">
-        <div class="jumbotron ">
+        <div class="jumbotron  ">
             <div class="m-5">
                 <form action="navigation" method="get">
                     <label for="search_input" class="form-label">Vous recherchez quelque chose ?</label>
@@ -30,16 +30,16 @@
                 </form>
             </div>
 
-            <div class="row bg-secondary">
+            <div class="row bg-secondary" >
 
-                <div class="col-md-3 col-sm-12  border border-warning bg-light  ml-3 ">
-                    <div>
+                <div class="col-md-3 col-sm-12  border border-warning bg-light  ml-3 "  >
+                    <div >
                         <h3 class="text-center  p-2 ">categories</h3>
                         <hr>
-                        <ul id="categories_aside">
+                        <div class="list-group mb-2" id="categories_aside">
 
 
-                        </ul>
+                        </div>
 
 
                     </div>
@@ -171,7 +171,7 @@
         const data = json.data;
         data.forEach(element => {
             $("#categories_aside").append(`
-                <li><a href="navigation?categorie=${element.id_categorie}" title="${element.prod_count} produits dans cette categorie">${element.nom_categorie}</a></li>
+                <a class="list-group-item list-group-item-action list-group-item-primary pt-1 pb-1 " style="background-color:navy;color:gold" href="navigation?categorie=${element.id_categorie}" title="${element.prod_count} produits dans cette categorie">${element.nom_categorie}</a>
             `)
         });
     });
