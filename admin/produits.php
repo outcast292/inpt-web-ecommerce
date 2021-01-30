@@ -359,8 +359,7 @@
                 </div> `);
                 $('.selectpicker').selectpicker();
                 $('#modal_details').modal('show');
-                if (file_exists(`../img/products/${id_produit}.jpg`))
-                    $('#img_mod_up').closest(".imgUp").find('.imagePreview').css("background-image", "url(" + `../img/products/${id_produit}.jpg` + ")")
+                $('#img_mod_up').closest(".imgUp").find('.imagePreview').css("background-image", "url(" + `../img/products/${id_produit}.jpg` + ")")
             });
         };
 
