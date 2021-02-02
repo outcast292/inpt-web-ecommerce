@@ -16,6 +16,7 @@ if (isset($_GET["id_commande"])) {
     $msg["code"] = 200;
     $msg["msg"] = "ok";
 
+
     $json = json_encode($msg, JSON_NUMERIC_CHECK);
     echo $json;
 } else {

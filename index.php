@@ -19,7 +19,7 @@
 
 <body>
     <?php
-    require_once "req/navbar3.php";
+    require_once "req/navbar.php";
     ?>
     <div class="container ">
         <div class="jumbotron ">

@@ -1,10 +1,11 @@
 <?php
 session_start();
-echo "khdam";
 session_unset();
 session_destroy();
-echo "
-    <script>
-    window.history.go(-1);
-    </script>
-";
+
+if (isset($_GET["page"])) {
+    header("location: ../../" . $_GET["page"]);
+} else {
+    if (file_exists("../index.php"))
+        header("location:  ../../index.php");
+}
