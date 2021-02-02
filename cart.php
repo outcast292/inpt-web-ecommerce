@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>panier</title>
+
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/navbar.css" rel="stylesheet">
     <script src="js/jquery-3.5.1.slim.min.js"></script>
@@ -12,6 +13,7 @@
     <script src="js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="css/bootstrap-icons.css">
     <link rel="stylesheet" href="css/index.css">
+
     <style>
 
 
@@ -100,6 +102,63 @@
         ?>
     </div>
 
+    <div>
+
+        <?php
+        require_once "req/footbar.php";
+
+    <script>
+        <?php
+        if (!isset($_SESSION["id_client"]))
+            header("location: index.php");
+        else
+            echo "const id_client=" . $_SESSION["id_client"] . ";";
+        ?>
+        var products = [];
+
+        function fill_cart_div() {
+            $("#cart_content").text('');
+            products.forEach((element, index) => {
+                $('#cart_content').append(`
+                        <div class="card mb-3 p-0 h-25">
+                            <div class="row no-gutters">
+                                <div class="col-md-2">
+                                    <img src="img/products/${element.id_produit}.jpg" class="card-img w-75" alt="image_produit">
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="card-body p-3 col-12 " style="width: 100%;">
+                                        <span class="card-title p-0 h5 d-flex justify-content-between" style="color: black;"><span style="color: black;">${element.label}</span>
+                                        <span>
+                                                <span class="mr-1" id="price" style="color: black;">${element.prix_produit.toFixed(2)}</span>
+                                                <span style="color: black;">DH</span>
+                                            </span>    
+                                        <span>
+                                                <span class="border pt-2 pl-3 pr-3 pb-1" id="qty">${element.qtt_panier}</span>
+                                                <button id="minus" onclick="change_qtt(${index},'-')" style="padding: 2px 5px; border-radius: 10px; background-color: rgb(230,230,230) ;border-color:(230,230,230); border-width: 1px;">-</button>
+                                                <button id="plus" onclick="change_qtt(${index},'+')" style="padding: 2px 3px; border-radius: 10px; background-color: rgb(230,230,230) ;border-color:(230,230,230); border-width: 1px;">+</button>
+                                            </span>
+                                            <span>
+                                                <span class="mr-1" id="price" style="color: black;">${(element.prix_produit*element.qtt_panier).toFixed(2)}</span>
+                                                <span style="color: black;">DH</span>
+                                            </span>
+                                            
+                                        </span>
+                                        <span>
+                                            <div class="d-flex justify-content-end px-3">
+                                                <a href="produit?id_produit=${element.id_produit}" style="border-radius: 5px;" class="h-50 w-25 btn btn-info">VOIR</a>
+                                                <button style="border-radius: 5px;" class="h-50 w-25 ml-1 btn-danger" onclick="retirer_du_panier(${index})"><i class="bi bi-trash"></i> RETIRER</button>
+                                            </div>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        `);
+            });
+            $("#total").text(products.reduce((a, b) => a + b.qtt_panier * b.prix_produit, 0).toFixed(2) + " DH");
+
+
+        }
 
 
     <script>
