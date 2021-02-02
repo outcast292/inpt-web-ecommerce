@@ -1,321 +1,303 @@
-<!-- saved from url=(0021)http://amoil/commande -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AMOIL</title>
-    <link href="./AMOIL_files/bootstrap.min.css" rel="stylesheet">
-    <link href="./AMOIL_files/navbar.css" rel="stylesheet">
-    <script src="./AMOIL_files/jquery-3.5.1.slim.min.js.téléchargement"></script>
-
-    <script src="./AMOIL_files/bootstrap.bundle.min.js.téléchargement"></script>
-    <link rel="stylesheet" href="./AMOIL_files/bootstrap-icons.css">
-    <link rel="stylesheet" href="./AMOIL_files/index.css">
-    <style>
-
-    </style>
-</head>
-
-<body style="margin-top: 8%;">
+    <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
-<nav class="navbar navbar-expand-sm navbar-light fixed-top bg-light">
-        <div class="navbar-brand  ">
-            <a href="http://amoil/commande#" class="h4" style="color:navy"><img class="mr-1" src="./AMOIL_files/logo.png" height="75px">AMOIL</a>
-        </div>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>AMOIL</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/navbar.css" rel="stylesheet">
+        <script src="js/jquery-3.5.1.slim.min.js"></script>
+    
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <link rel="stylesheet" href="css/bootstrap-icons.css">
+        <link rel="stylesheet" href="css/index.css">
        
-            <button class="navbar-toggler " data-toggle="collapse" data-target="#navigation" type="button">
-                <span class="navbar-toggler-icon "></span>
-            </button>
-            <div class="navbar-collapse collapse" id="navigation">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a href="http://amoil/commande#" class="nav-link d-flex flex-column ">
-                        <i class="bi bi-cart4 mr-4" style="font-size: 3rem;"></i>
-                        </a>
-                   </li>
-                   <li class="nav-item ">
-                    <a href="http://amoil/commande#" class="nav-link d-flex flex-column ">
-                    <i class="bi bi-heart-fill ml-4 mr-4" style="font-size: 3rem;"></i>
-                    </a>
-               </li>
-                    <li class="nav-item">
-                        <a href="http://amoil/commande#" class="nav-link d-flex flex-column">
-                        <i class="bi bi-person-circle ml-4" style="font-size: 3rem;"></i>
-                        </a>
-                   </li>
-                    
-                        
-                </ul>
-            
-        </div>   
+       <?php require_once "req/navbar.php" ?></head>
+<body style="margin-top:6%">
+<button type="button" class="btn btn-secondary btn-lg btn-block">Revision de la commande</button>
 
-    </nav>
-    
-    <h1 align="center"><b>Revision de la commande</b></h1><br>
         <h3>Votre Panier</h3>
+          <div class="card-deck">
+          <div class="card bg-light mb-3" style="max-width: 18rem; ">
+  <div class="card-header"><img src="/img/products/pc.jpg"  width="100%">
+<img src="img/stars.jpg">
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">PC Portable</h5>
+    <p class="card-text"> <h5 style="color:red"> 9999,99 DH</h5> 
+                        <div>Quantité <input type="number" class=" input my-3 mx-3" style="border-radius: 15px;height: 30px;width: 130px;">
 
-
-    <div class="card-group">
-        <div class="card">
-            <img src="./AMOIL_files/product2" width="60%" height="40%">
-                <div class="card-body">
-                  <h5 class="card-title">PC</h5>
-                      <p class="card-text"> </p><div><b>Prix unitaire:</b> $$$$$DH<p></p> 
-                        <div>Nombre<input type="number" min="1" max="15"></div><br>
-                          <div class="total"><b>Prix total :</b>$$$$$dh
+                          <div class="total"> prix total <h5 style="color:red"> 999999,99DH</div>
                           </div><br>
                           <div class="position-relative top-0 end-3">
-                               <button type="button" class="btn btn-primary">Details</button>     
-                            <button type="button" class="btn btn-danger">Retirer du panier</button>
+                          <button type="button" class="btn btn-warning" style="border-radius: 20px;">Confirmer </button>
+                        <button type="button" class="btn btn-danger" style="border-radius: 20px;">Retirer du panier</button>
+
                           </div>
                 </div>
           </div>
+          <div class="card bg-light mb-3" style="max-width: 18rem;">
+  <div class="card-header"><img src="/img/products/pc.jpg" width="100%" >
+<img src="img/stars.jpg">
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">PC Portable</h5>
+    <p class="card-text"> <h5 style="color:red"> 9999,99 DH</h5> 
+                        <div>Quantité <input type="number" class=" input my-3 mx-3" style="border-radius: 15px;height: 30px;width: 130px;">
+
+                          <div class="total"> prix total <h5 style="color:red"> 999999,99DH</div>
+                          </div><br>
+                          <div class="position-relative top-0 end-3">
+                          <button type="button" class="btn btn-warning" style="border-radius: 20px;">Confirmer </button>
+                        <button type="button" class="btn btn-danger" style="border-radius: 20px;">Retirer du panier</button>
+
+                          </div>
+                </div>
+          </div>
+  <div class="card">
+  <div class="card bg-light mb-3" style="max-width: 18rem;">
+  <div class="card-header"><img src="/img/products/pc.jpg" width="100%"  >
+<img src="img/stars.jpg">
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">PC Portable</h5>
+    <p class="card-text"> <h5 style="color:red"> 9999,99 DH</h5> 
+                        <div>Quantité <input type="number" class=" input my-3 mx-3" style="border-radius: 15px;height: 30px;width: 130px;">
+
+                          <div class="total"> prix total <h5 style="color:red"> 999999,99DH</div>
+                          </div><br>
+                          <div class="position-relative top-0 end-3">
+                          <button type="button" class="btn btn-warning" style="border-radius: 20px;">Confirmer </button>
+                        <button type="button" class="btn btn-danger" style="border-radius: 20px;">Retirer du panier</button>
+
+                          </div>
+                </div>
+          </div>
+          </div>
+
+          <div class="card bg-light mb-3" style="max-width: 18rem;">
+  <div class="card-header"> <h3>Payement</h3></div>
+  <div class="card-body">
+    <div class="card-title">
+                <h3>Sous-total:<i style="color:red"> 99999,99DH </i></h3>
+                <h3>Livraison: <i style="color:red"> 99999,99DH </i></h3>
+                <h3>TOTAL: <i style="color:red"> 99999,99DH </i></h3>
+            </div>
+            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">
+  Choisir la livraison
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Adresse de livraison</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-        <div class="card">
-            <img src="./AMOIL_files/produit1.png" width="60%" height="40%">
-          <div class="card-body">
-            <h5 class="card-title">PC</h5>
-            <p class="card-text"> </p><div><b>Prix unitaire:</b> $$$$$DH<p></p> 
-                <div>Nombre<input type="number" min="1" max="15"></div><br>
-                    <div class="total"><b>Prix total :</b>$$$$$dh
-                    </div>
-                    <div class="position-relative top-0 end-3">
-                        <a href="http://amoil/PageProduit"><br>
-                             <button type="button" class="btn btn-primary">Details</button>     
-                        </a>
-                         <button type="button" class="btn btn-danger" onclick="confirmerDelete()">Retirer du panier</button>
-                    </div>
-            </div><p></p>
-           
-          </div>
-        </div>
-        <div class="card">
-            <img src="./AMOIL_files/produit1.png" width="60%" height="40%">
-          <div class="card-body">
-            <h5 class="card-title">PC</h5>
-            <p class="card-text"> </p><div><b>Prix unitaire:</b> $$$$$DH<p></p> 
-                <div>Nombre<input type="number" min="1" max="15"></div><br>
-                    <div class="total"><b>Prix total :</b>$$$$$dh
-                    </div>
-                    <div class="position-relative top-0 end-3">
-                        <a href="http://amoil/PageProduit"><br>
-                             <button type="button" class="btn btn-primary">Details</button>     
-                        </a>
-                         <button type="button" class="btn btn-danger" onclick="confirmerDelete()">Retirer du panier</button>
-                    </div>
-            </div><p></p>
-           
-          </div>
-        </div>
-        <div class="card">
-            <img src="http://amoil/commande" width="60%" height="40%">
-          <div class="card-body">
-            <h5 class="card-title">PC</h5>
-            <p class="card-text"> </p><div><b>Prix unitaire:</b> $$$$$DH<p></p> 
-                <div>Nombre<input type="number" min="1" max="15"></div><br>
-                    <div class="total"><b>Prix total :</b>$$$$$dh
-                    </div>
-                    <div class="position-relative top-0 end-3">
-                        <a href="http://amoil/PageProduit"><br>
-                             <button type="button" class="btn btn-primary">Details</button>     
-                        </a>
-                         <button type="button" class="btn btn-danger" onclick="confirmerDelete()">Retirer du panier</button>
-                    </div>
-            </div><p></p>
-           
-          </div>
-        </div>
-    </div>
-    <br> 
-    <br>
-    <span class="border border-primary">
-            <div> <h1 align="center">Prix</h1></div>
-            <div align="center">
-                <h3>Sous-total: </h3>$$$$$DH
-                <h3>Livraison: </h3>$$$$DH
-                <h1>TOTAL: $$$$DH</h1>
-            </div>
-            
-            <div align="center"><button type="button" class="btn btn-primary">Passer La commande</button></div>
-        </span>
-        
-    
-            
-    
-       <h2> <div style="margin-top: 10%;">  <input name="range" type="radio">Livraison</div></h2>
-        <h1 align="center">Adresse de Livraison</h1>
-
-        <div class="p-3 mb-2 bg-warning text-dark">Si vous voulez effectuer cette operation à l'aide d'une adresse predefinie, Cliquez ici   :
-           <a href="http://amoil/ADRESSEPRE.html"><button type="button" class="btn btn-secondary">OKKEYE</button>
-          </a></div><a href="http://amoil/ADRESSEPRE.html">
-    </a>
-
-   
-
-
-            <h6><form>
-
-
-                <div class="col-md-7">
-                  <label for="validationDefault01" class="form-label">Nom Complet</label>
-                  <input type="text" class="form-control" id="validationDefault01" required="">
-                </div> 
-                <br>
-            
-               
-                <div class="col-md-7">
-                  <label for="validationDefault03" class="form-label">Ville</label>
-                  <input type="text" class="form-control" id="validationDefault03" required="">
-                </div><br>
-                <div class="col-md-7">
-                    <label for="validationDefault05" class="form-label">Adresse</label>
-                  <input type="text" class="form-control" id="validationDefault05" required="">
-                </div>
-                <div class="col-md-7">
-                    <label for="validationDefault05" class="form-label">Region</label>
-                  <input type="text" class="form-control" id="validationDefault05" required="">
-                </div>
-                <div class="col-md-7">
-                    <label for="validationDefault05" class="form-label">ZIP Code</label>
-                  <input type="text" class="form-control" id="validationDefault05" required="">
-                </div>
-                <div class="col-md-7">
-                    <label for="validationDefault01" class="form-label">Telephone</label>
-                    <input type="text" class="form-control" id="validationDefault01" required="">
-                  </div> 
-                  <br>
-
-                
-                
-                <div class="col-12">
-                  <div class="form-check">
-                  </div>
-                </div>
-                <div class="col-12">
-                  <button class="btn btn-primary" type="submit" id="float">Valider</button>
-                </div>
-                
-                
-              </form>
-            </h6>
-                   
-            <h1 align="center">Produits Similaires</h1>
-          <div class="row row-cols-1 row-cols-md-2">
-            <div class="col mb-4">
-              <div class="card">
-                <img src="./AMOIL_files/produit1.png" width="40%" height="50%">
-            </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <h5 class="card-title">PC</h5>
-                <p class="card-text">Description+ caracteristiques</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                <button type="button" class="btn btn-success">Voir produit</button>     
-
-              </div>
-            </div>
-          </div>
-        
-          
-            <div class="col mb-4">
-              <div class="card">
-                <img src="./AMOIL_files/produit1.png" width="40%" height="50%">
-                          </div>
-                          <div class="col-md-8">
-                            <div class="card-body">
-                              <h5 class="card-title">PC</h5>
-                              <p class="card-text">Description+ caracteristiques</p>
-                              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                              <button type="button" class="btn btn-success">Voir produit</button>     
-              
-                            </div>
-                          </div>
-                        </div>
-                        
-            <div class="col mb-4">
-              <div class="card">
-                <img src="./AMOIL_files/produit1.png" width="40%" height="50%">
-                          </div>
-                          <div class="col-md-8">
-                            <div class="card-body">
-                              <h5 class="card-title">PC</h5>
-                              <p class="card-text">Description+ caracteristiques</p>
-                              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                              <button type="button" class="btn btn-success">Voir produit</button>     
-              
-                            </div>
-                          </div>
-                        </div>
-                        
-            <div class="col mb-4">
-              <div class="card">
-                <img src="./AMOIL_files/produit1.png" width="40%" height="50%">
-            </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <h5 class="card-title">PC</h5>
-                <p class="card-text">Description+ caracteristiques</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                <button type="button" class="btn btn-success">Voir produit</button>     
-
-              </div>
-            </div>
-          </div>
-          
-          </div>
-          <input type="text" value="Ajouter un commentaire">
-
-
-<div class="container-fluid">
-        <div class="row bg-dark text-white ">
-    <div class="col-4 p-2">
-        <h3>payment</h3>
-        <hr>
-        <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore dolor ex ea odit doloribus omnis aut dolorem quo odio incidunt porro ipsam voluptas quae alias possimus tempora, error eos expedita?</p>
-    </div>
-    <div class="col-4 p-2">
-        <h3>reseau socs</h3>
-        <hr>
-        <p><a href="http://amoil/commande"><i class="bi bi-instagram"></i>Instagram</a></p>
-
-        <p><a href="http://amoil/commande"><i class="bi bi-facebook"></i>facebook</a></p>
-        <p><a href="http://amoil/commande"><i class="bi bi-linkedin"></i>linkedin</a></p>
-
-    </div>
-    <div class="col-4 p-2">
-        <h3>des Infos</h3>
-        <hr>
-        <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore dolor ex ea odit doloribus omnis aut dolorem quo odio incidunt porro ipsam voluptas quae alias possimus tempora, error eos expedita?</p>
-    </div>
-
+      <div class="modal-body">
+      <form>
+      <div class="alert alert-warning" role="alert">
+  Vous pouvez effectyer cette operation à l'aide d'une adresse predefinie!!
 </div>
 
+<div class="col-md-12">
+  <label for="validationDefault01" class="form-label">Nom Complet</label>
+  <input type="text" class="form-control" id="validationDefault01" required="">
+</div> 
+<br>
+
+
+<div class="col-md-12">
+  <label for="validationDefault03" class="form-label">Ville</label>
+  <input type="text" class="form-control" id="validationDefault03" required="">
+</div><br>
+<div class="col-md-12">
+    <label for="validationDefault05" class="form-label">Adresse</label>
+  <input type="text" class="form-control" id="validationDefault05" required="">
+</div>
+<div class="col-md-12">
+    <label for="validationDefault05" class="form-label">Region</label>
+  <input type="text" class="form-control" id="validationDefault05" required="">
+</div>
+<div class="col-md-12">
+    <label for="validationDefault05" class="form-label">ZIP Code</label>
+  <input type="text" class="form-control" id="validationDefault05" required="">
+</div>
+<div class="col-md-12">
+    <label for="validationDefault01" class="form-label">Telephone</label>
+    <input type="text" class="form-control" id="validationDefault01" required="">
+  </div> 
+  <br>
+
+
+
+<div class="col-12">
+  <div class="form-check">
+  </div>
+</div>
+</form>
+      </div>
+      <div class="modal-footer">
+      <button type="button" class="btn btn-primary">Valider</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
     </div>
+  </div>
+</div><br/><br/>
+<button type="button" class="btn btn-primary">Passer la commande</button> 
+
+  </div>
+
+</div>
+          </div>
+          <h2 class="my-5" style="color: rgb(2, 2, 58);text-decoration: underline;font-style: italic;"> Produits Similairs</h2>
+                <div id="carouselControls2" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="row">
+                                <div class="col-12 col-lg-3">
+                                    <div class="card">
+                                        <img src="" class="card-img-top" >
+
+                                        <div class="card-body">
+                                            <a class="stretched-link" href="#" style="color: rgb(2, 2, 58);">
+                                                <span class="card-title h4">pc</span>
+                                            </a>
+
+                                            <p style="color:gray">description</p>
+                                            <a href="#" class="btn btn-danger">Acheter</a>
+                                            <span class="h6" style="margin-left:20px;">3499,99 MAD</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-3">
+                                    <div class="card">
+                                        <img src="./pc.jpeg" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <a class="stretched-link" href="#" style="color: rgb(2, 2, 58);">
+                                                <span class="card-title h4">pc</span>
+                                            </a>
+
+                                            <p style="color:gray">description</p>
+                                            <a href="#" class="btn btn-danger">Acheter</a>
+                                            <span class="h6" style="margin-left:20px;">3499,99 MAD</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-3">
+                                    <div class="card">
+                                        <img src="" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <a class="stretched-link" href="#" style="color: rgb(2, 2, 58);">
+                                                <span class="card-title h4">pc</span>
+                                            </a>
+
+                                            <p style="color:gray">description</p>
+                                            <a href="#" class="btn btn-danger">Acheter</a>
+                                            <span class="h6" style="margin-left:20px;">3499,99 MAD</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-3">
+                                    <div class="card ">
+                                        <img src="" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <a class="stretched-link" href="#" style="color: rgb(2, 2, 58);">
+                                                <span class="card-title h4">pc</span>
+                                            </a>
+
+                                            <p style="color:gray">description</p>
+                                            <a href="#" class="btn btn-danger">Acheter</a>
+                                            <span class="h6" style="margin-left:20px;">3499,99 MAD</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div id="carouselControls" class="carousel-item">
+                            <div class="row">
+                                <div class="col-12 col-lg-3">
+                                    <div class="card">
+                                        <img src="" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <a class="stretched-link" href="#" style="color: rgb(2, 2, 58);">
+                                                <span class="card-title h4">pc</span>
+                                            </a>
+
+                                            <p style="color:gray">description</p>
+                                            <a href="#" class="btn btn-danger">Acheter</a>
+                                            <span class="h6" style="margin-left:20px;">3499,99 MAD</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-3">
+                                    <div class="card">
+                                        <img src="" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <a class="stretched-link" href="#" style="color: rgb(2, 2, 58);">
+                                                <span class="card-title h4">pc</span>
+                                            </a>
+
+                                            <p style="color:gray">description</p>
+                                            <a href="#" class="btn btn-danger">Acheter</a>
+                                            <span class="h6" style="margin-left:20px;">3499,99 MAD</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-3">
+                                    <div class="card">
+                                        <img src="" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <a class="stretched-link" href="#" style="color: rgb(2, 2, 58);">
+                                                <span class="card-title h4">pc</span>
+                                            </a>
+
+                                            <p style="color:gray">description</p>
+                                            <a href="#" class="btn btn-danger">Acheter</a>
+                                            <span class="h6" style="margin-left:20px;">3499,99 MAD</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-3">
+                                    <div class="card ">
+                                        <img src="" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <a class="stretched-link" href="#" style="color: rgb(2, 2, 58);">
+                                                <span class="card-title h4">pc</span>
+                                            </a>
+
+                                            <p style="color:gray">description</p>
+                                            <a href="#" class="btn btn-danger">Acheter</a>
+                                            <span class="h6" style="margin-left:20px;">3499,99 MAD</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
 
 
-<script>
-    $('#caroussel_bestof').carousel({
-        interval: 10000
-    })
+                    </div>
+                </div>
+            </div>
 
-    $('.carousel .carousel-item').each(function() {
-        var minPerSlide = 3;
-        var next = $(this).next();
-        if (!next.length) {
-            next = $(this).siblings(':first');
-        }
-        next.children(':first-child').clone().appendTo($(this));
 
-        for (var i = 0; i < minPerSlide; i++) {
-            next = next.next();
-            if (!next.length) {
-                next = $(this).siblings(':first');
-            }
 
-            next.children(':first-child').clone().appendTo($(this));
-        }
-    });
-</script>
+        </div>
+</body>
+<div class="container-fluid">
+            <?php
+            require_once "req/footbar.php";
 
-</body></html>
+            ?>
+        </div>
+       
+    </html>
