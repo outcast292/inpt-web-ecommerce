@@ -1,8 +1,11 @@
 <?php
 session_start();
 $x = 0;
+$is_profile = basename(dirname($_SERVER['SCRIPT_FILENAME']))  == "profile";
+
 if (isset($_POST["password"])) {
-  require "./php/connection/db.php";
+  require(($is_profile ? "../" : "./") . "php/connection/db.php");
+
   $email_client = htmlspecialchars($_POST["email"]);
   $pass = $_POST["password"];
   $query = "SELECT  id_client, nom_client, prenom_client,  mdp_client FROM client where email = :email_client ";
@@ -35,7 +38,6 @@ if (isset($_POST["password"])) {
       
       ";
   }
-  
 }
 
 
@@ -53,8 +55,8 @@ if (isset($_POST["password"])) {
   </div>
 </div>
 <nav class="navbar navbar-expand-sm  fixed-top navbar-light bg-light ">
-  <a class="navbar-brand" href="index.php" class="h4" style="color:navy">
-    <img src="img/logo.png" alt="" height="50">
+  <a class="navbar-brand" href="<?php echo $is_profile ? "../" : "";  ?>index.php" class="h4" style="color:navy">
+    <img src="<?php echo $is_profile ? "../" : "";  ?>img/logo.png" alt="" height="50">
     AMOIL
   </a>
 
@@ -94,11 +96,11 @@ if (isset($_POST["password"])) {
 
             <form class="px-4 py-3" method="POST">
               <div class="form-group">
-                <label for="exampleDropdownFormEmail1">Email address</label>
+                <label>Email</label>
                 <input type="email" name="email" class="form-control" placeholder="email@example.com">
               </div>
               <div class="form-group">
-                <label for="exampleDropdownFormPassword1">Password</label>
+                <label>Mot de passe</label>
                 <input type="password" name="password" class="form-control" placeholder="Password">
               </div>
               <div class="form-group">
@@ -106,18 +108,18 @@ if (isset($_POST["password"])) {
 
                 </div>
               </div>
-              <button type="submit" class="btn btn-primary">Sign in</button>
+              <button type="submit" class="btn btn-primary">Se connecter</button>
             </form>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">New around here? Sign up</a>
-            <a class="dropdown-item" href="#">Forgot password?</a>
+            <a class="dropdown-item" href="inscription_client">creer un compte</a>
+            <a class="dropdown-item" href="#">Mot de passe Oublié?</a>
           <?php
           } else {
           ?>
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="<?php echo $is_profile ? "../" : "";  ?>profile/infos">Parametres compte</a>
+            <a class="dropdown-item" href="<?php echo $is_profile  ? "../" : ""; ?>profile/commandes">Historique commandes</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="php/clients/logout">Se deconnecter</a>
+            <a class="dropdown-item" href="<?php echo $is_profile ? "../" : ""; ?>php/clients/logout?page=<?php echo $is_profile ? "../index" : basename($_SERVER['SCRIPT_FILENAME'])  ?>">Se deconnecter</a>
           <?php
           }
           ?>

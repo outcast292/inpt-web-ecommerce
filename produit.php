@@ -199,18 +199,10 @@
                                     <div class="form-group mt-2  ">
                                     <button type="button" class="btn btn-warning" onclick="add_to_cart()" <?php if (!isset($_SESSION["id_client"])) echo "disabled"  ?> style="border-radius: 20px;">Ajouter au panier</button>
                                     <button type="button" class="btn btn-danger" <?php if (!isset($_SESSION["id_client"])) echo "disabled"  ?> style="border-radius: 20px;">Acheter maintenant</button>
-<<<<<<< HEAD
-
-=======
->>>>>>> amal
                                 </div>
                                     </div>
                                
                             </form>
-<<<<<<< HEAD
-
-=======
->>>>>>> amal
                         </div>
                     </div>
                 `);
@@ -224,10 +216,6 @@
                                             This is some text within a card body.
                                         </div>
                                     </div>
-<<<<<<< HEAD
-
-=======
->>>>>>> amal
                                     <div class="card  mx-3 my-3 ">
                                         <div class="card-body">
                                             <h6 class="card-title ">User x</h6>
@@ -252,10 +240,6 @@
                                 <a class="stretched-link" href="#" style="color: rgb(2, 2, 58);">
                                     <span class="card-title h4">${data[index].label}</span>
                                 </a>
-<<<<<<< HEAD
-
-=======
->>>>>>> amal
                                 <p style="color:gray">description</p>
                                 <a href="#" class="btn btn-danger">Acheter</a>
                                 <span class="h6" style="margin-left:20px;">${data[index].prix_produit.toFixed(2)} DH</span>
@@ -269,10 +253,6 @@
                                 <a class="stretched-link" href="#" style="color: rgb(2, 2, 58);">
                                     <span class="card-title h4">${data[index+1].label}</span>
                                 </a>
-<<<<<<< HEAD
-
-=======
->>>>>>> amal
                                 <p style="color:gray">description</p>
                                 <a href="#" class="btn btn-danger">Acheter</a>
                                 <span class="h6" style="margin-left:20px;">${data[index+1].prix_produit.toFixed(2)} DH</span>
@@ -286,10 +266,6 @@
                                 <a class="stretched-link" href="#" style="color: rgb(2, 2, 58);">
                                     <span class="card-title h4">${data[index+2].label}</span>
                                 </a>
-<<<<<<< HEAD
-
-=======
->>>>>>> amal
                                 <p style="color:gray">description</p>
                                 <a href="#" class="btn btn-danger">Acheter</a>
                                 <span class="h6" style="margin-left:20px;">${data[index+2].prix_produit.toFixed(2)} DH</span>
@@ -313,10 +289,6 @@
                                 <a class="stretched-link" href="#" style="color: rgb(2, 2, 58);">
                                     <span class="card-title h4">${data[index].label}</span>
                                 </a>
-<<<<<<< HEAD
-
-=======
->>>>>>> amal
                                 <p style="color:gray">description</p>
                                 <a href="#" class="btn btn-danger">Acheter</a>
                                 <span class="h6" style="margin-left:20px;">${data[index].prix_produit.toFixed(2)} DH</span>
