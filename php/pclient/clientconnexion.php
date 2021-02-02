@@ -21,6 +21,7 @@ else
     $_SESSION['prenom']=$result['prenom_client'];
     $_SESSION['tel']=$result['tel_client'];
     $_SESSION['date_naissance']=$result['date_naissance'];
+    $_SESSION['sexe']=$result['sexe'];
 
 
 
