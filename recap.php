@@ -17,6 +17,8 @@
 <body>
     <?php
     require_once "req/navbar.php";
+    require_once "./req/verify.php";
+
 
     ?>
     <div class="container-fluid" style="background-color: rgb(0,0,40);">

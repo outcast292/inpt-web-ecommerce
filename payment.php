@@ -26,6 +26,9 @@
         <?php
         require_once "req/navbar.php";
 
+        require_once "./req/verify.php";
+
+
 
         ?>
     </div>
@@ -159,7 +162,8 @@
         function submit_order() {
             fetch("../php/commandes/commande_add?id_adresse=" + urlParams.get("id_adresse")).then(resp => resp.json()).then(json => {
                 if (json.code == 200) {
-                    location.replace("recap?id_commande="+json.data.id_commande);
+                    location.replace("recap?id_commande="+json.id_commande);
+
                 }
 
 

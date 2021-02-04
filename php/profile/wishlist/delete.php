@@ -1,8 +1,8 @@
 <?php
 session_start();
-require_once "../connection/db.php";
+require_once "../../connection/db.php";
 if (isset($_SESSION["id_client"]) && isset($_GET["id_produit"])) {
-    $query = "DELETE from wishlist where id_produit=:id_produit and id_client=:id_client";
+    $query = "DELETE from wishlist where id_produit= :id_produit and id_client=:id_client";
     $sql = $conn->prepare($query);
     $sql->execute(array(
         "id_produit" => $_GET["id_produit"],

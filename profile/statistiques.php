@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
 
+?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,6 +24,7 @@
     <div>
         <?php
         require_once "../req/navbar.php";
+        require_once "./req/verify.php";
 
         ?>
     </div>
@@ -35,7 +38,7 @@
                         <a href="commandes.php" class="list-group-item list-group-item-action">Commandes</a>
                         <a href="wishlist.php" class="list-group-item list-group-item-action">Wishlist</a>
                         <a href="statistiques.php" class="list-group-item list-group-item-action active">Statistiques</a>
-
+                        <a href="adresse.php" class="list-group-item list-group-item-action ">Adresse</a>
 
                     </div>
                 </div>
@@ -49,37 +52,8 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-12">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <label>Première Activté</label>
-                                            <input type="text" class="form-control" readonly value="${first_commande}">
-                                        </div>
-                                        <div class="col-6">
-                                            <label>Dernière Activité</label>
-                                            <input type="text" class="form-control" readonly value="${last_commande}">
-                                        </div>
-                                    </div><br>
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <label>Montant d'Achat Maximum</label>
-                                            <input type="text" class="form-control" readonly value="${maximum_spent}">
-                                        </div>
-                                        <div class="col-6">
-                                            <label>Montant d'Achat Minimum</label>
-                                            <input type="text" class="form-control" readonly value="${minimum_spent}">
-                                        </div>
-                                    </div><br>
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <label>Moyenne d'Achat</label>
-                                            <input type="text" class="form-control" readonly value="${avg_spent}">
-                                        </div>
-                                        <div class="col-6">
-                                            <label>Nombre Total de Commandes</label>
-                                            <input type="text" class="form-control" readonly value="${nbr_commande}">
-                                        </div>
-                                    </div><br>
+                                <div class="col-md-12"id="content">
+                                    
                                 </div>
                             </div>
 
@@ -100,5 +74,52 @@
     </div>
 
 </body>
+<script>
+    $(document).ready(get_data(event));
+
+function get_data(event) {
+    fetch("../php/profile/statistiques").then(resp => resp.json()).then(json => {
+        var data = json.data[0];
+        $("#content").text('');
+            $('#content').append(`
+            <div class="row" >
+                                        <div class="col-6">
+                                            <label>Première Activté</label>
+                                            <input type="text" class="form-control" readonly value="${data.first_commande}">
+                                        </div>
+                                        <div class="col-6">
+                                            <label>Dernière Activité</label>
+                                            <input type="text" class="form-control" readonly value="${data.last_commande}">
+                                        </div>
+                                    </div><br>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <label>Montant d'Achat Maximum</label>
+                                            <input type="text" class="form-control" readonly value="${data.maximum_spent}">
+                                        </div>
+                                        <div class="col-6">
+                                            <label>Montant d'Achat Minimum</label>
+                                            <input type="text" class="form-control" readonly value="${data.minimum_spent}">
+                                        </div>
+                                    </div><br>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <label>Moyenne d'Achat</label>
+                                            <input type="text" class="form-control" readonly value="${data.avg_spent}">
+                                        </div>
+                                        <div class="col-6">
+                                            <label>Nombre Total de Commandes</label>
+                                            <input type="text" class="form-control" readonly value="${data.nbre_commande}">
+                                        </div>
+                                    </div><br>
+            `);
+        
+        $("#nbr_produit").text(data.length);
+    }).catch(err => {
+        console.log(err);
+    });
+}
+
+</script>
 
 </html>
