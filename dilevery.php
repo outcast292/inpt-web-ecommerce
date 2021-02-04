@@ -252,6 +252,13 @@
             return valid;
         }
         get_adresses();
+
+
+        function goto_payment() {
+            var index = $("#adresse_selector").val();
+            const adresse = adresses[index];
+            location.replace("payment?id_adresse="+adresse.id_adresse)
+        }
     </script>
 
 </body>
