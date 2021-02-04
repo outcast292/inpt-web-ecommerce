@@ -188,7 +188,7 @@
 
 
 
-    <div class="fixed-bottom">
+    <div class="mt-2">
 
         <?php
         require_once "req/footbar.php";

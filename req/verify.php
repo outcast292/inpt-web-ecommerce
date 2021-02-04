@@ -6,6 +6,5 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 
 }
 $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time
 if (!isset($_SESSION["connection_status"])) {
-	if ($_SESSION["connection_status"] != "connected")
-		header("location: index.php");
+	header("location: index.php");
 }

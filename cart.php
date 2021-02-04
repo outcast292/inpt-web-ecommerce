@@ -5,10 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>panier</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/navbar.css" rel="stylesheet">
+    <script src="js/jquery-3.5.1.slim.min.js"></script>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap-icons.css">
     <link href="css/navbar.css" rel="stylesheet">
     <link href="css/cart.css" rel="stylesheet">
     <script src="js/bootstrap.bundle.min.js"></script>
@@ -32,10 +34,10 @@
 
         <div class="container-fluid ">
             <div class="jumbotron d-flex justify-content-center ">
-                <div class="card">
+                <div class="card col-12">
                     <div class="card-top border-bottom text-center"> <a href="index.php" class="link"> Retour a la boutique</a> <span id="logo">Amoil.com</span> </div>
                     <div class="card-body">
-                        <div class="row upper"> <span class="panier"> Panier</span> <span class="payment">Payment</span> </div>
+                        <div class="row upper"> <span class="panier"> Panier</span> <a href="dilevery" class="btn btn-success payment">Payment <i class="bi bi-arrow-right-square"></i></a> </div>
 
                         <div class="row">
                             <div class="col-lg-12">
@@ -104,21 +106,21 @@
 
         <?php
         require_once "req/footbar.php";
-?>
-    <script>
-        <?php
-        if (!isset($_SESSION["id_client"]))
-            header("location: index.php");
-        else
-            echo "const id_client=" . $_SESSION["id_client"] . ";";
         ?>
-        var products = [];
-        //TODO ADD DETAILS 
+        <script>
+            <?php
+            if (!isset($_SESSION["id_client"]))
+                header("location: index.php");
+            else
+                echo "const id_client=" . $_SESSION["id_client"] . ";";
+            ?>
+            var products = [];
+            //TODO ADD DETAILS 
 
-        function fill_cart_div() {
-            $("#cart_content").text('');
-            products.forEach((element, index) => {
-                $('#cart_content').append(`
+            function fill_cart_div() {
+                $("#cart_content").text('');
+                products.forEach((element, index) => {
+                    $('#cart_content').append(`
                         <div class="card mb-3 p-0 h-25">
                             <div class="row no-gutters">
                                 <div class="col-md-2">
@@ -150,30 +152,30 @@
                             </div>
                         </div>
                         `);
-            });
-            $("#total").text(products.reduce((a, b) => a + b.qtt_panier * b.prix_produit, 0).toFixed(2) + " DH");
+                });
+                $("#total").text(products.reduce((a, b) => a + b.qtt_panier * b.prix_produit, 0).toFixed(2) + " DH");
 
 
-        }
+            }
 
 
-        function search() {
-            fetch("../php/cart/cart_read").then(resp => resp.json()).then(json => {
-                var data = json.data;
-                products = data;
-                fill_cart_div()
+            function search() {
+                fetch("../php/cart/cart_read").then(resp => resp.json()).then(json => {
+                    var data = json.data;
+                    products = data;
+                    fill_cart_div()
 
 
 
-            }).catch(err => {
-                console.log(err);
-            });
-        }
+                }).catch(err => {
+                    console.log(err);
+                });
+            }
 
-        function retirer_du_panier(index) {
-            var element = products[index];
-            console.log(element);
-            $('#modal_content').html(`
+            function retirer_du_panier(index) {
+                var element = products[index];
+                console.log(element);
+                $('#modal_content').html(`
                     <div class="modal-header">
                         <h5 class="modal-title" >RETIRER DU PANIER</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -206,44 +208,44 @@
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Anuller</button>
                         <button type="button" onclick="delete_produit(${index})" class="btn btn-danger"><i class="bi bi-trash"></i>  Suprrimer</button>
                     </div>`);
-            $('#modal_details').modal('show');
-        }
-
-        function delete_produit(index) {
-            var element = products[index];
-
-            fetch("../php/cart/delete_from_cart?id_produit=" + element.id_produit + "&options_produit=" + element.options_produit).then(resp => resp.json()).then(json => {
-                $("#modal_details").modal("hide");
-                $('#toast_delete').toast({
-                    delay: 1500
-                })
-                $('#toast_delete').toast('show')
-
-                search();
-
-            }).catch(err => {
-                console.log(err);
-            });
-        }
-
-        function change_qtt(index, char) {
-            var element = products[index];
-            var qtt_panier = (char == '+') ? element.qtt_panier + 1 : (element.qtt_panier > 0) ? element.qtt_panier - 1 : 0;
-            if (qtt_panier != element.qtt_panier) {
-                console.log("updating");
-                element.qtt_panier = qtt_panier;
-                fetch("php/cart/update_cart.php?id_produit=" + element.id_produit + "&qtt_panier=" + element.qtt_panier + "&options_produit=" + element.options_produit).then(resp => resp.json()).then(json => {
-                    console.log(json);
-                    fill_cart_div();
-                }).catch(err => console.log(err));
+                $('#modal_details').modal('show');
             }
 
-        }
+            function delete_produit(index) {
+                var element = products[index];
+
+                fetch("../php/cart/delete_from_cart?id_produit=" + element.id_produit + "&options_produit=" + element.options_produit).then(resp => resp.json()).then(json => {
+                    $("#modal_details").modal("hide");
+                    $('#toast_delete').toast({
+                        delay: 1500
+                    })
+                    $('#toast_delete').toast('show')
+
+                    search();
+
+                }).catch(err => {
+                    console.log(err);
+                });
+            }
+
+            function change_qtt(index, char) {
+                var element = products[index];
+                var qtt_panier = (char == '+') ? element.qtt_panier + 1 : (element.qtt_panier > 0) ? element.qtt_panier - 1 : 0;
+                if (qtt_panier != element.qtt_panier) {
+                    console.log("updating");
+                    element.qtt_panier = qtt_panier;
+                    fetch("php/cart/update_cart.php?id_produit=" + element.id_produit + "&qtt_panier=" + element.qtt_panier + "&options_produit=" + element.options_produit).then(resp => resp.json()).then(json => {
+                        console.log(json);
+                        fill_cart_div();
+                    }).catch(err => console.log(err));
+                }
+
+            }
 
 
-        //id_client de la session
-        search();
-    </script>
+            //id_client de la session
+            search();
+        </script>
 
 </body>
 

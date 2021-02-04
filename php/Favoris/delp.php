@@ -1,19 +1,18 @@
 <?php
+session_start();
 require_once "../connection/db.php";
-//require_once "../verify_session.php";
+if (isset($_SESSION["id_client"]) && isset($_GET["id_produit"])) {
+    $query = "DELETE from wishlist where id_produit=:id_produit and id_client=:id_client";
+    $sql = $conn->prepare($query);
+    $sql->execute(array(
+        "id_produit" => $_GET["id_produit"],
+        "id_client" => $_SESSION["id_client"]
+    ));
 
-$query = "DELETE from wishlist where id_produit=? and id_client=?";
-$stmt = $conn->prepare($query);
-$stmt->bindValue(1, $_GET['id_produit'], PDO::PARAM_INT);
-$stmt->bindValue(2, $_GET['id_client'], PDO::PARAM_INT);
+    $msg["code"] = 200;
+    $msg["msg"] = "ok";
 
-$stmt->execute();
-
-
-
-
-$msg["code"] = 200;
-$msg["msg"] = "ok";
-
-$json = json_encode($msg, JSON_NUMERIC_CHECK);
-echo $json;
+    $json = json_encode($msg, JSON_NUMERIC_CHECK);
+    echo $json;
+} else
+    echo json_encode(array("code" => 400, "message" => "Error, parametres non sufficent"));
