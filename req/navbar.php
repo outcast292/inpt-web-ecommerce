@@ -8,7 +8,7 @@ if (isset($_POST["password"])) {
 
   $email_client = htmlspecialchars($_POST["email"]);
   $pass = $_POST["password"];
-  $query = "SELECT  id_client, nom_client, prenom_client,  mdp_client FROM client where email = :email_client ";
+  $query = "SELECT  id_client, nom_client, prenom_client,tel_client,  mdp_client FROM client where email = :email_client ";
   $sql = $conn->prepare($query);
   $sql->execute(array("email_client" => $email_client));
 
@@ -18,6 +18,7 @@ if (isset($_POST["password"])) {
       $_SESSION["nom_client"] = $row["nom_client"];
       $_SESSION["prenom_client"] = $row["prenom_client"];
       $_SESSION["id_client"] = $row["id_client"];
+      $_SESSION["tel_client"] = $row["tel_client"];
       $_SESSION["connection_status"] = "connected";
       //header("location: ".$_SESSION["LAST_PAGE"]); //pour etre envoyer a la page voulue au depart
     } else {
@@ -116,6 +117,7 @@ if (isset($_POST["password"])) {
             <a class="dropdown-item" href="#">Mot de passe Oublié?</a>
           <?php
           } else {
+
           ?>
             <a class="dropdown-item" href="<?php echo $is_profile ? "../" : "";  ?>profile/infos">Parametres compte</a>
             <a class="dropdown-item" href="<?php echo $is_profile  ? "../" : ""; ?>profile/commandes">Historique commandes</a>

@@ -5,15 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>panier</title>
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/navbar.css" rel="stylesheet">
-    <script src="js/jquery-3.5.1.slim.min.js"></script>
-
+    <link href="css/cart.css" rel="stylesheet">
     <script src="js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="css/bootstrap-icons.css">
-    <link rel="stylesheet" href="css/index.css">
 
+    <link rel="stylesheet" href="css/bootstrap-icons.css">
     <style>
 
 
@@ -35,7 +35,7 @@
                 <div class="card">
                     <div class="card-top border-bottom text-center"> <a href="index.php" class="link"> Retour a la boutique</a> <span id="logo">Amoil.com</span> </div>
                     <div class="card-body">
-                        <div class="row upper"> <span class="panier"> Adresse</span>  </div>
+                        <div class="row upper"> <span class="panier"> Panier</span> <span class="payment">Payment</span> </div>
 
                         <div class="row">
                             <div class="col-lg-12">
@@ -48,12 +48,9 @@
 
                                     <div class="d-flex justify-content-end h3">
 
+                                        <span id="total"></span>
 
                                     </div>
-                                </div>
-                                <div class="p-3 d-flex justify-content-center">
-                                <a  href="dilevery" class="payment col-4 btn btn-primary">Confirmer Commande <i class="bi bi-arrow-right-square-fill"></i></a >
-                                
                                 </div>
 
 
@@ -93,9 +90,6 @@
         </div>
     </div>
 
-            </div>
-        </div>
-    </div>
 
     <div>
 
@@ -105,63 +99,6 @@
         ?>
     </div>
 
-    <div>
-
-        <?php
-        require_once "req/footbar.php";
-
-    <script>
-        <?php
-        if (!isset($_SESSION["id_client"]))
-            header("location: index.php");
-        else
-            echo "const id_client=" . $_SESSION["id_client"] . ";";
-        ?>
-        var products = [];
-
-        function fill_cart_div() {
-            $("#cart_content").text('');
-            products.forEach((element, index) => {
-                $('#cart_content').append(`
-                        <div class="card mb-3 p-0 h-25">
-                            <div class="row no-gutters">
-                                <div class="col-md-2">
-                                    <img src="img/products/${element.id_produit}.jpg" class="card-img w-75" alt="image_produit">
-                                </div>
-                                <div class="col-md-10">
-                                    <div class="card-body p-3 col-12 " style="width: 100%;">
-                                        <span class="card-title p-0 h5 d-flex justify-content-between" style="color: black;"><span style="color: black;">${element.label}</span>
-                                        <span>
-                                                <span class="mr-1" id="price" style="color: black;">${element.prix_produit.toFixed(2)}</span>
-                                                <span style="color: black;">DH</span>
-                                            </span>    
-                                        <span>
-                                                <span class="border pt-2 pl-3 pr-3 pb-1" id="qty">${element.qtt_panier}</span>
-                                                <button id="minus" onclick="change_qtt(${index},'-')" style="padding: 2px 5px; border-radius: 10px; background-color: rgb(230,230,230) ;border-color:(230,230,230); border-width: 1px;">-</button>
-                                                <button id="plus" onclick="change_qtt(${index},'+')" style="padding: 2px 3px; border-radius: 10px; background-color: rgb(230,230,230) ;border-color:(230,230,230); border-width: 1px;">+</button>
-                                            </span>
-                                            <span>
-                                                <span class="mr-1" id="price" style="color: black;">${(element.prix_produit*element.qtt_panier).toFixed(2)}</span>
-                                                <span style="color: black;">DH</span>
-                                            </span>
-                                            
-                                        </span>
-                                        <span>
-                                            <div class="d-flex justify-content-end px-3">
-                                                <a href="produit?id_produit=${element.id_produit}" style="border-radius: 5px;" class="h-50 w-25 btn btn-info">VOIR</a>
-                                                <button style="border-radius: 5px;" class="h-50 w-25 ml-1 btn-danger" onclick="retirer_du_panier(${index})"><i class="bi bi-trash"></i> RETIRER</button>
-                                            </div>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        `);
-            });
-            $("#total").text(products.reduce((a, b) => a + b.qtt_panier * b.prix_produit, 0).toFixed(2) + " DH");
-
-
-        }
 
 
     <script>

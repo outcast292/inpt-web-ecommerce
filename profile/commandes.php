@@ -35,7 +35,7 @@
                         <a href="commandes.php" class="list-group-item list-group-item-action active">Commandes</a>
                         <a href="wishlist.php" class="list-group-item list-group-item-action">Wishlist</a>
                         <a href="statistiques.php" class="list-group-item list-group-item-action">Statistiques</a>
-
+                        <a href="adresse.php" class="list-group-item list-group-item-action ">Adresse</a>
 
                     </div>
                 </div>
@@ -51,7 +51,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="alert alert-info" id="div_nbr">
-                                        Nombre des commandes: <span id="nbr_cmnd"></span>
+                                        Nombre des commandes : <span id="nbr_cmnd"></span>
                                     </div>
 
                                     <table class="table table-hover" id="table_search">
@@ -86,5 +86,31 @@
     </div>
 
 </body>
+
+<script>
+    $(document).ready(get_data(event));
+
+    function get_data(event) {
+        fetch("../php/profile/client_commande").then(resp => resp.json()).then(json => {
+            var data = json.data;
+            $("#table_body").text('');
+            data.forEach((element, index) => {
+                $('#table_body').append(`
+                <tr class=" ${element.valide==1? "table-success":element.valide==-1?"table-danger":"" }">
+                    <td>${element.date_commande}</td>
+                    <td>${element.etat_actuell}</td>
+                    <td>${element.prix_commande}</td>
+                    
+                </tr>
+                `);
+            });
+            $("#nbr_cmnd").text(data.length);
+            
+
+        }).catch(err => {
+            console.log(err);
+        });
+    }
+</script>
 
 </html>
