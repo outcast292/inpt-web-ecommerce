@@ -84,6 +84,7 @@ if (isset($_POST["password"])) {
       <li class="nav-item">
         <a href="<?php echo $is_profile ? "./" : "profile/";  ?>wishlist.php" class="nav-link pl-2 pr-1 mx-1 py-3 my-n2" aria-label="favoris">
 
+
           <i class="bi bi-heart-fill ml-md-4 ml-lg-4 ml-sm-4  mr-4" style="font-size: 2rem;"></i>
         </a>
       </li>

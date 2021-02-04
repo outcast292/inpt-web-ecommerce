@@ -93,13 +93,6 @@
     </div>
 
 
-    <div>
-
-        <?php
-        require_once "req/footbar.php";
-
-        ?>
-    </div>
 
 
     <div>

@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>recu</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
+
     <link href="css/navbar.css" rel="stylesheet">
     <script src="js/jquery-3.5.1.slim.min.js"></script>
 
@@ -19,6 +20,7 @@
         <?php
         require_once "req/navbar.php";
         require_once "./req/verify.php";
+
 
         ?>
     </div>
@@ -190,6 +192,7 @@
 
     <div class="mt-2">
 
+
         <?php
         require_once "req/footbar.php";
         ?>
@@ -254,6 +257,7 @@
             var index = $("#adresse_selector").val();
             const adresse = adresses[index];
             location.replace("payment?id_adresse=" + adresse.id_adresse)
+
         }
     </script>
 
