@@ -22,6 +22,7 @@
     <div>
         <?php
         require_once "../req/navbar.php";
+        require_once "./req/verify.php";
 
         ?>
     </div>
@@ -159,7 +160,7 @@
 
     //TODO ADD VALIDATIONS TO FORMS
 
-    function see_adresse(id_adresse, adresse, code_postal,nom_complet,tel_adresse_client) {
+    function see_adresse(id_adresse, adresse, code_postal, nom_complet, tel_adresse_client) {
 
         $('#modal_content_changing').html(`
                             <div class="modal-header">
@@ -242,14 +243,14 @@
                     <div class="alert alert-danger"  >
                     <i class="bi bi-x-octagon mr-2"></i>${json.msg}
                         </div>`)
-            }else if (json.code == 405) {
+            } else if (json.code == 405) {
                 get_data();
                 $("#alertModal").text('');
                 $("#alertModal").append(`
                     <div class="alert alert-danger"  >
                     <i class="bi bi-x-octagon mr-2"></i>${json.msg}
                         </div>`)
-            }else if (json.code == 406) {
+            } else if (json.code == 406) {
                 get_data();
                 $("#alertModal").text('');
                 $("#alertModal").append(`

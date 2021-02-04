@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,6 +23,7 @@
     <div>
         <?php
         require_once "../req/navbar.php";
+        require_once "./req/verify.php";
 
         ?>
     </div>
@@ -60,8 +62,10 @@
                                     <table class="table table-hover" id="table_search">
                                         <thead class="thead-dark">
                                             <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col"></th>
                                                 <th scope="col">Produit</th>
-                                                <th scope="col">Description</th>
+                                                <th scope="col">marque</th>
                                                 <th scope="col">Prix</th>
                                                 <th scope="col">option</th>
                                             </tr>
@@ -113,8 +117,10 @@
             data.forEach((element, index) => {
                 $('#table_body').append(`
                 <tr class=" ${element.valide==1? "table-success":element.valide==-1?"table-danger":"" }">
+                    <td>${index+1}</td>
+                    <td><img src="../img/products/${element.id_produit}.jpg" height=50 width=50 /></td>
                     <td>${element.label}</td>
-                    <td>${element.description_produit}</td>
+                    <td>${element.nom_marque}</td>
                     <td>${element.prix_produit}</td>
                     <td>
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Options</button>

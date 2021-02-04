@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
 
+?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,6 +24,7 @@
     <div>
         <?php
         require_once "../req/navbar.php";
+        require_once "./req/verify.php";
 
         ?>
     </div>
@@ -273,7 +276,7 @@
                                                         <h6>Telephone: </h6>
                                                     </div>
                                                     <div class="mt-2 col">
-                                                        <input class="form-control mr-sm-2" type="tel" aria-label="telephone" name="tel" value="${data[0].tel_client}">
+                                                        <input class="form-control mr-sm-2" type="tel" aria-label="telephone" name="tel" value="0${data[0].tel_client}">
                                                     </div>
                                                 </div>
                                             </div>

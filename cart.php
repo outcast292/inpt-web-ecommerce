@@ -100,7 +100,11 @@
     </div>
 
 
+    <div>
 
+        <?php
+        require_once "req/footbar.php";
+?>
     <script>
         <?php
         if (!isset($_SESSION["id_client"]))
@@ -121,29 +125,26 @@
                                     <img src="img/products/${element.id_produit}.jpg" class="card-img w-75" alt="image_produit">
                                 </div>
                                 <div class="col-md-10">
-                                    <div class="card-body p-3 col-12 " style="width: 100%;">
-                                        <span class="card-title p-0 h5 d-flex justify-content-between" style="color: black;"><span style="color: black;">${element.label}</span>
-                                        <span>
-                                                <span class="mr-1" id="price" style="color: black;">${element.prix_produit.toFixed(2)}</span>
-                                                <span style="color: black;">DH</span>
-                                            </span>    
+                                    <div class="card-body p-3 col-12   " style="width: 100%;">
+                                        <span class="card-title mr-5 h5 " style="color: black;"><span style="color: black;">${element.label}</span>
+                                            
                                         <span>
                                                 <span class="border pt-2 pl-3 pr-3 pb-1" id="qty">${element.qtt_panier}</span>
                                                 <button id="minus" onclick="change_qtt(${index},'-')" style="padding: 2px 5px; border-radius: 10px; background-color: rgb(230,230,230) ;border-color:(230,230,230); border-width: 1px;">-</button>
                                                 <button id="plus" onclick="change_qtt(${index},'+')" style="padding: 2px 3px; border-radius: 10px; background-color: rgb(230,230,230) ;border-color:(230,230,230); border-width: 1px;">+</button>
                                             </span>
-                                            <span>
+                                            <span >
                                                 <span class="mr-1" id="price" style="color: black;">${(element.prix_produit*element.qtt_panier).toFixed(2)}</span>
                                                 <span style="color: black;">DH</span>
                                             </span>
                                             
                                         </span>
-                                        <span>
+                                        <div class="mt-1">
                                             <div class="d-flex justify-content-end px-3">
                                                 <a href="produit?id_produit=${element.id_produit}" style="border-radius: 5px;" class="h-50 w-25 btn btn-info">VOIR</a>
-                                                <button style="border-radius: 5px;" class="h-50 w-25 ml-1 btn-danger" onclick="retirer_du_panier(${index})"><i class="bi bi-trash"></i> RETIRER</button>
+                                                <button style="border-radius: 5px;" class="h-50 w-25 ml-1 p-1 btn-danger" onclick="retirer_du_panier(${index})"><i class="bi bi-trash"></i> RETIRER</button>
                                             </div>
-                                        </span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
