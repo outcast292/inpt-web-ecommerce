@@ -29,6 +29,7 @@ if (isset($_SESSION["id_client"])  && isset($_GET["id_adresse"]) && isset($_SESS
     }
 
 
+    $msg["id_commande"] = $id_commande;
     $msg["code"] = 200;
     $msg["msg"] = "ok";
     $json = json_encode($msg, JSON_NUMERIC_CHECK);
