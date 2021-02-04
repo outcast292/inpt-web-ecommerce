@@ -340,7 +340,7 @@
         }
         function add_to_wishlist(id_produit) {
                 //$(this).html('<i class="bi bi-suit-heart-fill" style="font-size: 22px; color:red;"></i>');
-                
+                //TODO FIX THIS
                 $('#divheart').html('<i class="bi bi-suit-heart-fill" style="font-size: 22px; color:red;"></i>');
                 console.log($('#divheart').html());
                 
