@@ -35,7 +35,7 @@
                 <div class="card">
                     <div class="card-top border-bottom text-center"> <a href="index.php" class="link"> Retour a la boutique</a> <span id="logo">Amoil.com</span> </div>
                     <div class="card-body">
-                        <div class="row upper"> <span class="panier"> Panier</span> <span class="payment">Payment</span> </div>
+                        <div class="row upper"> <span class="panier"> Adresse</span>  </div>
 
                         <div class="row">
                             <div class="col-lg-12">
@@ -48,9 +48,12 @@
 
                                     <div class="d-flex justify-content-end h3">
 
-                                        <span id="total"></span>
 
                                     </div>
+                                </div>
+                                <div class="p-3 d-flex justify-content-center">
+                                <a  href="dilevery" class="payment col-4 btn btn-primary">Confirmer Commande <i class="bi bi-arrow-right-square-fill"></i></a >
+                                
                                 </div>
 
 
@@ -169,6 +172,7 @@
             echo "const id_client=" . $_SESSION["id_client"] . ";";
         ?>
         var products = [];
+        //TODO ADD DETAILS 
 
         function fill_cart_div() {
             $("#cart_content").text('');

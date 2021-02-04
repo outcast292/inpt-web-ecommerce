@@ -76,12 +76,13 @@ if (isset($_POST["password"])) {
   <div class=" collapse navbar-collapse " id="navbarNavDropdown">
     <ul class="ml-md-auto navbar-nav">
       <li class="nav-item">
-        <a href="cart" class="nav-link pl-2 pr-1 mx-1 py-3 my-n2" aria-label="Panier">
+        <a href="<?php echo $is_profile ? "../" : "";  ?>cart" class="nav-link pl-2 pr-1 mx-1 py-3 my-n2" aria-label="Panier">
           <i class="bi bi-cart4 mr-4" style="font-size: 2rem;"></i>
         </a>
       </li>
       <li class="nav-item">
-        <a href="../Favoris.php" class="nav-link pl-2 pr-1 mx-1 py-3 my-n2" aria-label="favoris">
+        <a href="<?php echo $is_profile ? "../" : "";  ?>Favoris.php" class="nav-link pl-2 pr-1 mx-1 py-3 my-n2" aria-label="favoris">
+
           <i class="bi bi-heart-fill ml-md-4 ml-lg-4 ml-sm-4  mr-4" style="font-size: 2rem;"></i>
         </a>
       </li>

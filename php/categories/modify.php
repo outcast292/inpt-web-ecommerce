@@ -23,5 +23,3 @@ $json = json_encode($msg, JSON_NUMERIC_CHECK);
 echo $json;
 } else
 echo json_encode(array("code" => 400, "message" => "Error, parametres non sufficent"));
-
-r
