@@ -1,5 +1,7 @@
 <?php
 require_once "../../connection/db.php";
+header("Access-Control-Allow-Origin: *");
+
 session_start();
 if (isset($_SESSION["id_client"])) {
     $query = 'SELECT produit.id_produit,label, nom_marque, description_produit , prix_produit from produit , wishlist ,marque mr  where   produit.id_produit = wishlist.id_produit  and produit.id_marque = mr.id_marque and id_client=:id_client ';

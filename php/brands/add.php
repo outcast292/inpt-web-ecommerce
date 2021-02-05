@@ -1,6 +1,7 @@
 <?php
 require_once "../connection/db.php";
 //require_once "../verify_session.php";
+header("Access-Control-Allow-Origin: *");
 
 
 $nom = $_GET["nom_marque"];

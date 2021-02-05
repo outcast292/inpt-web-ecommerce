@@ -1,5 +1,6 @@
 <?php
-require_once "../connection/db.php";
+require_once "../connection/db.php";header("Access-Control-Allow-Origin: *");
+
 //require_once "../verify_session.php";
 $query =  'SELECT c.id_client, CONCAT(c.nom_client ," " , c.prenom_client) as nom_client, COUNT(co.id_commande) as nbr_commande, MAX(co.date_commande) as last_commande ,MIN(co.date_commande) as first_commande , c.email, c.tel_client,  c.date_naissance, c.sexe, MIN(co.prix_commande) as minimum_spent, MAX(co.prix_commande) as maximum_spent,AVG(co.prix_commande) as avg_spent FROM client c left join commande co on c.id_client=co.id_client where (act=1 or act is null) GROUP BY c.id_client';
 //$query2 = 'SELECT id_client, id_commande, date_commande, etat_actuell, prix_commande from commande GROUP BY id_client';

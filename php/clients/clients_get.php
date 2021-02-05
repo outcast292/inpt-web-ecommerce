@@ -1,5 +1,6 @@
 <?php
-require_once "../connection/db.php";
+require_once "../connection/db.php";header("Access-Control-Allow-Origin: *");
+
 $_GET = array_filter($_GET);
 
 //require_once "../verify_session.php";

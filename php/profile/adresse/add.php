@@ -1,5 +1,6 @@
 <?php
-session_start();
+session_start();header("Access-Control-Allow-Origin: *");
+
 require_once "../../connection/db.php";
 if (isset($_SESSION["id_client"])) {
 

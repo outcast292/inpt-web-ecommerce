@@ -1,5 +1,6 @@
 <?php
-require_once "../connection/db.php";
+require_once "../connection/db.php";header("Access-Control-Allow-Origin: *");
+
 if ($_GET["mdp"] == null) {
     $msg["code"] = 401;
     $msg["msg"] = "veuillez saisir un mot de passe";

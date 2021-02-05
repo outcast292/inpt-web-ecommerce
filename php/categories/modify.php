@@ -1,5 +1,6 @@
 <?php
-require_once "../connection/db.php";
+require_once "../connection/db.php";header("Access-Control-Allow-Origin: *");
+
 //require_once "../verify_session.php";
 
 if (isset($_GET["id_categorie"])&&isset($_GET["nom_categorie"])) {

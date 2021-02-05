@@ -1,5 +1,6 @@
 <?php
-require_once "../connection/db.php";
+require_once "../connection/db.php";header("Access-Control-Allow-Origin: *");
+
 if ($_GET["nom"] == null) {
     $msg["code"] = 404;
     $msg["msg"] = "La case nom ne peut pas etre vide";

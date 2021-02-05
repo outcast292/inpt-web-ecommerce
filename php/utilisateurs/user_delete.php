@@ -1,5 +1,6 @@
 <?php
-require_once "../connection/db.php";
+require_once "../connection/db.php";header("Access-Control-Allow-Origin: *");
+
 $query = "delete from utilisateurs where id_user= :id_user";
 $sql = $conn->prepare($query);
 $sql->execute(array(
