@@ -23,6 +23,8 @@ require_once "./req/verify.php";
     <div>
         <?php
         require_once "req/navbar.php";
+        require_once "./req/verify.php";
+
 
 
         ?>
