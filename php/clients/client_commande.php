@@ -1,5 +1,6 @@
 <?php
-require_once "../connection/db.php";
+require_once "../connection/db.php";header("Access-Control-Allow-Origin: *");
+
 //require_once "../verify_session.php";
 $query = 'SELECT id_commande, date_commande, etat_actuell, prix_commande from commande where id_client=:id_client order by date_commande DESC LIMIT 5';
 

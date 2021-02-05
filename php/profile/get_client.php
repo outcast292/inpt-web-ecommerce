@@ -1,6 +1,7 @@
 <?php
 session_start();
-require_once "../connection/db.php";
+require_once "../connection/db.php";header("Access-Control-Allow-Origin: *");
+
 if (isset($_SESSION["id_client"])) {
     $query = "select  nom_client , prenom_client , email , sexe , tel_client , date_naissance from client where id_client = :id_client";
     $sql = $conn->prepare($query);

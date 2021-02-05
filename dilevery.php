@@ -1,3 +1,7 @@
+<?php 
+session_start();
+require_once "./req/verify.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,6 +24,7 @@
         <?php
         require_once "req/navbar.php";
         require_once "./req/verify.php";
+
 
 
         ?>

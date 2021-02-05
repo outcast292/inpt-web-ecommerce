@@ -1,6 +1,7 @@
 <?php
 session_start();
-require_once "../connection/db.php";
+require_once "../connection/db.php";header("Access-Control-Allow-Origin: *");
+
 //require_once "../verify_session.php";
 if (isset($_SESSION["id_client"])) {
     $query2 = 'SELECT   id_commande,date_commande,etat_actuell,prix_commande,tel_adresse_client, nom_complet  FROM commande c,adresse where  c.id_client=:id_client and adresse.id_adresse=c.id_adresse';

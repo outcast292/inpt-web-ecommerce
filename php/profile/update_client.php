@@ -1,6 +1,7 @@
 <?php
 session_start();
-require_once "../connection/db.php";
+require_once "../connection/db.php";header("Access-Control-Allow-Origin: *");
+
 if (isset($_SESSION["id_client"])) {
     if (isset($_GET["nom"])) {
         if ($_GET["sexe"] == "Homme") {

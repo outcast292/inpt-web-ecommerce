@@ -1,5 +1,6 @@
 <?php
-require_once "../connection/db.php";
+require_once "../connection/db.php";header("Access-Control-Allow-Origin: *");
+
 //require_once "../verify_session.php";
 if (isset($_GET["id_commande"]) && isset($_GET["msg"]) && isset($_GET["id_user"])) {
     $query = 'UPDATE commande SET id_user = :id_user ,valide=:msg where id_commande=:id_commande';

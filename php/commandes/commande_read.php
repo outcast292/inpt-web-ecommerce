@@ -1,5 +1,6 @@
 <?php
-require_once "../connection/db.php";
+require_once "../connection/db.php";header("Access-Control-Allow-Origin: *");
+
 //require_once "../verify_session.php";
 if (isset($_GET["id_commande"])) {
     $query = 'SELECT   DATE_FORMAT(co.date_commande, "%d/%m/%Y %h:%i %p") as date_commande,co.prix_commande,co.etat_actuell ,script_etat, DATE_FORMAT(co.date_etat_actuel, "%d/%m/%Y %h:%i %p") as date_etat_actuel, CONCAT(ad.nom_complet ,"\n",ad.adresse,"\n" , ad.code_postal) as adresse     FROM commande co left join adresse ad on co.id_client =ad.id_adresse    where  co.id_commande=:id_commande';

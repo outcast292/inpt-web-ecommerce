@@ -1,4 +1,5 @@
 <?php
+header("Access-Control-Allow-Origin: *");
 session_start();
 require_once "../connection/db.php";
 if (isset($_SESSION["id_client"]) && isset($_GET["id_produit"])) {

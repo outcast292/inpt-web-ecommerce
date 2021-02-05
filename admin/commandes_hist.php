@@ -1,3 +1,4 @@
+<?php require "req/verify.php";  ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +22,6 @@
     <link href="../css/navbar.css" rel="stylesheet">
 
 
-    <?php require "req/verify.php";  ?>
 
 </head>
 

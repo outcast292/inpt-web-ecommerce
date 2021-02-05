@@ -1,3 +1,4 @@
+<?php require "req/verify.php";  ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +12,6 @@
     <script src="../js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="../css/bootstrap-icons.css">
     <link rel="stylesheet" href="../css/admin/sidebar.css">
-    <?php require "req/verify.php";  ?>
 </head>
 
 <body>
@@ -68,23 +68,23 @@
                                 <form action="" class="form row" id="form_add">
                                     <div class="form-label-group col-6">
                                         <label for="inputNom">Nom</label>
-                                        <input type="text" name="nom"  class="form-control" placeholder="Nom" required autofocus>
+                                        <input type="text" name="nom" class="form-control" placeholder="Nom" required autofocus>
                                     </div>
                                     <div class="form-label-group col-6">
                                         <label for="inputEmail">Prenom</label>
-                                        <input type="text" name="prenom"  class="form-control" placeholder="Prenom" required autofocus>
+                                        <input type="text" name="prenom" class="form-control" placeholder="Prenom" required autofocus>
                                     </div><br>
                                     <div class="form-label-group col-12">
                                         <label for="inputEmail">Adresse email</label>
-                                        <input type="email" name="mail"  autocomplete="username" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                                        <input type="email" name="mail" autocomplete="username" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
                                     </div><br>
                                     <div class="form-label-group col-6">
                                         <label for="inputNom">mot de passe </label>
-                                        <input type="password" autocomplete="new-password" name="mdp"  class="form-control" placeholder="mot de passe" required autofocus>
+                                        <input type="password" autocomplete="new-password" name="mdp" class="form-control" placeholder="mot de passe" required autofocus>
                                     </div>
                                     <div class="form-label-group col-6">
                                         <label for="inputEmail">Confirmer le mot de passe </label>
-                                        <input type="password" name="mdp_conf"  autocomplete="new-password" class="form-control" placeholder="confirmer le mot de passe" required autofocus>
+                                        <input type="password" name="mdp_conf" autocomplete="new-password" class="form-control" placeholder="confirmer le mot de passe" required autofocus>
                                     </div><br>
                                     <div class="form-label-group col-6">
                                         <label for="inputEmail">Telephone</label>
@@ -93,8 +93,8 @@
 
                                     <div class="form-label-group col-6">
                                         <label for="inputEmail">Admin:</label><br>
-                                        <input type="radio" name="admin"  checked value="0">non |
-                                        <input type="radio" name="admin"  value="1">oui
+                                        <input type="radio" name="admin" checked value="0">non |
+                                        <input type="radio" name="admin" value="1">oui
                                     </div><br>
                                 </form>
                                 <div class="modal-footer mt-2">
@@ -203,7 +203,7 @@
             });
         }
 
-//TODO ADD VALIDATIONS TO FORMS
+        //TODO ADD VALIDATIONS TO FORMS
 
         function see_user(id_user, nom_user, prenom_user, email_user, is_admin, tel_user) {
 

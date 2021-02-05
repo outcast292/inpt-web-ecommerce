@@ -1,5 +1,7 @@
 <?php
 require_once "../connection/db.php";
+header("Access-Control-Allow-Origin: *");
+
 //require_once "../verify_session.php";
 if (isset($_GET["id_marque"]) && isset($_GET["nom_marque"])) {
     $query = "UPDATE marque set nom_marque=:nom_marque where id_marque=:id_marque";

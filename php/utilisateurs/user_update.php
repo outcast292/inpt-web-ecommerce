@@ -1,5 +1,6 @@
 <?php
-require_once "../connection/db.php";
+require_once "../connection/db.php";header("Access-Control-Allow-Origin: *");
+
 if (isset($_GET["nom"])) {
     $query = "update utilisateurs set nom_user = :nom_user , prenom_user = :prenom_user , email_user = :email_user , is_admin = :is_admin , tel_user = :tel_user  where id_user= :id_user;";
     $sql = $conn->prepare($query);

@@ -1,5 +1,7 @@
 <?php
 require_once "../connection/db.php";
+header("Access-Control-Allow-Origin: *");
+
 session_start();
 //require_once "../verify_session.php";
 if (isset($_SESSION["id_client"])  && isset($_GET["nom_complet"]) && isset($_GET["adresse"])  && isset($_GET["tel_adresse_client"])) {

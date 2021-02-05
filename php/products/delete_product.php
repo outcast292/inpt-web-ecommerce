@@ -1,5 +1,6 @@
 <?php
-require_once "../connection/db.php";
+require_once "../connection/db.php";header("Access-Control-Allow-Origin: *");
+
 //require_once "../verify_session.php";
 if (isset($_GET["id_produit"])) {
     $query = "UPDATE produit set act=:act where id_produit=:id_produit";

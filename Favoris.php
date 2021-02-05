@@ -1,3 +1,7 @@
+<?php
+session_start();
+require_once "./req/verify.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <?php
@@ -61,9 +65,6 @@ require_once "./req/verify.php";
 
 
     <script>
-       
-        
-
         function read() {
             fetch("../php/Favoris/read_wishlist").then(resp => resp.json()).then(json => {
                 const data = json.data;
@@ -113,8 +114,8 @@ require_once "./req/verify.php";
         function del(id_produit, id_client) {
             fetch("../php/Favoris/delp?id_produit=" + id_produit + "&id_client=" + id_client).then(resp => resp.json()).then(json => {
                 const data = json.data;
-               
-                
+
+
             }).catch(err => {
                 console.log(err);
             });

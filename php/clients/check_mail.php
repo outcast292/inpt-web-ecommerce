@@ -1,5 +1,6 @@
 <?php
-require_once "../connection/db.php";
+require_once "../connection/db.php";header("Access-Control-Allow-Origin: *");
+
 //require_once "../verify_session.php";
 if (isset($_GET["email"])) {
     $query =  'SELECT  email FROM client c where email= :email  ';

@@ -1,5 +1,6 @@
 <?php
-require_once "../connection/db.php";
+require_once "../connection/db.php";header("Access-Control-Allow-Origin: *");
+
 //require_once "../verify_session.php";
 if (isset($_GET["id_produit"])) {
     $query = 'SELECT p.id_produit, p.id_marque, p.id_categorie, label, prix_produit, description_produit  ,nom_marque,nom_categorie FROM produit p  left join marque m on p.id_marque=m.id_marque left join categorie cat on p.id_categorie=cat.id_categorie WHERE p.id_produit=:id_produit AND act=1 ';
