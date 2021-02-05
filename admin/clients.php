@@ -355,7 +355,7 @@
                             
                                 <a class="dropdown-item" href="mailto:${element.email}">ENVOYER E-MAIL</a>
                                 <a class="dropdown-item" href="tel:${element.tel_client}">APPELER</a>
-                                <a class="dropdown-item" href="#" onclick="delete_confirmation(${index+1},'${element.nom_client}');">SUPPRIMER</a>
+                                <a class="dropdown-item" href="#" onclick="delete_confirmation(${element.id_client},'${element.nom_client}');">SUPPRIMER</a>
                             </div>
                             </td>
                         </tr>

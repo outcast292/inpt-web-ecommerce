@@ -8,7 +8,7 @@ if (isset($_POST["password"])) {
 
   $email_client = htmlspecialchars($_POST["email"]);
   $pass = $_POST["password"];
-  $query = "SELECT  id_client, nom_client, prenom_client,tel_client,  mdp_client FROM client where email = :email_client ";
+  $query = "SELECT  id_client, nom_client, prenom_client,tel_client,  mdp_client FROM client where email = :email_client and act=1 ";
   $sql = $conn->prepare($query);
   $sql->execute(array("email_client" => $email_client));
 
