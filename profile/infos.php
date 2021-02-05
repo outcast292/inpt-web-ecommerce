@@ -1,8 +1,13 @@
+<?php
+require_once "./req/verify.php";
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <?php
 
 ?>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,7 +29,6 @@
     <div>
         <?php
         require_once "../req/navbar.php";
-        require_once "./req/verify.php";
 
         ?>
     </div>
@@ -123,7 +127,7 @@
     function modify_password(id_user) {
         var dataform = $("#form_pwd").serialize();
         var dataformarray = $("#form_pwd").serialize();
-        fetch("../php/profile/client_pwd?"   + dataform).then(resp => resp.json()).then(json => {
+        fetch("../php/profile/client_pwd?" + dataform).then(resp => resp.json()).then(json => {
 
             if (json.code == 200) {
                 $("#alert").text('');
@@ -138,20 +142,19 @@
                     <div class="alert alert-danger"  >
                     <i class="bi  bi-x-octagon mr-2"></i></i> ${json.msg}
                         </div>`)
-            }else if (json.code == 399) {
+            } else if (json.code == 399) {
                 $("#alertModalpwd").text('');
                 $("#alertModalpwd").append(`
                     <div class="alert alert-danger"  >
                     <i class="bi  bi-x-octagon mr-2"></i></i> ${json.msg}
                         </div>`)
-            }else if (json.code == 398) {
+            } else if (json.code == 398) {
                 $("#alertModalpwd").text('');
                 $("#alertModalpwd").append(`
                     <div class="alert alert-danger"  >
                     <i class="bi  bi-x-octagon mr-2"></i></i> ${json.msg}
                         </div>`)
-            }
-             else if (json.code == 402) {
+            } else if (json.code == 402) {
                 $("#alertModalpwd").text('');
                 $("#alertModalpwd").append(`
                     <div class="alert alert-danger"  >

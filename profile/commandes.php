@@ -1,8 +1,13 @@
+<?php
+require_once "./req/verify.php";
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <?php
 
 ?>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,7 +29,6 @@
     <div>
         <?php
         require_once "../req/navbar.php";
-        require_once "./req/verify.php";
 
         ?>
     </div>
@@ -102,11 +106,11 @@
 
 <script>
     function show_details(id_commande, nom_client, tel_client) {
-            fetch("../php/commandes/commande_read?id_commande=" + id_commande).then(resp => resp.json()).then(json => {
-                const data = json.data;
-                const commande_details = data.commande_details;
-                const commande_info = data.commande_info;
-                $('#modal_content').html(`
+        fetch("../php/commandes/commande_read?id_commande=" + id_commande).then(resp => resp.json()).then(json => {
+            const data = json.data;
+            const commande_details = data.commande_details;
+            const commande_info = data.commande_info;
+            $('#modal_content').html(`
                      <div class="modal-header">
                     <h5 class="modal-title" id="exampleModal">Commande N° ${id_commande}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -215,11 +219,11 @@
                 
                      `);
 
-                $('#modal_details').modal('show')
-            }).catch(err => {
-                console.log(err);
-            });
-        };
+            $('#modal_details').modal('show')
+        }).catch(err => {
+            console.log(err);
+        });
+    };
 
 
 

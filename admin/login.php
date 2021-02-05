@@ -1,4 +1,24 @@
 <?php session_start();
+$x = 0;
+if (isset($_POST["password"])) {
+    require "../php/connection/db.php";
+    $email_user = htmlspecialchars($_POST["email"]);
+    $pass = $_POST["password"];
+    $query = "SELECT  mdp_user,nom_user,id_user FROM utilisateurs where email_user = :email_user ";
+    $sql = $conn->prepare($query);
+    $sql->execute(array("email_user" => $email_user));
+    $row = $sql->fetch();
+    if (password_verify($pass, $row["mdp_user"])) {
+        $_SESSION["email_user"] = $email_user;
+        $_SESSION["nom_user"] = $row["nom_user"];
+        $_SESSION["id_user"] = $row["id_user"];
+        $_SESSION["connection_status"] = "connected";
+        header("location: index.php");
+        //header("location: ".$_SESSION["LAST_PAGE"]); //pour etre envoyer a la page voulue au depart
+    } else {
+        $x = 1;
+    }
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -10,30 +30,6 @@
     <meta name="author" content="">
 
     <title>Login d'admin</title>
-    <?php
-    $x = 0;
-    if (isset($_POST["password"])) {
-        require "../php/connection/db.php";
-        $email_user = htmlspecialchars($_POST["email"]);
-        $pass = $_POST["password"];
-        $query = "SELECT  mdp_user,nom_user,id_user FROM utilisateurs where email_user = :email_user ";
-        $sql = $conn->prepare($query);
-        $sql->execute(array("email_user" => $email_user));
-        $row = $sql->fetch();
-        if (password_verify($pass, $row["mdp_user"])) {
-            $_SESSION["email_user"] = $email_user;
-            $_SESSION["nom_user"] = $row["nom_user"];
-            $_SESSION["id_user"] = $row["id_user"];
-            $_SESSION["connection_status"] = "connected";
-            header("location: index.php");
-            //header("location: ".$_SESSION["LAST_PAGE"]); //pour etre envoyer a la page voulue au depart
-        } else {
-            $x = 1;
-        }
-    }
-
-    ?>
-
     <!-- Bootstrap core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
 

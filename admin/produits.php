@@ -18,7 +18,6 @@
     <link href="../css/bootstrap.min.css" rel="stylesheet">
 
     <link href="../css/navbar.css" rel="stylesheet">
-    <?php require "req/verify.php";  ?>
     <style>
         .imagePreview {
             width: 100%;

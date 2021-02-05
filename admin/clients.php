@@ -1,3 +1,4 @@
+<?php require "req/verify.php";  ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +15,6 @@
     <link rel="stylesheet" href="../css/bootstrap-icons.css">
     <link rel="stylesheet" href="../css/admin/sidebar.css">
 
-    <?php require "req/verify.php";  ?>
 
 </head>
 

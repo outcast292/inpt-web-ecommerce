@@ -1,3 +1,7 @@
+<?php
+require_once "./req/verify.php";
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,7 +26,6 @@
     <div>
         <?php
         require_once "../req/navbar.php";
-        require_once "./req/verify.php";
 
         ?>
     </div>

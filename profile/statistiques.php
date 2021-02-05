@@ -1,8 +1,13 @@
+<?php
+require_once "./req/verify.php";
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <?php
 
 ?>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,7 +29,6 @@
     <div>
         <?php
         require_once "../req/navbar.php";
-        require_once "./req/verify.php";
 
         ?>
     </div>
@@ -52,8 +56,8 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-12"id="content">
-                                    
+                                <div class="col-md-12" id="content">
+
                                 </div>
                             </div>
 
@@ -77,10 +81,10 @@
 <script>
     $(document).ready(get_data(event));
 
-function get_data(event) {
-    fetch("../php/profile/statistiques").then(resp => resp.json()).then(json => {
-        var data = json.data[0];
-        $("#content").text('');
+    function get_data(event) {
+        fetch("../php/profile/statistiques").then(resp => resp.json()).then(json => {
+            var data = json.data[0];
+            $("#content").text('');
             $('#content').append(`
             <div class="row" >
                                         <div class="col-6">
@@ -113,13 +117,12 @@ function get_data(event) {
                                         </div>
                                     </div><br>
             `);
-        
-        $("#nbr_produit").text(data.length);
-    }).catch(err => {
-        console.log(err);
-    });
-}
 
+            $("#nbr_produit").text(data.length);
+        }).catch(err => {
+            console.log(err);
+        });
+    }
 </script>
 
 </html>
