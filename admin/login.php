@@ -8,14 +8,18 @@ if (isset($_POST["password"])) {
     $sql = $conn->prepare($query);
     $sql->execute(array("email_user" => $email_user));
     $row = $sql->fetch();
-    if (password_verify($pass, $row["mdp_user"])) {
-        $_SESSION["email_user"] = $email_user;
-        $_SESSION["nom_user"] = $row["nom_user"];
-        $_SESSION["id_user"] = $row["id_user"];
-        $_SESSION["connection_status"] = "connected";
-        header("location: index.php");
-        //header("location: ".$_SESSION["LAST_PAGE"]); //pour etre envoyer a la page voulue au depart
-    } else {
+    if (!is_bool($row))
+        if (password_verify($pass, $row["mdp_user"])) {
+            $_SESSION["email_user"] = $email_user;
+            $_SESSION["nom_user"] = $row["nom_user"];
+            $_SESSION["id_user"] = $row["id_user"];
+            $_SESSION["connection_status"] = "connected";
+            header("location: index.php");
+            //header("location: ".$_SESSION["LAST_PAGE"]); //pour etre envoyer a la page voulue au depart
+        } else {
+            $x = 1;
+        }
+    else {
         $x = 1;
     }
 }

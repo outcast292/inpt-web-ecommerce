@@ -302,15 +302,17 @@
                             response => response.json() // if the response is a JSON object
                         ).then(
                             success => {
-                                $('#modal_details').modal('hide');
-                                search()
+
                             } // Handle the success response object
                         ).catch(
                             error => console.log(error) // Handle the error response object
                         );
                     }
+                    return json
 
-
+                }).then(json => {
+                    $('#modal_details').modal('hide');
+                    search()
                 }).catch(err => {
                     console.log(err);
                 });
