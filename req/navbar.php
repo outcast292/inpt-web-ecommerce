@@ -1,5 +1,4 @@
 <?php
-session_start();
 $x = 0;
 $is_profile = basename(dirname($_SERVER['SCRIPT_FILENAME']))  == "profile";
 

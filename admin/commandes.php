@@ -1,3 +1,4 @@
+<?php require "req/verify.php";  ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +15,6 @@
     <link rel="stylesheet" href="../css/bootstrap-icons.css">
     <link rel="stylesheet" href="../css/admin/sidebar.css">
 
-    <?php require "req/verify.php";  ?>
 
 </head>
 
@@ -69,6 +69,7 @@
 
     <script>
         <?php echo 'var id_user = ' . $_SESSION["id_user"] . ";"; ?>
+
         function show_details(id_commande, nom_client, tel_client) {
             fetch("../php/commandes/commande_read?id_commande=" + id_commande).then(resp => resp.json()).then(json => {
                 const data = json.data;

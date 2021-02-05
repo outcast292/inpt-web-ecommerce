@@ -1,3 +1,5 @@
+<?php require "req/verify.php"; //proteger la page 
+?>
 <!DOCTYPE html>
 <html lang="en">
 

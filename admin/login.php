@@ -1,3 +1,5 @@
+<?php session_start();
+?>
 <!doctype html>
 <html lang="en">
 
@@ -9,7 +11,6 @@
 
     <title>Login d'admin</title>
     <?php
-    session_start();
     $x = 0;
     if (isset($_POST["password"])) {
         require "../php/connection/db.php";
