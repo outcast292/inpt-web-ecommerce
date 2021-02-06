@@ -115,7 +115,7 @@ if (isset($_POST["password"])) {
             </form>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="inscription_client">creer un compte</a>
-            <a class="dropdown-item" href="#">Mot de passe Oublié?</a>
+            <a class="dropdown-item" href="mailto:<!--TODO-->">Mot de passe Oublié?</a>
           <?php
           } else {
 

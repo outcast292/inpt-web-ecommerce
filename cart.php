@@ -125,7 +125,7 @@ session_start();
                                 <div class="col-md-10">
                                     <div class="card-body p-3 col-12   " style="width: 100%;">
                                         <span class="card-title mr-5 h5 " style="color: black;"><span style="color: black;">${element.label}</span>
-                                            
+                                        <span class="card-title mr-5 h6 " style="color: black;"><span style="color: black;">${element.options_produit}</span>   
                                         <span>
                                                 <span class="border pt-2 pl-3 pr-3 pb-1" id="qty">${element.qtt_panier}</span>
                                                 <button id="minus" onclick="change_qtt(${index},'-')" style="padding: 2px 5px; border-radius: 10px; background-color: rgb(230,230,230) ;border-color:(230,230,230); border-width: 1px;">-</button>
