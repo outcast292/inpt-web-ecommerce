@@ -40,7 +40,7 @@ session_start();
                 <div class="card col-12">
                     <div class="card-top border-bottom text-center"> <a href="index.php" class="link"> Retour a la boutique</a> <span id="logo">Amoil.com</span> </div>
                     <div class="card-body">
-                        <div class="row upper"> <span class="panier"> Panier</span> <a href="dilevery" class="btn btn-success payment">Payment <i class="bi bi-arrow-right-square"></i></a> </div>
+                        <div class="row upper"> <span class="panier"> Panier</span> <button type="button" onclick="go_to_dilevery()" class="btn btn-success payment">Payment <i class="bi bi-arrow-right-square"></i></button> </div>
 
                         <div class="row">
                             <div class="col-lg-12">
@@ -94,8 +94,19 @@ session_start();
             </div>
         </div>
     </div>
-
-
+    <!--toast-->
+    <div class="toast bg-danger text-light" role="alert" id="toast_products" aria-live="assertive" style="position: absolute; top: 100px; right: 0;" aria-atomic="true">
+        <div class="toast-header">
+            <i class="bi bi-x-octagon-fill text-danger"></i>
+            <strong class="mr-auto">Erreur</strong>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="toast-body">
+            Impossible de passer une commande sans produits.
+        </div>
+    </div>
 
 
     <div>
@@ -112,6 +123,12 @@ session_start();
             ?>
             var products = [];
             //TODO ADD DETAILS 
+
+            $(document).ready(function() {
+                $('#toast_products').toast({
+                    delay: 3000
+                })
+            });
 
             function fill_cart_div() {
                 $("#cart_content").text('');
@@ -234,6 +251,20 @@ session_start();
                         console.log(json);
                         fill_cart_div();
                     }).catch(err => console.log(err));
+                }
+
+            }
+
+            function go_to_dilevery() {
+                var valide = products.forEach(element => {
+                    if (element.qtt_panier > 0)
+                        return true;
+                });
+                if (valide) {
+                    location.replace("dilevery");
+                } else {
+                    $('#toast_products').toast('show')
+
                 }
 
             }
