@@ -1,4 +1,4 @@
-<?php session_start();?>
+<?php session_start(); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -25,6 +25,7 @@
 </head>
 
 <body>
+
     <div>
         <?php
         require_once "req/navbar.php";
@@ -33,7 +34,20 @@
     </div>
 
     <div class="container ">
+
         <div class="jumbotron ">
+            <div class="toast bg-danger text-light" role="alert" id="toast_connex" aria-live="assertive" style="position: fixed; top: 100px; right: 0;" aria-atomic="true">
+                <div class="toast-header">
+                    <i class="bi bi-x-octagon-fill text-danger"></i>
+                    <strong class="mr-auto">Erreur</strong>
+                    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="toast-body">
+                    les mots de passe sont pas identiques
+                </div>
+            </div>
             <div class="row">
                 <div class="col-3 mt-4"></div>
                 <div class="col-8 mt-4 mx-auto">
@@ -65,28 +79,28 @@
                         </div>
                     </div>
                 </div>
+                <div class='mt-2 row'>
+                    <div class="form-row p-2 col">
+                        <div class="pt-3 col-3">
+                            <h6>Mot-de-Passe: </h6>
+                        </div>
+                        <div class="mt-2 col">
+                            <input class="form-control mr-sm-2" type="password" aria-label="password" id="password1" name="mdp_client" aria-describedby="passhint" required>
+                            <small id="passhint" class="form-text text-muted">Utiliser un mot-de-passe avec des lettres majuscules, miniscules, des symboles et des chiffres pour un maximum de securite</small>
+                        </div>
+                    </div>
+                </div>
+                <div class='mt-2 row'>
+                    <div class="form-row p-2 col">
+                        <div class="pt-3 col-3">
+                            <h6>Confirmer Mot-de-Passe: </h6>
+                        </div>
+                        <div class="mt-2 col">
+                            <input class="form-control mr-sm-2" type="password" aria-label="confirm_password" id="password2" required>
+                        </div>
+                    </div>
+                </div>
                 <form class="col-12 " id='form_signup'>
-                    <div class='mt-2 row'>
-                        <div class="form-row p-2 col">
-                            <div class="pt-3 col-3">
-                                <h6>Mot-de-Passe: </h6>
-                            </div>
-                            <div class="mt-2 col">
-                                <input class="form-control mr-sm-2" type="password" aria-label="password" name="mdp_client" aria-describedby="passhint" required>
-                                <small id="passhint" class="form-text text-muted">Utiliser un mot-de-passe avec des lettres majuscules, miniscules, des symboles et des chiffres pour un maximum de securite</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='mt-2 row'>
-                        <div class="form-row p-2 col">
-                            <div class="pt-3 col-3">
-                                <h6>Confirmer Mot-de-Passe: </h6>
-                            </div>
-                            <div class="mt-2 col">
-                                <input class="form-control mr-sm-2" type="password" aria-label="confirm_password" required>
-                            </div>
-                        </div>
-                    </div>
 
                     <div class="infos_clients">
                         <div class='mt-2 row'>
@@ -190,6 +204,11 @@
 
     <script>
         //TODO ADD EMAIL CHECK
+        $(document).ready(function() {
+            $('#toast_connex').toast({
+                delay: 3000
+            })
+        });
 
         function check() {
             let valid = true;
@@ -202,13 +221,25 @@
             return valid;
         }
 
-
         function add_client() {
-
+            if ($("#password1").val() !== $("#password2").val()) {
+                $('#toast_connex').toast('show')
+                $("#password2").removeClass("is-valid")
+                $("#password1").removeClass("is-valid")
+                $("#password2").addClass("is-invalid")
+                $("#password1").addClass("is-invalid")
+            } else {
+                $("#password2").removeClass("is-invalid")
+                $("#password1").removeClass("is-invalid")
+                $("#password1").addClass("is-valid")
+                $("#password2").addClass("is-valid")
+            }
             if (check()) {
                 verify_email().then(res => {
                     console.log("add" + res);
                     if (res) {
+
+
                         var dataform = $("#form_signup").serialize();
                         var email = $('#email_form').val();
                         console.log("test");
@@ -224,6 +255,7 @@
 
                         });
                     }
+
                 })
 
 
@@ -256,8 +288,9 @@
                     return false;
                 }
             } else {
-                alert('not valid')
                 $("#mail_not_valid2").show();
+                val_email.removeClass("is-valid")
+                val_email.addClass("is-invalid")
                 return false;
 
             }
