@@ -1,5 +1,6 @@
 <?php
-require_once "../connection/db.php";
+require_once "../connection/db.php";header("Access-Control-Allow-Origin: *");
+
 //require_once "../verify_session.php";
 
 if (isset($_GET["id_categorie"])&&isset($_GET["nom_categorie"])) {
@@ -23,5 +24,3 @@ $json = json_encode($msg, JSON_NUMERIC_CHECK);
 echo $json;
 } else
 echo json_encode(array("code" => 400, "message" => "Error, parametres non sufficent"));
-
-r

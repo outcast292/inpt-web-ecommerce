@@ -1,3 +1,7 @@
+<?php
+session_start();
+require_once "./req/verify.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,7 +45,7 @@
               <div class="col-lg-12">
                 <div class="left border">
                   <div class="row"><span><i class="bi bi-basket3-fill " style="font-size: 2rem ;" aria-hidden="true"></i></i></span> <span class="header" style="font-size: 2rem;"> Panier</span></div>
-                  
+
                   <div id="cart_content">
 
                     <div class="card mb-3 p-0 h-25">

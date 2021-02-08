@@ -1,24 +1,14 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Login d'admin</title>
-    <?php
-    session_start();
-    $x = 0;
-    if (isset($_POST["password"])) {
-        require "../php/connection/db.php";
-        $email_user = htmlspecialchars($_POST["email"]);
-        $pass = $_POST["password"];
-        $query = "SELECT  mdp_user,nom_user,id_user FROM utilisateurs where email_user = :email_user ";
-        $sql = $conn->prepare($query);
-        $sql->execute(array("email_user" => $email_user));
-        $row = $sql->fetch();
+<?php session_start();
+$x = 0;
+if (isset($_POST["password"])) {
+    require "../php/connection/db.php";
+    $email_user = htmlspecialchars($_POST["email"]);
+    $pass = $_POST["password"];
+    $query = "SELECT  mdp_user,nom_user,id_user FROM utilisateurs where email_user = :email_user ";
+    $sql = $conn->prepare($query);
+    $sql->execute(array("email_user" => $email_user));
+    $row = $sql->fetch();
+    if (!is_bool($row))
         if (password_verify($pass, $row["mdp_user"])) {
             $_SESSION["email_user"] = $email_user;
             $_SESSION["nom_user"] = $row["nom_user"];
@@ -29,10 +19,21 @@
         } else {
             $x = 1;
         }
+    else {
+        $x = 1;
     }
+}
+?>
+<!doctype html>
+<html lang="en">
 
-    ?>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
+    <title>Login d'admin</title>
     <!-- Bootstrap core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
 

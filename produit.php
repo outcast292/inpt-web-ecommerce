@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -94,7 +95,7 @@
     </div>
     <div class="toast bg-success text-dark" role="alert" id="toast_cart" aria-live="assertive" style="position: absolute; top: 100px; right: 0;width:25%" aria-atomic="true">
         <div class="toast-header">
-        <i class="bi bi-check2 text-success"></i>
+            <i class="bi bi-check2 text-success"></i>
             <strong class="mr-auto">Succes</strong>
             <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -106,7 +107,7 @@
     </div>
 
     </div>
-    
+
     <div class="container-fluid">
         <?php
         require_once "req/footbar.php";
@@ -116,6 +117,7 @@
 
     <script>
         var product = {};
+        var inside = null;
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         if (!urlParams.has("id_produit"))
@@ -123,6 +125,7 @@
         else {
             fetch("./php/products/read_product?id_produit=" + urlParams.get("id_produit")).then(resp => resp.json()).then(json => {
                 const data = json.data;
+                inside = json.inside;
                 product = data.product;
                 options = data.options;
                 $("#product_section").html(`
@@ -158,7 +161,6 @@
                             </div>
                         </div>-->
                     </div>
-
                     <!--deuxieme section-->
                     <div class="col-12 col-md-6 mt-5">
                         <div class="card-body">
@@ -167,10 +169,9 @@
                                 <h5 class="card-title text-secondary">${product.nom_marque}</h5>
                                 <h3 class="card-title">${product.label}</h3>
                                 </div>
-                                <div class="col-3 ">
-                                    <a href=""><i class="bi bi-suit-heart " style="font-size: 22px; color:red;"></i></a>
+                                <div class="col-3" id="divheart">
+                                    <i class="bi ${inside?"bi-suit-heart-fill":"bi-suit-heart"}" id="hearti"  style="font-size: 22px; color:red;" onclick="add_to_wishlist(${product.id_produit})"></i>
                                 </div>
-
                             </div>
                             <div>
                                 <ul class="list-inline pull-right">
@@ -180,12 +181,11 @@
                                         <i class="bi bi-star-fill" style="color: yellow;"></i>
                                         <i class="bi bi-star-half" style="color: yellow;"></i>
                                         <i class="bi bi-star" style="color: yellow;"></i>
-
                                     </li>
                                 </ul>
                             </div>
                             <form action="" id="form_product">
-                            <h4 style="color: red;">${product.prix_produit.toFixed(2)} DH</h4>
+                            <h4 style="color: red;">${product.prix_produit.toFixed(2) || 0} DH</h4>
                             ${options.map((element,index)=> `<h5 class="mt-2 mx-3 "><small>${element.type_options}:</small></h5>
                             <div class="btn-group btn-group-toggle d-flex justify-content-around" data-toggle="buttons">
                                 ${element.options.split(";").map((option,index)=> `
@@ -196,19 +196,15 @@
                                 `) }
                             
                                 <div class="form-group">
-
                                     <span>
                                         <h5 class="card-text mt-2 mx-3 "><small class="text-muted">Quantité:</small></h5>
-                                    </span><input type="number" value="1" name="qtt_panier" class=" input my-3 mx-3" style="border-radius: 15px;height: 30px;width: 130px; color:darkblue;">
+                                    </span><input type="number" value="1" name="qtt_panier"  min="0" class=" input my-3 mx-3" style="border-radius: 15px;height: 30px;width: 130px; color:darkblue;">
                                     <div class="form-group mt-2  ">
                                     <button type="button" class="btn btn-warning" onclick="add_to_cart()" <?php if (!isset($_SESSION["id_client"])) echo "disabled"  ?> style="border-radius: 20px;">Ajouter au panier</button>
-                                    <button type="button" class="btn btn-danger" <?php if (!isset($_SESSION["id_client"])) echo "disabled"  ?> style="border-radius: 20px;">Acheter maintenant</button>
-
                                 </div>
                                     </div>
                                
                             </form>
-
                         </div>
                     </div>
                 `);
@@ -222,7 +218,6 @@
                                             This is some text within a card body.
                                         </div>
                                     </div>
-
                                     <div class="card  mx-3 my-3 ">
                                         <div class="card-body">
                                             <h6 class="card-title ">User x</h6>
@@ -233,6 +228,7 @@
             })
 
         }
+
 
         fetch("./php/products/get_most_products").then(resp => resp.json()).then(json => {
             const data = json.data;
@@ -247,7 +243,6 @@
                                 <a class="stretched-link" href="#" style="color: rgb(2, 2, 58);">
                                     <span class="card-title h4">${data[index].label}</span>
                                 </a>
-
                                 <p style="color:gray">description</p>
                                 <a href="#" class="btn btn-danger">Acheter</a>
                                 <span class="h6" style="margin-left:20px;">${data[index].prix_produit.toFixed(2)} DH</span>
@@ -261,7 +256,6 @@
                                 <a class="stretched-link" href="#" style="color: rgb(2, 2, 58);">
                                     <span class="card-title h4">${data[index+1].label}</span>
                                 </a>
-
                                 <p style="color:gray">description</p>
                                 <a href="#" class="btn btn-danger">Acheter</a>
                                 <span class="h6" style="margin-left:20px;">${data[index+1].prix_produit.toFixed(2)} DH</span>
@@ -275,7 +269,6 @@
                                 <a class="stretched-link" href="#" style="color: rgb(2, 2, 58);">
                                     <span class="card-title h4">${data[index+2].label}</span>
                                 </a>
-
                                 <p style="color:gray">description</p>
                                 <a href="#" class="btn btn-danger">Acheter</a>
                                 <span class="h6" style="margin-left:20px;">${data[index+2].prix_produit.toFixed(2)} DH</span>
@@ -299,7 +292,6 @@
                                 <a class="stretched-link" href="#" style="color: rgb(2, 2, 58);">
                                     <span class="card-title h4">${data[index].label}</span>
                                 </a>
-
                                 <p style="color:gray">description</p>
                                 <a href="#" class="btn btn-danger">Acheter</a>
                                 <span class="h6" style="margin-left:20px;">${data[index].prix_produit.toFixed(2)} DH</span>
@@ -313,7 +305,6 @@
                                 <a class="stretched-link" href="#" style="color: rgb(2, 2, 58);">
                                     <span class="card-title h4">${data[index+1].label}</span>
                                 </a>
-
                                 <p style="color:gray">description</p>
                                 <a href="#" class="btn btn-danger">Acheter</a>
                                 <span class="h6" style="margin-left:20px;">${data[index+1].prix_produit.toFixed(2)} DH</span>
@@ -327,7 +318,6 @@
                                 <a class="stretched-link" href="#" style="color: rgb(2, 2, 58);">
                                     <span class="card-title h4">${data[index+2].label}</span>
                                 </a>
-
                                 <p style="color:gray">description</p>
                                 <a href="#" class="btn btn-danger">Acheter</a>
                                 <span class="h6" style="margin-left:20px;">${data[index+2].prix_produit.toFixed(2)} DH</span>
@@ -351,6 +341,33 @@
                 $('#toast_cart').toast('show')
             }).catch(err => console.log(err));
         }
+
+
+
+
+
+        function add_to_wishlist(id_produit) {
+            //TODO FIX THIS
+
+            if (!inside)
+                fetch("../php/Favoris/addw?id_produit=" + id_produit).then(resp => resp.json()).then(json => {
+                    $("#hearti").removeClass("bi-suit-heart");
+                    $("#hearti").addClass("bi-suit-heart-fill");
+
+                }).catch(err => {
+                    console.log(err);
+                });
+            else
+                fetch("../php/Favoris/delp?id_produit=" + id_produit).then(resp => resp.json()).then(json => {
+                    if (json.code == 200) {
+                        $("#hearti").removeClass("bi-suit-heart-fill");
+                        $("#hearti").addClass("bi-suit-heart");
+                    }
+                }).catch(err => {
+                    console.log(err);
+                });
+            inside = !inside;
+        };
     </script>
 
 

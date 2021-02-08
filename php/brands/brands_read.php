@@ -1,6 +1,8 @@
 <?php
 require_once "../connection/db.php";
 //require_once "../verify_session.php";
+header("Access-Control-Allow-Origin: *");
+
 $results;
 if (!isset($_GET["search"])) {
     $query = 'SELECT  mr.id_marque, mr.nom_marque, count(pr.id_produit) as prod_count from marque mr left join produit pr on mr.id_marque = pr.id_marque  group by mr.id_marque';

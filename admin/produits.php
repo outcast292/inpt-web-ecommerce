@@ -1,3 +1,4 @@
+<?php require "req/verify.php";  ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +18,6 @@
     <link href="../css/bootstrap.min.css" rel="stylesheet">
 
     <link href="../css/navbar.css" rel="stylesheet">
-    <?php require "req/verify.php";  ?>
     <style>
         .imagePreview {
             width: 100%;
@@ -302,15 +302,17 @@
                             response => response.json() // if the response is a JSON object
                         ).then(
                             success => {
-                                $('#modal_details').modal('hide');
-                                search()
+
                             } // Handle the success response object
                         ).catch(
                             error => console.log(error) // Handle the error response object
                         );
                     }
+                    return json
 
-
+                }).then(json => {
+                    $('#modal_details').modal('hide');
+                    search()
                 }).catch(err => {
                     console.log(err);
                 });
@@ -384,8 +386,7 @@
                 </div> `);
                 $('.selectpicker').selectpicker();
                 $('#modal_details').modal('show');
-                if (file_exists(`../img/products/${id_produit}.jpg`))
-                    $('#img_mod_up').closest(".imgUp").find('.imagePreview').css("background-image", "url(" + `../img/products/${id_produit}.jpg` + ")")
+                $('#img_mod_up').closest(".imgUp").find('.imagePreview').css("background-image", "url(" + `../img/products/${id_produit}.jpg` + ")")
             });
         };
 

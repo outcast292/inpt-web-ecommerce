@@ -1,11 +1,13 @@
 <?php
-session_start();
 $x = 0;
+$is_profile = basename(dirname($_SERVER['SCRIPT_FILENAME']))  == "profile";
+
 if (isset($_POST["password"])) {
-  require "./php/connection/db.php";
+  require(($is_profile ? "../" : "./") . "php/connection/db.php");
+
   $email_client = htmlspecialchars($_POST["email"]);
   $pass = $_POST["password"];
-  $query = "SELECT  id_client, nom_client, prenom_client,  mdp_client FROM client where email = :email_client ";
+  $query = "SELECT  id_client, nom_client, prenom_client,tel_client,  mdp_client FROM client where email = :email_client and act=1 ";
   $sql = $conn->prepare($query);
   $sql->execute(array("email_client" => $email_client));
 
@@ -15,6 +17,7 @@ if (isset($_POST["password"])) {
       $_SESSION["nom_client"] = $row["nom_client"];
       $_SESSION["prenom_client"] = $row["prenom_client"];
       $_SESSION["id_client"] = $row["id_client"];
+      $_SESSION["tel_client"] = $row["tel_client"];
       $_SESSION["connection_status"] = "connected";
       //header("location: ".$_SESSION["LAST_PAGE"]); //pour etre envoyer a la page voulue au depart
     } else {
@@ -35,7 +38,6 @@ if (isset($_POST["password"])) {
       
       ";
   }
-  
 }
 
 
@@ -53,8 +55,8 @@ if (isset($_POST["password"])) {
   </div>
 </div>
 <nav class="navbar navbar-expand-sm  fixed-top navbar-light bg-light ">
-  <a class="navbar-brand" href="index.php" class="h4" style="color:navy">
-    <img src="img/logo.png" alt="" height="50">
+  <a class="navbar-brand" href="<?php echo $is_profile ? "../" : "";  ?>index.php" class="h4" style="color:navy">
+    <img src="<?php echo $is_profile ? "../" : "";  ?>img/logo.png" alt="" height="50">
     AMOIL
   </a>
 
@@ -74,12 +76,14 @@ if (isset($_POST["password"])) {
   <div class=" collapse navbar-collapse " id="navbarNavDropdown">
     <ul class="ml-md-auto navbar-nav">
       <li class="nav-item">
-        <a href="cart" class="nav-link pl-2 pr-1 mx-1 py-3 my-n2" aria-label="Panier">
+        <a href="<?php echo $is_profile ? "../" : "";  ?>cart" class="nav-link pl-2 pr-1 mx-1 py-3 my-n2" aria-label="Panier">
           <i class="bi bi-cart4 mr-4" style="font-size: 2rem;"></i>
         </a>
       </li>
       <li class="nav-item">
-        <a href="#" class="nav-link pl-2 pr-1 mx-1 py-3 my-n2" aria-label="favoris">
+        <a href="<?php echo $is_profile ? "./" : "profile/";  ?>wishlist.php" class="nav-link pl-2 pr-1 mx-1 py-3 my-n2" aria-label="favoris">
+
+
           <i class="bi bi-heart-fill ml-md-4 ml-lg-4 ml-sm-4  mr-4" style="font-size: 2rem;"></i>
         </a>
       </li>
@@ -94,11 +98,11 @@ if (isset($_POST["password"])) {
 
             <form class="px-4 py-3" method="POST">
               <div class="form-group">
-                <label for="exampleDropdownFormEmail1">Email address</label>
+                <label>Email</label>
                 <input type="email" name="email" class="form-control" placeholder="email@example.com">
               </div>
               <div class="form-group">
-                <label for="exampleDropdownFormPassword1">Password</label>
+                <label>Mot de passe</label>
                 <input type="password" name="password" class="form-control" placeholder="Password">
               </div>
               <div class="form-group">
@@ -106,18 +110,19 @@ if (isset($_POST["password"])) {
 
                 </div>
               </div>
-              <button type="submit" class="btn btn-primary">Sign in</button>
+              <button type="submit" class="btn btn-primary">Se connecter</button>
             </form>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">New around here? Sign up</a>
-            <a class="dropdown-item" href="#">Forgot password?</a>
+            <a class="dropdown-item" href="inscription_client">creer un compte</a>
+            <a class="dropdown-item" data-toggle="modal" data-target="#modal_password_forgotten">Mot de passe Oublié?</a>
           <?php
           } else {
+
           ?>
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="<?php echo $is_profile ? "../" : "";  ?>profile/infos">Parametres compte</a>
+            <a class="dropdown-item" href="<?php echo $is_profile  ? "../" : ""; ?>profile/commandes">Historique commandes</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="php/clients/logout">Se deconnecter</a>
+            <a class="dropdown-item" href="<?php echo $is_profile ? "../" : ""; ?>php/clients/logout?page=<?php echo $is_profile ? "../index" : basename($_SERVER['SCRIPT_FILENAME'])  ?>">Se deconnecter</a>
           <?php
           }
           ?>
@@ -129,3 +134,21 @@ if (isset($_POST["password"])) {
   </div>
   </div>
 </nav>
+<div class="modal fade" id="modal_password_forgotten" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Support Problemes de connections</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Pour tout support concernant la connection . Merci de contacter : <a href="mailto:support@amoil.com">support@amoil.com</a>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>

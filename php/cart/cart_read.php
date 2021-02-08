@@ -1,5 +1,7 @@
 <?php
 require_once "../connection/db.php";
+header("Access-Control-Allow-Origin: *");
+
 //require_once "../verify_session.php";
 session_start();
 if (isset($_SESSION["id_client"])) {
@@ -10,7 +12,8 @@ if (isset($_SESSION["id_client"])) {
     $sql = $conn->prepare($query);
     $sql->execute(array("id_client" => $_SESSION["id_client"]));
     $cart = $sql->fetchAll(PDO::FETCH_ASSOC);
-
+    $_SESSION["cart"] = $cart;
+    
     $msg["data"] = $cart;
     $msg["code"] = 200;
     $msg["msg"] = "ok";

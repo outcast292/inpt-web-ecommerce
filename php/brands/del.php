@@ -1,6 +1,8 @@
 <?php
 require_once "../connection/db.php";
 //require_once "../verify_session.php";
+header("Access-Control-Allow-Origin: *");
+
 if (isset($_GET["id_marque"])) {
     $query = "delete from marque where id_marque=?";
     $stmt = $conn->prepare($query);

@@ -1,4 +1,4 @@
-<div class="row bg-dark text-white ">
+<div class="row bg-dark text-white  ">
     <div class="col-4 p-2">
         <h3>reseau socs</h3>
         <hr>

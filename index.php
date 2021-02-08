@@ -1,3 +1,5 @@
+<?php session_start();?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,7 +21,7 @@
 
 <body>
     <?php
-    require_once "req/navbar3.php";
+    require_once "req/navbar.php";
     ?>
     <div class="container ">
         <div class="jumbotron  ">
@@ -177,49 +179,110 @@
     });
     fetch("./php/products/get_most_products").then(resp => resp.json()).then(json => {
         const data = json.data;
-        data.forEach((element, index) => {
+        for (let index = 0; index < data.length / 3; index++) {
             $("#caroussel_bestof_items").append(`
                 <div class="carousel-item ${index==0?'active':''}">
                     <div class="col-md-6 col-lg-4">
                         <div class="card  card_item  m-2 p-1">
-                            <a href="produit?id_produit=${element.id_produit}">
-                                <img src="img/products/${element.id_produit}.jpg" class="card-img-top w-100" >
+                            <a href="produit?id_produit=${data[index].id_produit}">
+                                <img src="img/products/${data[index].id_produit}.jpg" class="card-img-top w-100" >
                             </a>
                         <div class="card-body">
                             <a href="#" style="color: black;">
-                                <span class="card-title h4">${element.label}</span>
+                                <span class="card-title h4">${data[index].label}</span>
                             </a>
                             <a href="#" class="btn btn-primary">BUY</a>
-                            <span class="h6" style="margin-left: 30%;">${element.prix_produit.toFixed(2)} DH</span>
+                            <span class="h6" style="margin-left: 30%;">${data[index].prix_produit.toFixed(2)} DH</span>
                         </div>
                     </div>
                 </div>
+                <div class="col-md-6 col-lg-4">
+                        <div class="card  card_item  m-2 p-1">
+                            <a href="produit?id_produit=${data[index+1].id_produit}">
+                                <img src="img/products/${data[index+1].id_produit}.jpg" class="card-img-top w-100" >
+                            </a>
+                        <div class="card-body">
+                            <a href="#" style="color: black;">
+                                <span class="card-title h4">${data[index+1].label}</span>
+                            </a>
+                            <a href="#" class="btn btn-primary">BUY</a>
+                            <span class="h6" style="margin-left: 30%;">${data[index+1].prix_produit.toFixed(2)} DH</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                        <div class="card  card_item  m-2 p-1">
+                            <a href="produit?id_produit=${data[index+2].id_produit}">
+                                <img src="img/products/${data[index+2].id_produit}.jpg" class="card-img-top w-100" >
+                            </a>
+                        <div class="card-body">
+                            <a href="#" style="color: black;">
+                                <span class="card-title h4">${data[index+2].label}</span>
+                            </a>
+                            <a href="#" class="btn btn-primary">BUY</a>
+                            <span class="h6" style="margin-left: 30%;">${data[index+2].prix_produit.toFixed(2)} DH</span>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
             `);
-        });
+        }
+
     });
     fetch("./php/products/get_newest_products").then(resp => resp.json()).then(json => {
         const data = json.data;
-        data.forEach((element, index) => {
+
+        for (let index = 0; index < data.length / 3; index++) {
             $("#caroussel_newitems_items").append(`
                 <div class="carousel-item ${index==0?'active':''}">
                     <div class="col-md-6 col-lg-4">
                         <div class="card  card_item  m-2 p-1">
-                            <a href="produit?id_produit=${element.id_produit}">
-                                <img src="img/products/${element.id_produit}.jpg" class="card-img-top w-100" >
+                            <a href="produit?id_produit=${data[index].id_produit}">
+                                <img src="img/products/${data[index].id_produit}.jpg" class="card-img-top w-100" >
                             </a>
                         <div class="card-body">
                             <a href="#" style="color: black;">
-                                <span class="card-title h4">${element.label}</span>
+                                <span class="card-title h4">${data[index].label}</span>
                             </a>
                             <a href="#" class="btn btn-primary">BUY</a>
-                            <span class="h6" style="margin-left: 30%;">${element.prix_produit.toFixed(2)} DH</span>
+                            <span class="h6" style="margin-left: 30%;">${data[index].prix_produit.toFixed(2)} DH</span>
                         </div>
                     </div>
                 </div>
+                <div class="col-md-6 col-lg-4">
+                        <div class="card  card_item  m-2 p-1">
+                            <a href="produit?id_produit=${data[index+1].id_produit}">
+                                <img src="img/products/${data[index+1].id_produit}.jpg" class="card-img-top w-100" >
+                            </a>
+                        <div class="card-body">
+                            <a href="#" style="color: black;">
+                                <span class="card-title h4">${data[index+1].label}</span>
+                            </a>
+                            <a href="#" class="btn btn-primary">BUY</a>
+                            <span class="h6" style="margin-left: 30%;">${data[index+1].prix_produit.toFixed(2)} DH</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                        <div class="card  card_item  m-2 p-1">
+                            <a href="produit?id_produit=${data[index+2].id_produit}">
+                                <img src="img/products/${data[index+2].id_produit}.jpg" class="card-img-top w-100" >
+                            </a>
+                        <div class="card-body">
+                            <a href="#" style="color: black;">
+                                <span class="card-title h4">${data[index+2].label}</span>
+                            </a>
+                            <a href="#" class="btn btn-primary">BUY</a>
+                            <span class="h6" style="margin-left: 30%;">${data[index+2].prix_produit.toFixed(2)} DH</span>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
             `);
-        });
+        }
+
     });
 </script>
 

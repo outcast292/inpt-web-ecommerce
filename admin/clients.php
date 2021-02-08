@@ -1,3 +1,4 @@
+<?php require "req/verify.php";  ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +15,6 @@
     <link rel="stylesheet" href="../css/bootstrap-icons.css">
     <link rel="stylesheet" href="../css/admin/sidebar.css">
 
-    <?php require "req/verify.php";  ?>
 
 </head>
 
@@ -22,11 +22,21 @@
     <div class="container-fluid">
         <div class="row">
             <?php require "req/sidebar.php" ?>
+
             <div class="col pt-4 ">
+                <!-- Modal -->
+                <div class="modal  fade" id="modal_details_delete" tabindex="-1" aria-labelledby="modal_details" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-md">
+                        <div class="modal-content" id="modal_content_delete">
+                        </div>
+                    </div>
+                </div>
                 <div class="container.fluid">
                     <h1><a href="" data-target="#sidebar" data-toggle="collapse" class="d-md-none"><i class="fa fa-bars"></i></a>Clients</h1>
                     <h6 class="hidden-sm-down">Page pour visualiser les détails des clients</h6>
                     <hr>
+                    <div id="alert">
+                    </div>
 
                     <p>
                         <button class="btn btn-secondary btn-block" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
@@ -289,6 +299,42 @@
             search();
         });
 
+        function delete_confirmation(id_user, nom_client) {
+            $('#modal_content_delete').html(`
+                     <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalsup">Suppression </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Etes-vous sures de supprimer le client ${nom_client} ?
+                </div>
+                <div class="modal-footer mt-2">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="delete_client(${id_user},'${nom_client}')">Supprimer</button>
+                </div>
+                     `);
+            $('#modal_details_delete').modal('show')
+        }
+
+
+
+        function delete_client(id_client, nom_client) {
+            fetch("../php/clients/client_delete?id_client=" + id_client).then(resp => resp.json()).then(json => {
+                if (json.code == 200) {
+                    search();
+                    $("#alert").text('');
+                    $("#alert").append(`
+                    <div class="alert alert-danger"  >
+                    <i class="bi bi-check-all"></i></i> client ${nom_client} supprimé
+                        </div>`)
+                }
+            }).catch(err => console.log(err));
+        }
+
+
+
         function search() {
             var dataform = $("#form_search :input[value!='']").serialize();
             fetch("../php/clients/clients_read?" + dataform).then(resp => resp.json()).then(json => {
@@ -309,6 +355,7 @@
                             
                                 <a class="dropdown-item" href="mailto:${element.email}">ENVOYER E-MAIL</a>
                                 <a class="dropdown-item" href="tel:${element.tel_client}">APPELER</a>
+                                <a class="dropdown-item" href="#" onclick="delete_confirmation(${element.id_client},'${element.nom_client}');">SUPPRIMER</a>
                             </div>
                             </td>
                         </tr>

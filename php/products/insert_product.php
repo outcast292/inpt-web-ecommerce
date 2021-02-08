@@ -1,5 +1,6 @@
 <?php
-require_once "../connection/db.php";
+require_once "../connection/db.php";header("Access-Control-Allow-Origin: *");
+
 //require_once "../verify_session.php";
 
 if (isset($_GET["label"]) && isset($_GET["prix_produit"]) && isset($_GET["id_marque"]) && isset($_GET["id_categorie"])) {
