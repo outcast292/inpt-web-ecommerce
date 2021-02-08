@@ -190,7 +190,7 @@ require_once "./req/verify.php";
     function get_data(event) {
         fetch("../php/profile/get_client.php").then(resp => resp.json()).then(json => {
             const data = json.data;
-            const adresse = json.adresse[0];
+            const adresse = json.adresse;
             $("#client_form").text('');
 
             $('#client_form').append(`
@@ -202,7 +202,7 @@ require_once "./req/verify.php";
                                                         <h6>Nom: </h6>
                                                     </div>
                                                     <div class="mt-2 col">
-                                                        <input class="form-control mr-sm-2" type="text"  name="nom" value="${data[0].nom_client} ">
+                                                        <input class="form-control mr-sm-2" type="text"  name="nom" value="${data.nom_client} ">
                                                     </div>
                                                 </div>
                                             </div>
@@ -212,7 +212,7 @@ require_once "./req/verify.php";
                                                         <h6>Prenom: </h6>
                                                     </div>
                                                     <div class="mt-2 col">
-                                                        <input class="form-control mr-sm-2" type="text" aria-label="prenom" name="prenom" value="${data[0].prenom_client}">
+                                                        <input class="form-control mr-sm-2" type="text" aria-label="prenom" name="prenom" value="${data.prenom_client}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -222,7 +222,7 @@ require_once "./req/verify.php";
                                                         <h6>Email: </h6>
                                                     </div>
                                                     <div class="mt-2 col">
-                                                        <input class="form-control mr-sm-2" type="text"  name="email" value="${data[0].email} ">
+                                                        <input class="form-control mr-sm-2" type="text"  name="email" value="${data.email} ">
                                                     </div>
                                                     <div class="mt-2 col-3">
                                                         <button type="button" class="btn btn-outline-secondary btn-block" onclick="voir_mdp()">changer mdp</button>
@@ -236,7 +236,7 @@ require_once "./req/verify.php";
                                                         <h6>Date de Naissance: </h6>
                                                     </div>
                                                     <div class="mt-2 col">
-                                                        <input class="form-control mr-sm-2" type="date" aria-label="nom" name="date" value="${data[0].date_naissance}">
+                                                        <input class="form-control mr-sm-2" type="date" aria-label="nom" name="date" value="${data.date_naissance}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -248,28 +248,8 @@ require_once "./req/verify.php";
                                                     <div class="mt-2 col">
                                                         <select class="form-control" name="sexe">
                                                             <option >Homme</option>
-                                                            <option ${data[0].sexe==('f')?"selected":''}>Femme</option>
+                                                            <option ${data.sexe==('f')?"selected":''}>Femme</option>
                                                         </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class='mt-2 row'>
-                                                <div class="form-row p-2 col">
-                                                    <div class="pt-3 col-2">
-                                                        <h6>Adresse: </h6>
-                                                    </div>
-                                                    <div class="mt-2 col">
-                                                        <textarea class="form-control" rows="3" name="adresse" value="heellloooo">${adresse.adresse}</textarea>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class='mt-2 row'>
-                                                <div class="form-row p-2 col">
-                                                    <div class="pt-3 col-3">
-                                                        <h6>Code Postal: </h6>
-                                                    </div>
-                                                    <div class="mt-2 col">
-                                                        <input class="form-control mr-sm-2" type="text" aria-label="zipcode" name="zipcode" value="${adresse.code_postal}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -279,7 +259,7 @@ require_once "./req/verify.php";
                                                         <h6>Telephone: </h6>
                                                     </div>
                                                     <div class="mt-2 col">
-                                                        <input class="form-control mr-sm-2" type="tel" aria-label="telephone" name="tel" value="0${data[0].tel_client}">
+                                                        <input class="form-control mr-sm-2" type="tel" aria-label="telephone" name="tel" value="0${data.tel_client}">
                                                     </div>
                                                 </div>
                                             </div>

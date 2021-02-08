@@ -256,9 +256,12 @@ session_start();
             }
 
             function go_to_dilevery() {
-                var valide = products.forEach(element => {
-                    if (element.qtt_panier > 0)
-                        return true;
+                var valide = false;
+                products.forEach(element => {
+                    if (element.qtt_panier > 0) {
+                        valide = true;
+                        return;
+                    }
                 });
                 if (valide) {
                     location.replace("dilevery");
