@@ -40,7 +40,7 @@ session_start();
                 <div class="card col-12">
                     <div class="card-top border-bottom text-center"> <a href="index.php" class="link"> Retour a la boutique</a> <span id="logo">Amoil.com</span> </div>
                     <div class="card-body">
-                        <div class="row upper"> <span class="panier"> Panier</span> <a href="dilevery" class="btn btn-success payment">Payment <i class="bi bi-arrow-right-square"></i></a> </div>
+                        <div class="row upper"> <span class="panier"> Panier</span> <button type="button" onclick="go_to_dilevery()" class="btn btn-success payment">Payment <i class="bi bi-arrow-right-square"></i></button> </div>
 
                         <div class="row">
                             <div class="col-lg-12">
@@ -94,8 +94,19 @@ session_start();
             </div>
         </div>
     </div>
-
-
+    <!--toast-->
+    <div class="toast bg-danger text-light" role="alert" id="toast_products" aria-live="assertive" style="position: absolute; top: 100px; right: 0;" aria-atomic="true">
+        <div class="toast-header">
+            <i class="bi bi-x-octagon-fill text-danger"></i>
+            <strong class="mr-auto">Erreur</strong>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="toast-body">
+            Impossible de passer une commande sans produits.
+        </div>
+    </div>
 
 
     <div>
@@ -113,6 +124,12 @@ session_start();
             var products = [];
             //TODO ADD DETAILS 
 
+            $(document).ready(function() {
+                $('#toast_products').toast({
+                    delay: 3000
+                })
+            });
+
             function fill_cart_div() {
                 $("#cart_content").text('');
                 products.forEach((element, index) => {
@@ -125,7 +142,7 @@ session_start();
                                 <div class="col-md-10">
                                     <div class="card-body p-3 col-12   " style="width: 100%;">
                                         <span class="card-title mr-5 h5 " style="color: black;"><span style="color: black;">${element.label}</span>
-                                            
+                                        <span class="card-title mr-5 h6 " style="color: black;"><span style="color: black;">${element.options_produit}</span>   
                                         <span>
                                                 <span class="border pt-2 pl-3 pr-3 pb-1" id="qty">${element.qtt_panier}</span>
                                                 <button id="minus" onclick="change_qtt(${index},'-')" style="padding: 2px 5px; border-radius: 10px; background-color: rgb(230,230,230) ;border-color:(230,230,230); border-width: 1px;">-</button>
@@ -234,6 +251,23 @@ session_start();
                         console.log(json);
                         fill_cart_div();
                     }).catch(err => console.log(err));
+                }
+
+            }
+
+            function go_to_dilevery() {
+                var valide = false;
+                products.forEach(element => {
+                    if (element.qtt_panier > 0) {
+                        valide = true;
+                        return;
+                    }
+                });
+                if (valide) {
+                    location.replace("dilevery");
+                } else {
+                    $('#toast_products').toast('show')
+
                 }
 
             }

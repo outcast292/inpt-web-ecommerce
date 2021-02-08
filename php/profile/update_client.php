@@ -1,6 +1,7 @@
 <?php
 session_start();
-require_once "../connection/db.php";header("Access-Control-Allow-Origin: *");
+require_once "../connection/db.php";
+header("Access-Control-Allow-Origin: *");
 
 if (isset($_SESSION["id_client"])) {
     if (isset($_GET["nom"])) {
@@ -22,15 +23,7 @@ if (isset($_SESSION["id_client"])) {
 
 
         ));
-        $query = "update adresse set adresse = :adresse ,code_postal= :code_postal  where id_client= :id_client;";
-        $sql = $conn->prepare($query);
-        $sql->execute(array(
-            "id_client" => $_SESSION["id_client"],
-            "adresse" => $_GET["adresse"],
-            "code_postal" => $_GET["zipcode"],
 
-
-        ));
         $msg["code"] = 200;
         $msg["msg"] = "ok";
     }

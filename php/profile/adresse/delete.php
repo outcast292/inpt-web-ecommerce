@@ -1,5 +1,7 @@
 <?php
-require_once "../../connection/db.php";header("Access-Control-Allow-Origin: *");
+session_start();
+require_once "../../connection/db.php";
+header("Access-Control-Allow-Origin: *");
 
 if (isset($_SESSION["id_client"]) && isset($_GET["id_adresse"])) {
     $query = "DELETE from adresse where id_adresse= :id_adresse";

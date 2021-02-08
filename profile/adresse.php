@@ -204,6 +204,30 @@ require_once "./req/verify.php";
 
     }
 
+    function see_adresse_d(id_adresse, adresse) {
+
+        $('#modal_content_changing').html(`
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="exampleModalLabel">Supprimer l'adresse </h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body container-fluid">
+                        est-ce que vous voullez supprimer cette adresse ?
+                        ${adresse}
+                            <div class="modal-footer ">
+                                
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="delete_adresse(${id_adresse})">Supprimer</button>
+                            </div>
+                        
+                    </div>`)
+        $('#change').modal('show');
+
+
+    }
+
 
 
     function delete_adresse(id_adresse) {
@@ -286,7 +310,7 @@ require_once "./req/verify.php";
                         <button type="button"  onclick='see_adresse(${element.id_adresse},"${element.adresse}","${element.code_postal}","${element.nom_complet}","${element.tel_adresse_client}")' style="border: none; background: none;padding: 0;">
                             <span aria-hidden="true"><i class="bi bi-pencil text-muted"></i></span>
                         </button>
-                        <button type="button" class="close" onclick="delete_adresse(${element.id_adresse})">
+                        <button type="button" class="close" onclick='see_adresse_d(${element.id_adresse},"${element.adresse}")'>
                             <span aria-hidden="true"><i class="bi bi-trash text-muted"></i></span>
                         </button>
                     </td>

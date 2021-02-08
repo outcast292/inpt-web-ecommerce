@@ -1,4 +1,4 @@
-<?php session_start();?>
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -201,7 +201,6 @@
                                     </span><input type="number" value="1" name="qtt_panier"  min="0" class=" input my-3 mx-3" style="border-radius: 15px;height: 30px;width: 130px; color:darkblue;">
                                     <div class="form-group mt-2  ">
                                     <button type="button" class="btn btn-warning" onclick="add_to_cart()" <?php if (!isset($_SESSION["id_client"])) echo "disabled"  ?> style="border-radius: 20px;">Ajouter au panier</button>
-                                    <button type="button" class="btn btn-danger" <?php if (!isset($_SESSION["id_client"])) echo "disabled"  ?> style="border-radius: 20px;">Acheter maintenant</button>
                                 </div>
                                     </div>
                                

@@ -1,5 +1,4 @@
 <?php
-session_start();
 $x = 0;
 $is_profile = basename(dirname($_SERVER['SCRIPT_FILENAME']))  == "profile";
 
@@ -115,7 +114,7 @@ if (isset($_POST["password"])) {
             </form>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="inscription_client">creer un compte</a>
-            <a class="dropdown-item" href="#">Mot de passe Oublié?</a>
+            <a class="dropdown-item" data-toggle="modal" data-target="#modal_password_forgotten">Mot de passe Oublié?</a>
           <?php
           } else {
 
@@ -135,3 +134,21 @@ if (isset($_POST["password"])) {
   </div>
   </div>
 </nav>
+<div class="modal fade" id="modal_password_forgotten" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Support Problemes de connections</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Pour tout support concernant la connection . Merci de contacter : <a href="mailto:support@amoil.com">support@amoil.com</a>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>
