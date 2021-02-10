@@ -242,8 +242,9 @@
 
                         var dataform = $("#form_signup").serialize();
                         var email = $('#email_form').val();
+                        var password = $('#password1').val();
                         console.log("test");
-                        fetch("./php/clients/client_add?email=" + email + "&" + dataform).then(resp => resp.json()).then(json => {
+                        fetch("./php/clients/client_add?email=" + email + "&mdp_client=" + password + "&" + dataform).then(resp => resp.json()).then(json => {
                             if (json.code == 200) {
                                 window.location.replace("index");
                             } else {

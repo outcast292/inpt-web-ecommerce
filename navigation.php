@@ -173,7 +173,7 @@
                 </a>
                 <img src="img/stars.jpg" alt="rating" class=" d-inline-flex align-self-r w-lg-50 w-sm-50 w-md-75">
                 <p style="color:gray">${element.description_produit}</p>
-                <a href="#" class="btn btn-primary">BUY</a>
+                <a href="produit?id_produit=${element.id_produit}" class="btn btn-primary">Acheter</a>
                 <span class="h6" style="margin-left: 30%;">${element.prix_produit.toFixed(2)} DH</span>
               </div>
             </div>

@@ -238,44 +238,44 @@
                 <div class="carousel-item ${index==0?'active':''}">
                     <div class="col-12 col-lg-4">
                         <div class="card">
-                            <img src="./img/products/${data[index].id_produit}.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <a class="stretched-link" href="#" style="color: rgb(2, 2, 58);">
+                            <a href="?id_produit=${data[index].id_produit}"><img src="./img/products/${data[index].id_produit}.jpg" class="card-img-top" alt="...">
+  </a>                           <div class="card-body">
+                                <a class="stretched-link" href="?id_produit=${data[index].id_produit}" style="color: rgb(2, 2, 58);">
                                     <span class="card-title h4">${data[index].label}</span>
                                 </a>
                                 <p style="color:gray">description</p>
-                                <a href="#" class="btn btn-danger">Acheter</a>
+                                <a href="?id_produit=${data[index].id_produit}" class="btn btn-danger">Acheter</a>
                                 <span class="h6" style="margin-left:20px;">${data[index].prix_produit.toFixed(2)} DH</span>
                             </div>
                         </div>
                     </div>
                     <div class="col-12 col-lg-4">
                         <div class="card">
-                            <img src="./img/products/${data[index+1].id_produit}.jpg" class="card-img-top" alt="...">
+                            <a href="?id_produit=${data[index+1].id_produit}"><img src="./img/products/${data[index+1].id_produit}.jpg" class="card-img-top" alt="..."> </a>
                             <div class="card-body">
-                                <a class="stretched-link" href="#" style="color: rgb(2, 2, 58);">
+                                <a class="stretched-link" href="?id_produit=${data[index+1].id_produit}" style="color: rgb(2, 2, 58);">
                                     <span class="card-title h4">${data[index+1].label}</span>
                                 </a>
                                 <p style="color:gray">description</p>
-                                <a href="#" class="btn btn-danger">Acheter</a>
+                                <a href="?id_produit=${data[index+1].id_produit}" class="btn btn-danger">Acheter</a>
                                 <span class="h6" style="margin-left:20px;">${data[index+1].prix_produit.toFixed(2)} DH</span>
                             </div>
                         </div>
                     </div>
                     <div class="col-12 col-lg-4">
                         <div class="card">
-                            <img src="./img/products/${data[index+2].id_produit}.jpg" class="card-img-top" alt="...">
+                            <a href="?id_produit=${data[index+2].id_produit}"><img src="./img/products/${data[index+2].id_produit}.jpg" class="card-img-top" alt="..."> </a>
                             <div class="card-body">
-                                <a class="stretched-link" href="#" style="color: rgb(2, 2, 58);">
+                                <a class="stretched-link" href="?id_produit=${data[index+2].id_produit}" style="color: rgb(2, 2, 58);">
                                     <span class="card-title h4">${data[index+2].label}</span>
                                 </a>
                                 <p style="color:gray">description</p>
-                                <a href="#" class="btn btn-danger">Acheter</a>
+                                <a href="?id_produit=${data[index+2].id_produit}" class="btn btn-danger">Acheter</a>
                                 <span class="h6" style="margin-left:20px;">${data[index+2].prix_produit.toFixed(2)} DH</span>
                             </div>
                         </div>
                     </div>
-                </div>                   
+                </div>                     
             `);
             }
         });
@@ -287,39 +287,39 @@
                 <div class="carousel-item ${index==0?'active':''}">
                     <div class="col-12 col-lg-4">
                         <div class="card">
-                            <img src="./img/products/${data[index].id_produit}.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <a class="stretched-link" href="#" style="color: rgb(2, 2, 58);">
+                            <a href="?id_produit=${data[index].id_produit}"><img src="./img/products/${data[index].id_produit}.jpg" class="card-img-top" alt="...">
+  </a>                           <div class="card-body">
+                                <a class="stretched-link" href="?id_produit=${data[index].id_produit}" style="color: rgb(2, 2, 58);">
                                     <span class="card-title h4">${data[index].label}</span>
                                 </a>
                                 <p style="color:gray">description</p>
-                                <a href="#" class="btn btn-danger">Acheter</a>
+                                <a href="?id_produit=${data[index].id_produit}" class="btn btn-danger">Acheter</a>
                                 <span class="h6" style="margin-left:20px;">${data[index].prix_produit.toFixed(2)} DH</span>
                             </div>
                         </div>
                     </div>
                     <div class="col-12 col-lg-4">
                         <div class="card">
-                            <img src="./img/products/${data[index+1].id_produit}.jpg" class="card-img-top" alt="...">
+                            <a href="?id_produit=${data[index+1].id_produit}"><img src="./img/products/${data[index+1].id_produit}.jpg" class="card-img-top" alt="..."> </a>
                             <div class="card-body">
-                                <a class="stretched-link" href="#" style="color: rgb(2, 2, 58);">
+                                <a class="stretched-link" href="?id_produit=${data[index+1].id_produit}" style="color: rgb(2, 2, 58);">
                                     <span class="card-title h4">${data[index+1].label}</span>
                                 </a>
                                 <p style="color:gray">description</p>
-                                <a href="#" class="btn btn-danger">Acheter</a>
+                                <a href="?id_produit=${data[index+1].id_produit}" class="btn btn-danger">Acheter</a>
                                 <span class="h6" style="margin-left:20px;">${data[index+1].prix_produit.toFixed(2)} DH</span>
                             </div>
                         </div>
                     </div>
                     <div class="col-12 col-lg-4">
                         <div class="card">
-                            <img src="./img/products/${data[index+2].id_produit}.jpg" class="card-img-top" alt="...">
+                            <a href="?id_produit=${data[index+2].id_produit}"><img src="./img/products/${data[index+2].id_produit}.jpg" class="card-img-top" alt="..."> </a>
                             <div class="card-body">
-                                <a class="stretched-link" href="#" style="color: rgb(2, 2, 58);">
+                                <a class="stretched-link" href="?id_produit=${data[index+2].id_produit}" style="color: rgb(2, 2, 58);">
                                     <span class="card-title h4">${data[index+2].label}</span>
                                 </a>
                                 <p style="color:gray">description</p>
-                                <a href="#" class="btn btn-danger">Acheter</a>
+                                <a href="?id_produit=${data[index+2].id_produit}" class="btn btn-danger">Acheter</a>
                                 <span class="h6" style="margin-left:20px;">${data[index+2].prix_produit.toFixed(2)} DH</span>
                             </div>
                         </div>
