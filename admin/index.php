@@ -1,3 +1,4 @@
+<?php require "req/verify.php";  ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,6 +12,7 @@
     <script src="../js/jquery-3.5.1.slim.min.js"></script>
 
     <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.min.js" integrity="sha512-SuxO9djzjML6b9w9/I07IWnLnQhgyYVSpHZx0JV97kGBfTIsUYlWflyuW4ypnvhBrslz1yJ3R+S14fdCWmSmSA==" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/bootstrap-icons.css">
     <link rel="stylesheet" href="../css/admin/sidebar.css">
 
@@ -24,16 +26,99 @@
             <?php require "req/sidebar.php" ?>
             <div class="col pt-4">
                 <h2>
-                    <a href="" data-target="#sidebar" data-toggle="collapse" class="d-md-none"><i class="fa fa-bars"></i></a> Content
+                    <a href="" data-target="#sidebar" data-toggle="collapse" class="d-md-none"><i class="fa fa-bars"></i></a> Principale
                 </h2>
                 <hr>
-                <h6 class="hidden-sm-down">Shrink page width to see sidebar collapse</h6>
-                <p>Codeply editor wolf moon retro jean shorts chambray sustainable roof party. Shoreditch vegan artisan Helvetica. Tattooed Codeply Echo Park Godard kogi, next level irony ennui twee squid fap selvage. Meggings flannel Brooklyn literally small batch, mumblecore PBR try-hard kale chips. Brooklyn vinyl lumbersexual bicycle rights, viral fap cronut leggings squid chillwave pickled gentrify mustache. 3 wolf moon hashtag church-key Odd Future. Austin messenger bag normcore, Helvetica Williamsburg sartorial tote bag distillery Portland before they sold out gastropub taxidermy Vice.</p>
+                <div class="row">
+                    <div class="col-6">
+                        <canvas id="nbr_orders"></canvas>
+
+                    </div>
+                    <div class="col-6">
+                        <canvas id="prix_orders"></canvas>
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
 
+    <script>
+        fetch("../php/charts_data/order_nbr").then(resp => resp.json()).then(json => {
+
+
+            var nbr_orders = $("#nbr_orders");
+            var chart_nbr_orders_chart = new Chart(nbr_orders, {
+                type: 'line',
+                data: {
+                    labels: json.data.map(element => element.date),
+                    datasets: [{
+                        data: json.data.map(element => element.nbr_commande),
+                        borderWidth: 1,
+                        borderColor: '#00c0ef',
+                        label: 'Nombre des commandes',
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    title: {
+                        display: true,
+                        text: "Nombre des commandes effectuées ",
+                    },
+                    legend: {
+                        display: false
+                    },
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true,
+                            }
+                        }]
+                    }
+                }
+            });
+        }).catch(err => {
+            console.log(err);
+        });
+        fetch("../php/charts_data/order_price").then(resp => resp.json()).then(json => {
+
+
+            var nbr_orders = $("#prix_orders");
+            var chart_nbr_orders_chart = new Chart(nbr_orders, {
+                type: 'line',
+                data: {
+                    labels: json.data.map(element => element.date),
+                    datasets: [{
+                        data: json.data.map(element => element.prix_commande),
+                        borderWidth: 1,
+                        borderColor: '#DC3545',
+                        label: 'prix total des commandes',
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    title: {
+                        display: true,
+                        text: "prix total des commandes effectuées ",
+                    },
+                    legend: {
+                        display: false
+                    },
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true,
+                            }
+                        }]
+                    }
+                }
+            });
+        }).catch(err => {
+            console.log(err);
+        });
+    </script>
 </body>
+
 
 </html>

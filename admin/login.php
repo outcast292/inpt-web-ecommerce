@@ -4,7 +4,7 @@ if (isset($_POST["password"])) {
     require "../php/connection/db.php";
     $email_user = htmlspecialchars($_POST["email"]);
     $pass = $_POST["password"];
-    $query = "SELECT  mdp_user,nom_user,id_user FROM utilisateurs where email_user = :email_user ";
+    $query = "SELECT  mdp_user,nom_user,id_user,is_admin FROM utilisateurs where email_user = :email_user ";
     $sql = $conn->prepare($query);
     $sql->execute(array("email_user" => $email_user));
     $row = $sql->fetch();
@@ -13,6 +13,7 @@ if (isset($_POST["password"])) {
             $_SESSION["email_user"] = $email_user;
             $_SESSION["nom_user"] = $row["nom_user"];
             $_SESSION["id_user"] = $row["id_user"];
+            $_SESSION["is_admin"] = $row["is_admin"];
             $_SESSION["connection_status"] = "connected";
             header("location: index.php");
             //header("location: ".$_SESSION["LAST_PAGE"]); //pour etre envoyer a la page voulue au depart

@@ -228,6 +228,7 @@
                 $("#password1").removeClass("is-valid")
                 $("#password2").addClass("is-invalid")
                 $("#password1").addClass("is-invalid")
+                return;
             } else {
                 $("#password2").removeClass("is-invalid")
                 $("#password1").removeClass("is-invalid")
@@ -238,8 +239,6 @@
                 verify_email().then(res => {
                     console.log("add" + res);
                     if (res) {
-
-
                         var dataform = $("#form_signup").serialize();
                         var email = $('#email_form').val();
                         var password = $('#password1').val();

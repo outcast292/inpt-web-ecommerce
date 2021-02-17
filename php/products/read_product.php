@@ -14,7 +14,7 @@ if (isset($_GET["id_produit"])) {
     $options = $sql->fetchAll(PDO::FETCH_ASSOC);
     $results = array("product" => $product, "options" => $options);
     //check wishlist
-    $inside = true;
+    $inside = false;
     if (isset($_SESSION["id_client"])) {
         $query = 'SELECT * from wishlist where id_client=:id_client and  id_produit=:id_produit)';
         $sql = $conn->prepare($query);
